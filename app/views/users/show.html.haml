@@ -1,6 +1,9 @@
 - if @user
   %h3= @user.full_name
-    
+  
+  - if @user.image
+    %img{ :src => @user.image, :align => "right" }
+  
   %p
     <b>Location</b>
     <br />
