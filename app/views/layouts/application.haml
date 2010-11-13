@@ -1,0 +1,41 @@
+!!! 5
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+  %head
+    %meta{'http-equiv' => "content-type", :content => "text/html;charset=UTF-8"}
+    - title = "#{@title} — " if @title
+    %title= "#{title}#{CONFIG['name']}"
+    = csrf_meta_tag
+    = stylesheet_link_tag 'application', :cache => true
+    = javascript_include_tag "jquery-1.4.2.min", "rails", "application", :cache => true
+    /[if lt IE 9]
+      %script{:type => "text/javascript", :src => "http://stan-js.googlecode.com/hg/version/0.1/stan.min.js"}
+        == IE7_PNG_SUFFIX = '.png';
+  %body
+    #wrapper
+      #header
+      
+        #logo
+          %h1=link_to CONFIG['name'], root_url
+          
+        #info
+          - if current_user
+            %span.welcome== Hello there, <strong>#{current_user.first_name}</strong>!
+            %br
+            == #{link_to "Logout", logout_path} or #{ link_to "Edit Profile", edit_user_path(:current) }
+          - else
+            == #{ link_to "Signup", signup_path } or #{ link_to "Login", login_path }
+        
+      #content
+        .inner
+          - if flash[:notice]
+            #notice= flash[:notice]
+          - if flash[:error]
+            #error= flash[:error]
+
+          - if yield.blank?
+            %h1==Welcome!
+          - else
+            ~ yield
+
+      #footer
+        %h5==Rails #{Rails.version} base app by #{ link_to "@ashleyw", "http://twitter.com/ashleyw", :target => "_blank" }. Have fun! ;)

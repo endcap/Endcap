@@ -1,0 +1,30 @@
+= form_for(@user) do |f|
+  = errors(@user)
+  
+  %p
+    = f.label :first_name
+    %br
+    = f.text_field :first_name, :id => "first_name"
+    
+  %p
+    = f.label :last_name
+    %br
+    = f.text_field :last_name, :id => "last_name"
+  
+  %p
+    = f.label :email
+    %br
+    = f.text_field :email, :id => "email"
+  
+  %p
+    = f.label :password
+    %br
+    = f.password_field :password, :id => "password"
+  
+  %p
+    = f.label :password_confirmation
+    %br
+    = f.password_field :password_confirmation, :id => "password_confirmation"
+  
+  %p
+    = f.submit 'Submit'

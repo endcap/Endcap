@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+require 'digest/md5'
+
+puts "Hello, what's your app's name?"
+name = gets.chomp.gsub(" ", "")
+
+begin
+  puts "\nThanks, let's go...\n"
+  
+  puts " - Replacing all occurances of 'Slate' with '#{name}' in the project..."
+  file_names = `find .`.split("\n").delete_if {|f| f =~ /\.git/ || (f =~ /\.rb|\.yml|Rakefile|\.ru/) == nil || f =~ /script\/init/}
+  
+  file_names.each do |file_name|
+    text = File.read(file_name)
+    text.gsub!("Slate", name)
+    text.gsub!("slate", name.downcase)
+    text.gsub!("SECRET_TOKEN_REPLACE_ME", Digest::MD5.hexdigest( (Time.now.to_i**(20+rand(10))).to_s ))
+    File.open(file_name, 'w') {|f| f.write(text) }
+  end
+  
+  puts " - Generating your secret token..."
+  # above
+  
+  puts " - Installing bundler (if you don't already have it)..."
+  `gem install bundler`
+  
+  puts " - Downloading and installing the required gems..."
+  `bundle install`
+  
+  puts " - Migrating your database. It's sqlite3 by default, btw..."
+  `rake db:migrate`
+  `rm -rf .git`
+  
+  puts " - Initializing your git repo and making an inital commit..."
+  `git init`
+  `git add .`
+  `git commit -a -m "Inital commit"`
+
+  puts "\nRight, it looks like you're ready to go! Now run `rails server` to get started! Enjoy!"
+  
+  puts "\n===============================\n"
+  puts "Psst...follow me on Twitter: http://twitter.com/ashleyw\n"
+rescue => e
+  puts "Opps, something went really, really wrong - here's what:\n"
+  puts e.inspect
+end

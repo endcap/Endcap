@@ -1,0 +1,9 @@
+.bundle
+db/*.sqlite3
+log/*.log
+public/stylesheets/*.css
+public/javascripts/all.js
+db/production.sqlite3
+db/test.sqlite3
+tmp/*
+Gemfile.lock
