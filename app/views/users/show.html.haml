@@ -21,3 +21,7 @@
   
   - if @user.bands
     %h3 Bands
+    %ul
+      - @user.bands.each do |band|
+        %li
+          %a.href=band.name
