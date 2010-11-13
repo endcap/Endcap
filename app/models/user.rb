@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   acts_as_authentic
+  has_many :band_memberships
   has_many :bands, :through => :band_memberships
   
   def full_name
