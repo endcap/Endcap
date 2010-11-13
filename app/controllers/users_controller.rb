@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   before_filter :ensure_not_logged_in, :only => [:new, :create]
   
   def show
-    @user = current_user
+    if params[:id]
+      @user = User.find(params[:id])
+    else
+      @user = current_user
+    end
   end
   
   def new

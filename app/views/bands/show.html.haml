@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @band.name
+%p
+  %b Start year:
+  = @band.start_year
+%p
+  %b End year:
+  = @band.end_year
+%p
+  %b City:
+  = @band.city
+%p
+  %b State:
+  = @band.state
+%p
+  %b Description:
+  = @band.description
+%p
+  %b Homepage:
+  = @band.homepage
+%p
+  %b Store url:
+  = @band.store_url
+
+= link_to 'Edit', edit_band_path(@band)
+\|
+= link_to 'Back', bands_path

@@ -1,0 +1,33 @@
+%h1 Listing bands
+
+%table
+  %tr
+    %th Name
+    %th Start year
+    %th End year
+    %th City
+    %th State
+    %th Description
+    %th Homepage
+    %th Store url
+    %th
+    %th
+    %th
+
+  - @bands.each do |band|
+    %tr
+      %td= band.name
+      %td= band.start_year
+      %td= band.end_year
+      %td= band.city
+      %td= band.state
+      %td= band.description
+      %td= band.homepage
+      %td= band.store_url
+      %td= link_to 'Show', band
+      %td= link_to 'Edit', edit_band_path(band)
+      %td= link_to 'Destroy', band, :confirm => 'Are you sure?', :method => :delete
+
+%br
+  - if current_user
+    = link_to 'New Band', new_band_path

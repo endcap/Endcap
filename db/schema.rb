@@ -10,7 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090708061939) do
+ActiveRecord::Schema.define(:version => 20101113190154) do
+
+  create_table "bands", :force => true do |t|
+    t.string   "name"
+    t.string   "start_year"
+    t.string   "end_year"
+    t.string   "city"
+    t.string   "state"
+    t.text     "description"
+    t.string   "homepage"
+    t.string   "store_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -38,6 +51,9 @@ ActiveRecord::Schema.define(:version => 20090708061939) do
     t.string   "persistence_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "city"
+    t.string   "state"
+    t.text     "description"
   end
 
 end

@@ -1,4 +1,6 @@
 Endcap::Application.routes.draw do
+  resources :bands
+
   root :to => "users#show"
   
   resources :user_sessions

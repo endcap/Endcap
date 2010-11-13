@@ -1,2 +1,19 @@
 - if @user
-  %h3== It's been <span style="font-size:1.3em">#{time_ago_in_words(@user.created_at)}</span> since you signed up.
+  %h3= @user.full_name
+    
+  %p
+    <b>Location</b>
+    <br />
+    =@user.location
+  
+  %p
+    <b>Description</b>
+    <br />
+    =@user.description
+    
+  %p
+    <b>On Endcap For</b>
+    <br />
+    #{time_ago_in_words(@user.created_at)}
+  
+  
