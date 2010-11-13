@@ -44,7 +44,7 @@ class BandsController < ApplicationController
   # POST /bands.xml
   def create
     @band = Band.new(params[:band])
-
+    @band.users << current_user
     respond_to do |format|
       if @band.save
         format.html { redirect_to(@band, :notice => 'Band was successfully created.') }
