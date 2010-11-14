@@ -6,9 +6,10 @@
 
 %h3
   = @event.name
-%p
-  %b Venue:
-  = @event.venue.name
+- if @event.venue
+  %p
+    %b Venue:
+    = link_to @event.venue.name, @event.venue
 %p
   %b Time:
   = @event.time
