@@ -1,7 +1,6 @@
 %p#notice= notice
 
-%p
-  %b Name:
+%h3
   = @band.name
 %p
   %b Start year:
@@ -24,6 +23,18 @@
 %p
   %b Store url:
   = @band.store_url
+
+%h3 
+  Members
+%ul
+  - @band.band_memberships.each do |member|
+    - if member.user
+      %li
+        =link_to member.user.full_name, member.user
+        from 
+        =member.start_date || 'ever'
+        to 
+        =member.end_date || 'now'
 
 = link_to 'Edit', edit_band_path(@band)
 \|

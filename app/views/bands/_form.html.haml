@@ -30,5 +30,21 @@
   .field
     = f.label :store_url
     = f.text_field :store_url
+    
+    %h3 Members
+    .field
+      - @band.band_memberships.each do |member|
+        - if member.user
+          %li.member
+            = member.user.full_name
+            =member.start_date || 'ever'
+            to 
+            =member.end_date || 'now'
+           
+
+            (<a href="/deletemembership?band=#{@band.id}&amp;membership=#{member.id}">delete</a>)
+    .field
+      = f.select("band_memberships", User.all.collect { |u| [ u.full_name, u.id ] }, {:include_blank => 'Add New Member'} )
+    
   .actions
     = f.submit 'Save'

@@ -23,5 +23,4 @@
     %h3 Bands
     %ul
       - @user.bands.each do |band|
-        %li
-          %a.href=band.name
+        %li= link_to band.name, band
