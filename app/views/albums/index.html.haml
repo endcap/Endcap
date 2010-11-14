@@ -14,7 +14,10 @@
   - @albums.each do |album|
     %tr
       %td= album.name
-      %td= album.band_id
+      -if album.band
+        %td= album.band.name
+      -else
+        %td
       %td= album.year
       %td= album.description
       %td= album.image
