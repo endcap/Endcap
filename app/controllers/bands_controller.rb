@@ -1,7 +1,5 @@
 class BandsController < ApplicationController
   
-  before_filter :ensure_logged_in, :only => [:new, :create, :update, :destroy]
-  
   # GET /bands
   # GET /bands.xml
   def index
