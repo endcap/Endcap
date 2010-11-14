@@ -51,8 +51,9 @@
 
 %h3 Albums
 %ul
-  - @band.albums.each do |album|
+  - @band.albums.sort_by(&:year).each do |album|
     %li
+      =album.year
       =link_to album.name, album
 
 <!--= link_to 'New Album', new_album_path("?id=#{@band.id}")-->
