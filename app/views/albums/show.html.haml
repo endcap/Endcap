@@ -8,13 +8,21 @@
 %p
   %b Band:
   
-  = link_to Band.find_by_id(@album.band_id).name, Band.find_by_id(@album.band_id)
+  = link_to @album.band.name, @album.band
 %p
   %b Year:
   = @album.year
 %p
   %b Description:
   = @album.description
+
+%h3 Songs
+%ol
+  - @album.songs.each do |song|
+    = song.name
+    
+<a href="/songs/new/?id=#{@album.id}">Edit Songs</a>
+%br
 
 = link_to 'Edit', edit_album_path(@album)
 \|
