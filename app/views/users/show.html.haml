@@ -23,10 +23,16 @@
     <b>On Endcap For</b>
     <br />
     #{time_ago_in_words(@user.created_at)}
-  
-  - if @user.bands
+
+  - if @user.band_memberships
     %h3 Bands
     %ul
-      - @user.bands.each do |band|
-        %li
-          =link_to band.name, band
+      - @user.band_memberships.find(:all, :conditions => ["band_id is not null"]).each do |member|
+        - if member and member.band_id
+          %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
+            =link_to member.band.name, member.band
+            (
+            = member.start_date ? member.start_date.year : "ever"
+            to
+            = member.end_date ? member.end_date.year : "now"
+            )
