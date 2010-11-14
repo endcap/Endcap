@@ -1,38 +1,51 @@
-- if @user
-  %h3= @user.full_name
+#profile
+  .wrapper
+    %div{:id => "profile1"}
+      - if @user.image
+        %img{ :src => @user.image, :align => "right" }
+      %p
+        =@user.description
   
-  - if @user.image
-    %img{ :src => @user.image, :align => "right" }
-  
-  %p
-    <b>Location</b>
-    <br />
-    =@user.location
+    %div{:id => "profile2"}
+      - if @user
+        %h3= @user.full_name
+        %p#subtitle= @user.instrument
+      
+        - if @user.band_memberships
+          %ul
+            - @user.band_memberships.find(:all, :conditions => ["band_id is not null"]).each do |member|
+              - if member and member.band_id
+                %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
+                  =link_to member.band.name, member.band
+                  (
+                  = member.start_date ? member.start_date.year : "ever"
+                  to
+                  = member.end_date ? member.end_date.year : "now"
+                  )
 
-  %p
-    <b>Instrument</b>
-    <br />
-    =@user.instrument
-  
-  %p
-    <b>Description</b>
-    <br />
-    =@user.description
-    
-  %p
-    <b>On Endcap For</b>
-    <br />
-    #{time_ago_in_words(@user.created_at)}
-
-  - if @user.band_memberships
-    %h3 Bands
-    %ul
-      - @user.band_memberships.find(:all, :conditions => ["band_id is not null"]).each do |member|
-        - if member and member.band_id
-          %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
-            =link_to member.band.name, member.band
-            (
-            = member.start_date ? member.start_date.year : "ever"
-            to
-            = member.end_date ? member.end_date.year : "now"
-            )
+    %div{:id => "profile3"}
+      %h3 Discography
+      
+      %p
+        %div#first
+          %img{:src => "/images/album-cover.png", :height => "115", :width => "115"}
+          %br
+          callupsie (2008)
+        %div#second
+          %img{:src => "/images/album-cover.png", :height => "115", :width => "115"}
+          %br
+          callupsie (2008)
+        
+      %ul
+        %li
+          %h4 Song Title 
+          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
+        %li
+          %h4 Song Title 
+          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
+        %li
+          %h4 Song Title 
+          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
+        %li
+          %h4 Song Title 
+          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
