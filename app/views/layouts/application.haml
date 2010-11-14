@@ -16,7 +16,7 @@
       
         #logo
           %h1=link_to CONFIG['name'], root_url
-          
+                  
         #info
           - if current_user
             %span.welcome== Hello there, <strong>#{current_user.first_name}</strong>!
@@ -26,6 +26,10 @@
             == #{ link_to "Signup", signup_path } or #{ link_to "Login", login_path }
           == #{link_to "Bands", bands_path}
           == #{link_to "Albums", albums_path}
+        
+        #navbar
+          story | what's endcap? | bands&artists | sign-up! | sponsor | talk to us
+        
       #content
         .inner
           - if flash[:notice]
