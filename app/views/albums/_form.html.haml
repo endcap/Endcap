@@ -10,8 +10,8 @@
     = f.label :name
     = f.text_field :name
   .field
-    = f.label :band_id
-    = f.text_field :band_id
+    = f.label :band
+    = f.select("band_id", Band.all.collect { |u| [ u.name, u.id ] }, {:include_blank => 'Select a Band'})
   .field
     = f.label :year
     = f.text_field :year
