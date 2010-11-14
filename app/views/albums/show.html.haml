@@ -5,9 +5,9 @@
 
 %h3
   = @album.name
+
 %p
   %b Band:
-  
   = link_to @album.band.name, @album.band
 %p
   %b Year:
@@ -20,7 +20,7 @@
 %ol
   - @album.songs.each do |song|
     %li
-      = song.name
+      = link_to song.name, song
     
 <a href="/songs/new/?id=#{@album.id}">Edit Songs</a>
 %br
