@@ -11,7 +11,7 @@ Endcap::Application.routes.draw do
   
   resources :user_sessions
   resources :users
-  
+  match "deletemembership" => "membership#delete", :as => "deletemembership"
   match "deletebandevent" => "band_event#delete", :as => "deletebandevent"
   match "login" => "user_sessions#new", :as => "login"
   match "logout" => "user_sessions#destroy", :as => "logout"

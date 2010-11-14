@@ -10,19 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
 ActiveRecord::Schema.define(:version => 20101114025100) do
-
-  create_table "band_events", :force => true do |t|
-    t.date     "date"
-    t.integer  "order"
-    t.string   "time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "band_id"
-    t.integer  "event_id"
-
-ActiveRecord::Schema.define(:version => 20101114024622) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -32,7 +20,16 @@ ActiveRecord::Schema.define(:version => 20101114024622) do
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
 
+  create_table "band_events", :force => true do |t|
+    t.date     "date"
+    t.integer  "order"
+    t.string   "time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "band_id"
+    t.integer  "event_id"
   end
 
   create_table "band_memberships", :force => true do |t|
@@ -122,7 +119,6 @@ ActiveRecord::Schema.define(:version => 20101114024622) do
     t.string   "city"
     t.string   "state"
     t.text     "homepage"
-    t.integer  "user_id"
     t.string   "image"
   end
 
