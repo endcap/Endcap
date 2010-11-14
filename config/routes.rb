@@ -1,4 +1,4 @@
-Endcap::Application.routes.draw do
+Endcap::Application.routes.draw do 
   resources :bands
 
   root :to => "users#show"
@@ -10,7 +10,7 @@ Endcap::Application.routes.draw do
   match "login" => "user_sessions#new", :as => "login"
   match "logout" => "user_sessions#destroy", :as => "logout"
   match "signup" => "users#new", :as => "signup"
-
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
