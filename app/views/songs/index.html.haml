@@ -1,0 +1,23 @@
+%h1 Listing songs
+
+%table
+  %tr
+    %th Album
+    %th Name
+    %th Number
+    %th
+    %th
+    %th
+
+  - @songs.each do |song|
+    %tr
+      %td= link_to song.album.name, song.album
+      %td= song.name
+      %td= song.number
+      %td= link_to 'Show', song
+      %td= link_to 'Edit', edit_song_path(song)
+      %td= link_to 'Destroy', song, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Song', new_song_path

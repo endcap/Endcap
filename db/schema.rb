@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101114011144) do
+ActiveRecord::Schema.define(:version => 20101114025100) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(:version => 20101114011144) do
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "band_events", :force => true do |t|
+    t.date     "date"
+    t.integer  "order"
+    t.string   "time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "band_id"
+    t.integer  "event_id"
   end
 
   create_table "band_memberships", :force => true do |t|
@@ -46,6 +56,17 @@ ActiveRecord::Schema.define(:version => 20101114011144) do
     t.string   "image"
   end
 
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.string   "time"
+    t.string   "cost"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "venue_id"
+    t.string   "image"
+  end
+
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
@@ -55,6 +76,14 @@ ActiveRecord::Schema.define(:version => 20101114011144) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "songs", :force => true do |t|
+    t.integer  "album_id"
+    t.string   "name"
+    t.integer  "number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_sessions", :force => true do |t|
     t.string   "email"
@@ -78,6 +107,19 @@ ActiveRecord::Schema.define(:version => 20101114011144) do
     t.string   "image"
     t.integer  "band_membership_id"
     t.string   "instrument"
+  end
+
+  create_table "venues", :force => true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.string   "hours"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "city"
+    t.string   "state"
+    t.text     "homepage"
+    t.string   "image"
   end
 
 end
