@@ -2,6 +2,9 @@
   .wrapper
     %div{:id => "profile1"}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 059711fed68ac4e617491e6303ec4449d52a5c24
       - if @user.image
         %img{ :src => @user.image, :align => "right" }
       %p
@@ -25,6 +28,7 @@
                   )
         - if @user.events
           %h3 Events
+<<<<<<< HEAD
 =======
       - if @user && @user.image
         %img{ :src => @user.image, :align => "right" }
@@ -53,6 +57,8 @@
           - if @user.events
             %h3 Events
 >>>>>>> 203d9fd632a9661c7841e0a1db68f43bd8a4b0ce
+=======
+>>>>>>> 059711fed68ac4e617491e6303ec4449d52a5c24
             %ul
               - @user.events.each do |event|
                 %li
@@ -62,6 +68,9 @@
                     at
                     =link_to event.venue.name, event.venue
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 059711fed68ac4e617491e6303ec4449d52a5c24
             
 
     %div{:id => "profile3"}
@@ -111,6 +120,7 @@
             - album.songs.first(4).each do |song|
               %li
                 =link_to song.name, song
+<<<<<<< HEAD
 =======
           
 
@@ -136,3 +146,5 @@
                     %audio{:src => "/mp3/#{song.mp3}", :controls => "controls"}
           
 >>>>>>> 203d9fd632a9661c7841e0a1db68f43bd8a4b0ce
+=======
+>>>>>>> 059711fed68ac4e617491e6303ec4449d52a5c24
