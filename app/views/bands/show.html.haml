@@ -50,7 +50,8 @@
     %li
       =link_to album.name, album
 
-= link_to 'New Album', new_album_path(@band)
+<!--= link_to 'New Album', new_album_path("?id=#{@band.id}")-->
+<a href="/albums/new/?id=#{@band.id}">New Album</a>
 
 = link_to 'Edit', edit_band_path(@band)
 \|
