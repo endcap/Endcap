@@ -105,12 +105,13 @@
                 %p{:class => "title"} "Try Me Out Sometime"
                 %p{:class => "artist"} BRONCHO
 
+    - else
+      ~ yield
+
       #actioncontent
         .wrapper
           %img{:src => "/images/idared-ad.png", :id => "mainsponsor"}
           %img{:src => "/images/bands-callout.png", :id => "bandscallout"}
-    - else
-      ~ yield
 
               
   #footer

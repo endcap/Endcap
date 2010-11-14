@@ -309,6 +309,82 @@ p, dl, pre, table, address, fieldset, ul, ol, h1, h2, h3, h4, h5, h6, hr {
   }
 }
 
+#profile {
+  background: white;
+  height: 600px;
+  margin-top: 45px;
+  .wrapper {
+    margin: 0px auto;
+    width: 960px;
+    #profile1 {
+      @include columns(4);
+      img {
+        border: 5px solid #efefef;
+        margin-bottom: 10px;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
+    #profile2 {
+      @include columns(4);
+      h3 {
+        color: #ff9c00;
+        font-size: 34px;
+        font-weight: normal;
+        margin: 0px;
+      }
+      #subtitle {
+        margin-top: -15px;
+        margin-left: 5px;
+        font-size: 10px;
+      }
+      ul {
+        list-style: none;
+        margin-left: -22px;
+        a {
+          text-decoration: none;
+          color: black;
+        }
+        :hover{
+          color: #ccc
+        }
+      }
+    }
+    #profile3 {
+      @include columns(4);
+      background-color: #efefef;
+      h3 {
+        color: #7d633c;
+        font-weight: normal;
+        margin-left: 15px;
+        margin-top: 5px;
+      }
+      #first {
+        float: left;
+      }
+      #second {
+        float: right;
+      }
+      img {
+        border: 5px solid white;
+      }
+      ul {
+        display: block;
+        list-style: none;
+        margin-top: 200px;
+        margin-left: -30px;
+      }
+      h4 {
+        margin-top: 15px;
+        margin-bottom: 0px;
+        
+      }
+    }
+  }
+}
+
+
 #footer {
   background: #c77d08;
   color: #fbf3bc;
