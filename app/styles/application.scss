@@ -3,7 +3,7 @@
 @import "utilities.sass";
 
 body {
-  font: 13px / 1.5 "Myriad Pro", Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif; }
+  font: 13px / 1.5 "Myriad Pro", Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;}
 
 a:focus {
   outline: 1px dotted invert; }
@@ -77,248 +77,266 @@ p, dl, pre, table, address, fieldset, ul, ol, h1, h2, h3, h4, h5, h6, hr {
     list-style: square;
     color: #111111; } }
 
-#wrapper {
-  margin-left: auto;
-  margin-right: auto;
-  width: 960px; }
-
 #header {
   background: #fbf3bc;
   border-bottom: 1px solid #cfcfcf;
   height: 125px;
-  @include row;
-  #logo {
-    @include columns(6);
-    color: #c9c9c9;
-    margin: 0px;
-    padding: 0px;
-    height: 125px;
-    a {
-      color: inherit;
-      text-decoration: none;
-      background: #fbf3bc url('/images/endcap-logo.png') no-repeat;
-      display: block; 
+  .wrapper {
+    position: relative;
+    #logo {
+      color: #c9c9c9;
+      margin: 0 auto;
+      width: 960px;
+      padding: 0px;
       height: 125px;
-      overflow: hidden;
-      text-indent: -50em; } }
-  #info {
-    @include columns(6);
-    float: right;
-    margin-top: 20px;
-    text-align: right;
-    .welcome {
-      font-size: 1.2em; } } }
+      a {
+        display: block;
+        float: left;
+        width: 460px;
+        height: 125px;
+        background: #fbf3bc url('/images/endcap-logo.png') no-repeat;
+        overflow: hidden;
+        text-indent: -50em; 
+      }
+      #info {
+        float: right;
+        a {
+          color: black;
+          display: inline;
+          text-decoration: none;
+          background: transparent;
+          text-indent: 0;
+          overflow: visible;
+          background: none;
+          width: 65px;
+        }
+        .welcome {
+          font-size: 1.2em; 
+        } 
+      }
+    }
+  }
+  #nav {
+    margin: 0;
+    height: 25px;
+    .wrapper {
+      background: #624312;
+      .menu {
+        width: 960px;
+        margin: 0 auto;
+        #navitem {
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+}
 
-#navbar {
-  @include columns(6);
-  background: #624312;
-  width: 960px;
-  margin: 0px;
-  padding: 0px;
-  a {
-    color: #fede8c;
-    text-decoration: none;
-    margin-left: 20px;
-    margin-right: 10px;  
-    &:visited { color: #fede8c }
-    &:hover { color: white; }
+#featuredcontent {
+  background: white;
+  height: 315px;
+  margin-top: 45px;
+  .wrapper{
+    margin: 0px auto;
+    width: 960px;
+    #featuredartist {
+      background: #624312 url('/images/featured-bar.png');
+      background-position: left bottom;
+      color: white;
+      width: 620px;
+      margin: 0px;
+      margin-top: 15px;
+      height: 265px;
+      float: left;
+      #artist{
+          float: right;
+          font-size: 27px;
+          margin-top: 5px;
+          margin-right: 10px; 
+      } 
+    } 
+    #discover {
+      margin: 0px;
+      margin-top: 15px;
+      height: 265px;
+      width: 315px;
+      float: right;
+      h2 {
+        color: #624312;
+        font-size: 34px;
+        margin: 0px;
+        font-weight: normal;
+      }
+      .calltoaction {
+        font-size: 34px;
+        color: #ff9c00;
+        text-align: right;
+      }
+    }
+  }
+}
+      
+#maincontent {
+  background: #fbf3bc;
+  height: 400px;
+  .wrapper {
+    margin: 0px auto;
+    width: 960px;
+    #bandlist {
+      @include columns(4);
+      h2{
+        font-size: 60px;
+        font-weight: normal;
+        color: #ff9c00;
+      }
+      ul {
+        list-style-type: none;
+        margin-right: 20px;
+        li{
+          margin: 0;
+          margin-left: 5px;
+          font-size: 16px;
+          margin-top: 15px;
+          margin-bottom: 15px;
+        }
+        #broncho {
+          background: url('/images/endcap-thumb.png') no-repeat;
+          background-position: right center;
+          height: 40px;
+        }
+        #nativelights{
+          background: url('/images/endcap-thumb.png') no-repeat;
+          background-position: right center;
+          height: 40px;
+        }
+        #deadseachoir{
+          background: url('/images/endcap-thumb.png') no-repeat;
+          background-position: right center;
+          height: 40px;
+        }
+        #andtherestandempires{
+          background: url('/images/endcap-thumb.png') no-repeat;
+          background-position: right center;
+          height: 40px;
+        }
+        #daniels{
+          background: url('/images/endcap-thumb.png') no-repeat;
+          background-position: right center;
+          height: 40px;
+        }
+      }
+    }
+    #eventlist {
+      @include columns(4);        
+      h2{
+        font-size: 60px;
+        font-weight: normal;
+        color: #ff9c00;
+      }
+      ul {
+        list-style: none;
+        margin-right: 20px;
+        li {
+          margin: 0;
+          margin-left: 5px;
+          font-size: 16px;
+          margin-top: 15px;
+          margin-bottom: 20px;
+          .artist {
+            color: black;
+            margin: 0;
+            line-height: 15px;
+            font-size: 15px;
+          }
+          .show {
+            color: #666666;
+            margin: 0;
+            line-height:15px;
+            font-size:15px;
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+    #songlist {
+      @include columns(4);
+      h2 {
+        font-size: 60px;
+        font-weight: normal;
+        color: #ff9c00;
+      }
+      ul {
+        list-style: none;
+        margin-right: 20px;
+        li {
+          margin: 0;
+          margin-left: 5px;
+          font-size: 16px;
+          margin-top: 15px;
+          margin-bottom: 20px;
+          .title {
+            color: #6c4f1d;
+            margin: 0;
+            line-height: 15px;
+            font-size: 15px;
+          }
+          .artist {
+            color: black;
+            margin: 0;
+            line-height:15px;
+            font-size:15px;
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+#actioncontent {
+  background: white;
+  height: 345px;
+  .wrapper {
+    margin: 0px auto;
+    width: 960px;
+    #mainsponsor {
+      margin: 20px 0px 20px 0px;
+    }
+    #bandscallout {
+      float: right;
+      margin: 20px 0px 20px 0px;
+    }
   }
 }
 
 #footer {
-  @include columns(12);
   background: #c77d08;
   color: #fbf3bc;
-  margin: 0;
-  width: 960px;
-  padding-bottom: 50px;
-  #followbox {
-    @include columns(4);
-    a {
-      color: #fbf3bc;
-      font-weight: bold;
-      text-decoration: none;
+  height: 300px;
+  padding-bottom: 40px;
+  .wrapper {
+    width: 960px;
+    margin: 0px auto;
+    #followbox {
+      @include columns(4);
+      a {
+        color: #fbf3bc;
+        font-weight: bold;
+        text-decoration: none;
+      }
     }
-  }
-  #propsbox {
-    @include columns(4);
-    #teamlist {
-      margin-top: -15px;
+    #propsbox {
+      @include columns(4);
+      #teamlist {
+        margin-top: -15px;
+      }
     }
-  }
-  #bigups {
-    @include columns(4);
+    #bigups {
+      @include columns(4);
+    }
   }
 }
 
-#content {
-  @include columns(12);
-  margin: 0px;
-  #inner {
-    #featuredcontent {
-      width: 960px;
-      height: 295px;
-      #featuredartist {
-        background: #624312 url('/images/featured-bar.png');
-        background-position: left bottom;
-        color: white;
-        width: 620px;
-        margin: 0px;
-        margin-top: 15px;
-        height: 265px;
-        float: left;
-        #artist{
-            float: right;
-            font-size: 27px;
-            margin-top: 5px;
-            margin-right: 10px; 
-        } 
-      } 
-      #discover {
-        margin: 0px;
-        margin-top: 15px;
-        height: 265px;
-        width: 315px;
-        float: right;
-        h2 {
-          color: #624312;
-          font-size: 34px;
-          margin: 0px;
-          font-weight: normal;
-        }
-        .calltoaction {
-          font-size: 34px;
-          color: #ff9c00;
-          text-align: right;
-        }
-      }
-    }
-    #maincontent {
-      background: #fbf3bc;
-      width: 960px;
-      height: 400px;
-      #bandlist {
-        @include columns(4);
-        h2{
-          font-size: 60px;
-          font-weight: normal;
-          color: #ff9c00;
-        }
-        ul {
-          list-style-type: none;
-          margin-right: 20px;
-          li{
-            margin: 0;
-            margin-left: 5px;
-            font-size: 16px;
-            margin-top: 15px;
-            margin-bottom: 15px;
-          }
-          #broncho {
-            background: url('/images/endcap-thumb.png') no-repeat;
-            background-position: right center;
-            height: 40px;
-          }
-          #nativelights{
-            background: url('/images/endcap-thumb.png') no-repeat;
-            background-position: right center;
-            height: 40px;
-          }
-          #deadseachoir{
-            background: url('/images/endcap-thumb.png') no-repeat;
-            background-position: right center;
-            height: 40px;
-          }
-          #andtherestandempires{
-            background: url('/images/endcap-thumb.png') no-repeat;
-            background-position: right center;
-            height: 40px;
-          }
-          #daniels{
-            background: url('/images/endcap-thumb.png') no-repeat;
-            background-position: right center;
-            height: 40px;
-          }
-        }
-      }
-      #eventlist {
-        @include columns(4);        
-        h2{
-          font-size: 60px;
-          font-weight: normal;
-          color: #ff9c00;
-        }
-        ul {
-          list-style: none;
-          margin-right: 20px;
-          li {
-            margin: 0;
-            margin-left: 5px;
-            font-size: 16px;
-            margin-top: 15px;
-            margin-bottom: 20px;
-            .artist {
-              color: black;
-              margin: 0;
-              line-height: 15px;
-              font-size: 15px;
-            }
-            .show {
-              color: #666666;
-              margin: 0;
-              line-height:15px;
-              font-size:15px;
-              margin-top: 5px;
-            }
-          }
-        }
-      }
-      #songlist {
-        @include columns(4);
-        h2 {
-          font-size: 60px;
-          font-weight: normal;
-          color: #ff9c00;
-        }
-        ul {
-          list-style: none;
-          margin-right: 20px;
-          li {
-            margin: 0;
-            margin-left: 5px;
-            font-size: 16px;
-            margin-top: 15px;
-            margin-bottom: 20px;
-            .title {
-              color: #6c4f1d;
-              margin: 0;
-              line-height: 15px;
-              font-size: 15px;
-            }
-            .artist {
-              color: black;
-              margin: 0;
-              line-height:15px;
-              font-size:15px;
-              margin-top: 5px;
-            }
-          }
-        }
-      }
-    }
-    #actioncontent {
-      width: 960px;
-      height: 345px;
-      #mainsponsor {
-        margin: 20px 0px 20px 0px;
-      }
-      #bandscallout {
-        float: right;
-        margin: 20px 0px 20px 0px;
-      }
-    }
-  }
-}
 
 #notice, #error {
   display: inline-block;
