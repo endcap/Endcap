@@ -43,9 +43,22 @@ class BandsController < ApplicationController
   # POST /bands
   # POST /bands.xml
   def create
+    
+    new_member = params[:band][:band_memberships]
+    these_band_memberships = Array.new
+    
+    if new_member.length > 0
+      membership = BandMembership.new
+      membership.user = User.find_by_id(new_member)
+#      params[:band].delete(params[:band][:band_memberships])
+      these_band_memberships << membership
+      params[:band][:band_memberships] = these_band_memberships
+    end
+    
     @band = Band.new(params[:band])
     @band.users << current_user
     respond_to do |format|
+      
       if @band.save
         format.html { redirect_to(@band, :notice => 'Band was successfully created.') }
         format.xml  { render :xml => @band, :status => :created, :location => @band }
