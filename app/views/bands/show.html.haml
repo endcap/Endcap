@@ -1,15 +1,15 @@
 %p#notice= notice
 
 
-%p
-  %b Name:
-
 - if @band.image
   %img{ :src => @band.image, :align => "right" }
 
 %h3
-
   = @band.name
+  
+%p
+  <a href="/bands?city=#{@band.city}&amp;state=#{@band.state}">#{@band.location}</a>
+  
 %p
   %b Start year:
   = @band.start_year
