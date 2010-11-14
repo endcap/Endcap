@@ -1,0 +1,30 @@
+%p#notice= notice
+
+- if @venue.image
+  %img{ :src => @venue.image, :align => "right" }
+
+%p
+  %b Name:
+  = @venue.name
+%p
+  %b Address:
+  = @venue.location
+%p
+  %b Hours:
+  = @venue.hours
+%p
+  %b City:
+  = @venue.city
+%p
+  %b State:
+  = @venue.state
+%p
+  %b Description:
+  = @venue.description
+%p
+  %b Homepage:
+  = @venue.homepage
+
+= link_to 'Edit', edit_venue_path(@venue)
+\|
+= link_to 'Back', venues_path

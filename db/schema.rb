@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101113221627) do
+ActiveRecord::Schema.define(:version => 20101114025100) do
+
+  create_table "band_events", :force => true do |t|
+    t.date     "date"
+    t.integer  "order"
+    t.string   "time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "band_id"
+    t.integer  "event_id"
+  end
 
   create_table "band_memberships", :force => true do |t|
     t.date     "start_date"
@@ -33,6 +43,17 @@ ActiveRecord::Schema.define(:version => 20101113221627) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "band_membership_id"
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.string   "time"
+    t.string   "cost"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "venue_id"
+    t.string   "image"
   end
 
   create_table "sessions", :force => true do |t|
@@ -67,6 +88,20 @@ ActiveRecord::Schema.define(:version => 20101113221627) do
     t.string   "image"
     t.integer  "band_membership_id"
     t.string   "instrument"
+  end
+
+  create_table "venues", :force => true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.string   "hours"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "city"
+    t.string   "state"
+    t.text     "homepage"
+    t.integer  "user_id"
+    t.string   "image"
   end
 
 end

@@ -1,0 +1,34 @@
+%p#notice= notice
+
+- if @event.image
+  %img{ :src => @event.image, :align => "right" }
+
+
+%h3
+  = @event.name
+%p
+  %b Venue:
+  = @event.venue.name
+%p
+  %b Time:
+  = @event.time
+%p
+  %b Cost:
+  = @event.cost
+%p
+  %b Description:
+  = @event.description
+
+
+%h3
+  Bands
+%ul
+  - @event.band_events.each do |performer|
+    - if performer.band.name
+      %li
+        =link_to performer.band.name, performer.band
+
+
+= link_to 'Edit', edit_event_path(@event)
+\|
+= link_to 'Back', events_path

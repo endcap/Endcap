@@ -1,11 +1,14 @@
 Endcap::Application.routes.draw do
   resources :bands
-
+  resources :venues
+  resources :events
+   
   root :to => "users#show"
   
   resources :user_sessions
   resources :users
   
+  match "deletebandevent" => "band_event#delete", :as => "deletebandevent"
   match "login" => "user_sessions#new", :as => "login"
   match "logout" => "user_sessions#destroy", :as => "logout"
   match "signup" => "users#new", :as => "signup"
