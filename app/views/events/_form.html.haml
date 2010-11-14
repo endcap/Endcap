@@ -11,7 +11,8 @@
     = f.text_field :name
 
   .field
-    = f.select("venue", Venue.all.collect { |u| [ u.name, u.id ] }, {:include_blank => 'Select a Venue'} )
+    = f.label :venue
+    = f.select("venue_id", Venue.all.collect { |u| [ u.name, u.id ] }, {:include_blank => 'Select a Venue'})
 
   .field
     = f.label :time
