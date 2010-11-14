@@ -38,16 +38,16 @@
 %ul
   - @band.band_memberships.each do |member|
     - if member.user
-      %li
+      %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
         =link_to member.user.full_name, member.user
         - if member.user.instrument
           (
           = member.user.instrument
           )
         from 
-        =member.start_date || 'ever'
+        =member.start_date && member.start_date.year || 'ever'
         to 
-        =member.end_date || 'now'
+        =member.end_date && member.end_date.year || 'now'
 
 %h3 Albums
 %ul

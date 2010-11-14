@@ -37,16 +37,32 @@
     .field
       - @band.band_memberships.each do |member|
         - if member.user
-          %li.member
+          %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
             = member.user.full_name
-            =member.start_date || 'ever'
+            =member.start_date && member.start_date.year || 'ever'
             to 
-            =member.end_date || 'now'
+            =member.end_date && member.end_date.year || 'now'
            
 
             (<a href="/deletemembership?band=#{@band.id}&amp;membership=#{member.id}">delete</a>)
     .field
       = f.select("band_memberships", User.all.collect { |u| [ u.full_name, u.id ] }, {:include_blank => 'Add New Member'} )
+      <span id="dates" style="display: none">From <input type="text" name="from_date" size="4" /> to <input type="text" name="to_date" size="4" /></span>
     
   .actions
     = f.submit 'Save'
+
+
+<script type="text/javascript">
+var dropdown = document.getElementById('band_band_memberships');
+var dates = document.getElementById('dates');
+  
+dropdown.onchange=showDates;
+
+function showDates() {
+if (dropdown.selectedIndex == 0)
+dates.style.display='none';
+else
+dates.style.display='inline';
+}
+</script>
