@@ -28,4 +28,5 @@
     %h3 Bands
     %ul
       - @user.bands.each do |band|
-        %li= link_to band.name, band
+        %li
+          =link_to band.name, band

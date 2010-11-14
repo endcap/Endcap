@@ -1,9 +1,14 @@
 %p#notice= notice
 
+
+%p
+  %b Name:
+
 - if @band.image
   %img{ :src => @band.image, :align => "right" }
 
 %h3
+
   = @band.name
 %p
   %b Start year:

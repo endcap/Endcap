@@ -1,0 +1,41 @@
+= form_for @event do |f|
+  -if @event.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
+      %ul
+        - @event.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = f.select("venue", Venue.all.collect { |u| [ u.name, u.id ] }, {:include_blank => 'Select a Venue'} )
+
+  .field
+    = f.label :time
+    = f.text_field :time
+  .field
+    = f.label :cost
+    = f.text_field :cost
+  .field
+    = f.label :image
+    = f.text_field :image
+  .field
+    = f.label :description
+    = f.text_area :description
+    
+    %h3 Bands
+    .field
+      - @event.band_events.each do |performer|
+        - if performer.band.name
+          %li.member
+            = performer.band.name
+
+            (<a href="/deletebandevent?band=#{performer.id}&amp;event=#{@event.id}">delete</a>)
+    .field
+      = f.select("band_events", Band.all.collect { |u| [ u.name, u.id ] }, {:include_blank => 'Add New Band'} )
+    
+  .actions
+    = f.submit 'Save'
