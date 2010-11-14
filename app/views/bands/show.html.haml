@@ -23,6 +23,9 @@
   %b State:
   = @band.state
 %p
+  %b Genre:
+  <a href="/bands?genre=#{@band.genre}">#{@band.genre}</a>
+%p
   %b Homepage:
   <a href="#{@band.homepage}">#{@band.homepage}</a>
 %p
