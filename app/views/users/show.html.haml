@@ -22,6 +22,17 @@
                   to
                   = member.end_date ? member.end_date.year : "now"
                   )
+        - if @user.events
+          %h3 Events
+            %ul
+              - @user.events.each do |event|
+                %li
+                  =link_to event.name, event
+                  =event.time
+                  - if event.venue
+                    at
+                    =link_to event.venue.name, event.venue
+            
 
     %div{:id => "profile3"}
       %h3 Discography
@@ -49,3 +60,24 @@
         %li
           %h4 Song Title 
           %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
+
+  - if @user.band_memberships
+          
+  - if @user.albums
+    %h3 Albums
+    %ul
+    - @user.albums.each do |album|
+      %li
+        =link_to album.name, album
+        - if album.band_id
+          with
+          =link_to album.band.name, album.band
+        - if album.year
+          (
+          = album.year
+          )
+        - if album.songs and album.songs.count > 0
+          %ol
+            - album.songs.first(4).each do |song|
+              %li
+                =link_to song.name, song
