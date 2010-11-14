@@ -5,6 +5,8 @@ class BandsController < ApplicationController
   def index
     if params[:city] and params[:state]
       @bands = Band.find_all_by_city_and_state(params[:city], params[:state])
+    elsif params[:genre]
+      @bands = Band.find_all_by_genre(params[:genre])
     else
       @bands = Band.all
     end

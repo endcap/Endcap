@@ -12,6 +12,11 @@
 %p
   %b Year:
   = @album.year
+
+%p
+  %b Label:
+  <a href="/albums/?label=#{@album.label}">#{@album.label}</a>
+
 %p
   %b Description:
   = @album.description
