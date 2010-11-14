@@ -1,4 +1,4 @@
-= form_for @song do |f|
+= form_for @song, :html => { :multipart => true} do |f|
   -if @song.errors.any?
     #error_explanation
       %h2= "#{pluralize(@song.errors.count, "error")} prohibited this song from being saved:"
@@ -15,5 +15,8 @@
   .field
     = f.label :number
     = f.text_field :number
+  .field
+    = f.label :mp3
+    = f.file_field :mp3
   .actions
     = f.submit 'Save'

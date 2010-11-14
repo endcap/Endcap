@@ -30,6 +30,7 @@ class SongsController < ApplicationController
     end
     @song = Song.new
     @song.album = @album
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @song }
@@ -44,6 +45,10 @@ class SongsController < ApplicationController
   # POST /songs
   # POST /songs.xml
   def create
+    if (params[:song][:mp3])
+      params[:song][:mp3] = Song.save(params[:song])
+      logger.info "set params[:song][:mp3] to #{params[:song][:mp3]}"
+    end
     @song = Song.new(params[:song])
 
     respond_to do |format|
@@ -62,6 +67,11 @@ class SongsController < ApplicationController
   def update
     @song = Song.find(params[:id])
 
+    if (params[:song][:mp3])
+      params[:song][:mp3] = Song.save(params[:song])
+      logger.info "set params[:song][:mp3] to #{params[:song][:mp3]}"
+    end
+    
     respond_to do |format|
       if @song.update_attributes(params[:song])
         format.html { redirect_to(@song, :notice => 'Song was successfully updated.') }

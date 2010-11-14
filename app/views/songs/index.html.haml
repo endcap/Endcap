@@ -11,7 +11,11 @@
 
   - @songs.each do |song|
     %tr
-      %td= link_to song.album.name, song.album
+      -if song.album
+        %td= link_to song.album.name, song.album
+      -else
+        %td
+           
       %td= song.name
       %td= song.number
       %td= link_to 'Show', song
