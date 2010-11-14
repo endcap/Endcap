@@ -1,0 +1,21 @@
+%p#notice= notice
+
+- if @album.image
+  %img{ :src => @album.image, :align => "right" }
+
+%h3
+  = @album.name
+%p
+  %b Band:
+  
+  = link_to Band.find_by_id(@album.band_id).name, Band.find_by_id(@album.band_id)
+%p
+  %b Year:
+  = @album.year
+%p
+  %b Description:
+  = @album.description
+
+= link_to 'Edit', edit_album_path(@album)
+\|
+= link_to 'Back', albums_path

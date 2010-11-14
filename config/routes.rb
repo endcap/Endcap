@@ -1,4 +1,6 @@
-Endcap::Application.routes.draw do 
+Endcap::Application.routes.draw do
+  resources :albums
+
   resources :bands
 
   root :to => "users#show"

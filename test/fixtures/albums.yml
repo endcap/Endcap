@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  band_id: 1
+  year: MyString
+  description: MyText
+  image: MyString
+
+two:
+  name: MyString
+  band_id: 1
+  year: MyString
+  description: MyText
+  image: MyString
