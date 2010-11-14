@@ -22,15 +22,17 @@
     = f.label :state
     = f.text_field :state
   .field
-    = f.label :description
-    = f.text_area :description
-  .field
     = f.label :homepage
     = f.text_field :homepage
   .field
     = f.label :store_url
     = f.text_field :store_url
-    
+  .field
+    = f.label :image
+    = f.text_field :image
+  .field
+    = f.label :description
+    = f.text_area :description  
     %h3 Members
     .field
       - @band.band_memberships.each do |member|
