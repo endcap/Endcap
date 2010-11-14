@@ -19,7 +19,8 @@
 %h3 Songs
 %ol
   - @album.songs.each do |song|
-    = song.name
+    %li
+      = song.name
     
 <a href="/songs/new/?id=#{@album.id}">Edit Songs</a>
 %br
