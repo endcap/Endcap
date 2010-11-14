@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20101114154835) do
     t.string   "city"
     t.string   "state"
     t.text     "homepage"
+    t.integer  "user_id"
     t.string   "image"
   end
 
