@@ -5,7 +5,11 @@ class BandsController < ApplicationController
   # GET /bands
   # GET /bands.xml
   def index
-    @bands = Band.all
+    if params[:city] and params[:state]
+      @bands = Band.find_all_by_city_and_state(params[:city], params[:state])
+    else
+      @bands = Band.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -75,6 +79,18 @@ class BandsController < ApplicationController
     @band = Band.find(params[:id])
 
     respond_to do |format|
+      new_member = params[:band][:band_memberships]
+
+
+      if new_member.length > 0
+        membership = BandMembership.new
+        membership.user = User.find_by_id(new_member)
+        membership.band = @band
+
+        @band.band_memberships << membership
+      end
+      params[:band][:band_memberships] = @band.band_memberships
+      
       if @band.update_attributes(params[:band])
         format.html { redirect_to(@band, :notice => 'Band was successfully updated.') }
         format.xml  { head :ok }
