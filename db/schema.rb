@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101113212007) do
+ActiveRecord::Schema.define(:version => 20101113221627) do
 
   create_table "band_memberships", :force => true do |t|
     t.date     "start_date"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20101113212007) do
     t.text     "description"
     t.string   "image"
     t.integer  "band_membership_id"
+    t.string   "instrument"
   end
 
 end
