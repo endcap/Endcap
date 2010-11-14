@@ -1,7 +1,5 @@
 class VenuesController < ApplicationController
   
-  before_filter :ensure_logged_in, :only => [:new, :create, :update, :destroy]
-  
   # GET /venues
   # GET /venues.xml
   def index

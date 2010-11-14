@@ -1,7 +1,5 @@
 class EventsController < ApplicationController
   
-  before_filter :ensure_logged_in, :only => [:new, :create, :update, :destroy]
-  
   # GET /events
   # GET /events.xml
   def index
@@ -54,7 +52,7 @@ class EventsController < ApplicationController
       params[:event][:band_events] = these_event_bands
     end
     
-    new_venue = params[:event][:venue]
+    new_venue = params[:event][:venue_id]
     this_venue = String.new
     
     if new_venue.length > 0
@@ -98,7 +96,7 @@ class EventsController < ApplicationController
       params[:event][:band_events] = @event.band_events
       
       
-      new_venue = params[:event][:venue]
+      new_venue = params[:event][:venue_id]
 
       if new_venue.length > 0
         added_venue = Venue.new

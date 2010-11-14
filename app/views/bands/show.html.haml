@@ -23,6 +23,9 @@
   %b State:
   = @band.state
 %p
+  %b Genre:
+  <a href="/bands?genre=#{@band.genre}">#{@band.genre}</a>
+%p
   %b Homepage:
   <a href="#{@band.homepage}">#{@band.homepage}</a>
 %p
@@ -38,21 +41,22 @@
 %ul
   - @band.band_memberships.each do |member|
     - if member.user
-      %li
+      %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
         =link_to member.user.full_name, member.user
         - if member.user.instrument
           (
           = member.user.instrument
           )
         from 
-        =member.start_date || 'ever'
+        =member.start_date && member.start_date.year || 'ever'
         to 
-        =member.end_date || 'now'
+        =member.end_date && member.end_date.year || 'now'
 
 %h3 Albums
 %ul
-  - @band.albums.each do |album|
+  - @band.albums.sort_by(&:year).each do |album|
     %li
+      =album.year
       =link_to album.name, album
 
 <!--= link_to 'New Album', new_album_path("?id=#{@band.id}")-->

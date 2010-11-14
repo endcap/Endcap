@@ -1,12 +1,12 @@
 class BandsController < ApplicationController
   
-  before_filter :ensure_logged_in, :only => [:new, :create, :update, :destroy]
-  
   # GET /bands
   # GET /bands.xml
   def index
     if params[:city] and params[:state]
       @bands = Band.find_all_by_city_and_state(params[:city], params[:state])
+    elsif params[:genre]
+      @bands = Band.find_all_by_genre(params[:genre])
     else
       @bands = Band.all
     end
@@ -52,8 +52,18 @@ class BandsController < ApplicationController
     these_band_memberships = Array.new
     
     if new_member.length > 0
+      logger.info 'Adding new member'
       membership = BandMembership.new
       membership.user = User.find_by_id(new_member)
+      if params[:from_date]
+        membership.start_date = Date.civil(params[:from_date].to_i, 1, 1);
+      else
+        logger.info "Could not find from date. What about this? #{params['from_date']}"
+      end
+      if params[:to_date]
+        membership.end_date = Date.civil(params[:to_date].to_i, 1, 1);
+      end
+        
 #      params[:band].delete(params[:band][:band_memberships])
       these_band_memberships << membership
       params[:band][:band_memberships] = these_band_memberships
@@ -81,11 +91,19 @@ class BandsController < ApplicationController
     respond_to do |format|
       new_member = params[:band][:band_memberships]
 
-
       if new_member.length > 0
         membership = BandMembership.new
         membership.user = User.find_by_id(new_member)
         membership.band = @band
+
+        if params[:from_date]
+          membership.start_date = Date.civil(params[:from_date].to_i, 1, 1);
+        else
+          logger.info "Could not find from date. What about this? #{params['from_date']}"
+        end
+        if params[:to_date]
+          membership.end_date = Date.civil(params[:to_date].to_i, 1, 1);
+        end
 
         @band.band_memberships << membership
       end
