@@ -31,20 +31,123 @@
           == #{link_to "Events", events_path}
 
       #navbar
-        story | what's endcap? | bands&amp;artists | sign-up! | sponsor | talk to us
+        %a{:href => "#"}
+          %img#thumb{:src => "/images/nav-story.png", :alt => "story"}
+        %a{:href => "#"}
+          %img#thumb{:src => "/images/nav-what.png", :alt => "what's endcap"}
+        %a{:href => "#"}
+          %img#thumb{:src => "/images/nav-bands.png", :alt => "bands&artists"}
+        %a{:href => "#"}
+          %img#thumb{:src => "/images/nav-signup.png", :alt => "sign up!"}
+        %a{:href => "#"}
+          %img#thumb{:src => "/images/nav-story.png", :alt => "story"}
+        %a{:href => "#"}
+          %img#thumb{:src => "/images/nav-sponsor.png", :alt => "sponsor"}
+        %a{:href => "#"}
+          %img#thumb{:src => "/images/nav-talk.png", :alt => "talk to us"}
       
 
       #content
-        .inner
+        #inner
           - if flash[:notice]
             #notice= flash[:notice]
-          - if flash[:error]
-            #error= flash[:error]
 
           - if yield.blank?
-            %h1==Welcome!
+            %div{:id => "featuredcontent"}
+              %div{:id => "featuredartist"}
+                %img{:src => "/images/featured-pic.png", :id => "featuredpic"}
+                %div{:id => "artist"} Jacob Fred Jazz Oddessy
+              %div{:id => "discover"}
+                %h2 Discover Local Music
+                %p What artists and bands are in your local area?  What band is that one musician in, now? Endcap can let you know. Explore local events, venues, bands, and music, and check out what’s going on in your local music scene.  Sounds cool?  Awesome!
+                %p{:class => "calltoaction"} Check it out >>
+
+            %div{:id => "maincontent"}
+              %div{:id => "bandlist"}
+                %h2 Bands
+                %ul
+                  %li{:id => "broncho"} BRONCHO
+                  %li{:id => "nativelights"} Native Lights
+                  %li{:id => "deadseachoir"} Dead Sea Choir
+                  %li{:id => "andtherestandempires"} And There Stand Empires
+                  %li{:id => "daniels"} Daniels
+              %div{:id => "eventlist"}
+                %h2 Events
+                %ul
+                  %li{:class => "event"}
+                    %p{:class => "artist"} Pat Cook
+                    %p{:class => "show"} Nov. 17 @ Mercury Lounge
+                  %li{:class => "event"}
+                    %p{:class => "artist"} Pat Cook
+                    %p{:class => "show"} Nov. 17 @ Mercury Lounge
+                  %li{:class => "event"}
+                    %p{:class => "artist"} Pat Cook
+                    %p{:class => "show"} Nov. 17 @ Mercury Lounge
+                  %li{:class => "event"}
+                    %p{:class => "artist"} Pat Cook
+                    %p{:class => "show"} Nov. 17 @ Mercury Lounge
+                  %li{:class => "event"}
+                    %p{:class => "artist"} Pat Cook
+                    %p{:class => "show"} Nov. 17 @ Mercury Lounge
+              %div{:id => "songlist"}
+                %h2 Songs
+                %ul
+                  %li{:class => "song"}
+                    %p{:class => "title"} "Try Me Out Sometime"
+                    %p{:class => "artist"} BRONCHO
+                  %li{:class => "song"}
+                    %p{:class => "title"} "Try Me Out Sometime"
+                    %p{:class => "artist"} BRONCHO
+                  %li{:class => "song"}
+                    %p{:class => "title"} "Try Me Out Sometime"
+                    %p{:class => "artist"} BRONCHO
+                  %li{:class => "song"}
+                    %p{:class => "title"} "Try Me Out Sometime"
+                    %p{:class => "artist"} BRONCHO
+                  %li{:class => "song"}
+                    %p{:class => "title"} "Try Me Out Sometime"
+                    %p{:class => "artist"} BRONCHO
+
+            %div{:id => "actioncontent"}
+              %img{:src => "/images/idared-ad.png", :id => "mainsponsor"}
+              %img{:src => "/images/bands-callout.png", :id => "bandscallout"}
+                
           - else
             ~ yield
+            
 
       #footer
-        %h5==Copyright &copy; 2010 Endcap
+        %div{:id => "followbox"}
+          %img{:src => "/images/endcap-follow.png"}
+          %p
+            Twitter:
+            %a{:href => "http://twitter.com/swendcap", :target => "_blank"}@swendcap
+          %p
+            Facebook:
+            %a{:href => "http://www.facebook.com/pages/Tulsa-OK/EndCap/117352558328843", :target => "_blank"}facebook.com/endcap
+        
+        %div{:id => "propsbox"}
+          %img{:src => "/images/endcap-madprops.png"}
+          %p
+            The Totally Badass Endcap Team is:
+            %p{:id => "teamlist"}
+              TJ Clark <br />
+              Adam Brown <br />
+              Terry Gamel <br />
+              John Jackson <br />
+              Carlos Moreno <br />
+              Jon Evans <br />
+              Daniel Hampton <br />
+          
+                  
+        %div{:id => "bigups"}
+          %img{:src => "/images/endcap-bigups.png"}
+          
+          %p
+          StartupWeekend Tulsa
+          Kauffman Foundation & the Global Startup Battle
+          %p
+          Scott Phillips, Isocentric Networks & all the local StartupWeekend Tulsa sponsors
+          %p
+          all the awesome developer teams & other peeps who participated in this event with us in Tulsa, and all over the world.
+          
