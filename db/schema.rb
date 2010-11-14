@@ -10,6 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20101114025100) do
 
   create_table "band_events", :force => true do |t|
@@ -20,6 +21,18 @@ ActiveRecord::Schema.define(:version => 20101114025100) do
     t.datetime "updated_at"
     t.integer  "band_id"
     t.integer  "event_id"
+
+ActiveRecord::Schema.define(:version => 20101114024622) do
+
+  create_table "albums", :force => true do |t|
+    t.string   "name"
+    t.integer  "band_id"
+    t.string   "year"
+    t.text     "description"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+
   end
 
   create_table "band_memberships", :force => true do |t|
@@ -43,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20101114025100) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "band_membership_id"
+    t.string   "image"
   end
 
   create_table "events", :force => true do |t|
@@ -65,6 +79,14 @@ ActiveRecord::Schema.define(:version => 20101114025100) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "songs", :force => true do |t|
+    t.integer  "album_id"
+    t.string   "name"
+    t.integer  "number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_sessions", :force => true do |t|
     t.string   "email"

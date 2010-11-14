@@ -1,7 +1,14 @@
 %p#notice= notice
 
+
 %p
   %b Name:
+
+- if @band.image
+  %img{ :src => @band.image, :align => "right" }
+
+%h3
+
   = @band.name
 %p
   %b Start year:
@@ -16,14 +23,40 @@
   %b State:
   = @band.state
 %p
-  %b Description:
-  = @band.description
-%p
   %b Homepage:
-  = @band.homepage
+  <a href="#{@band.homepage}">#{@band.homepage}</a>
 %p
   %b Store url:
-  = @band.store_url
+  <a href="#{@band.store_url}">#{@band.store_url}</a>
+
+%p
+  %b Band Bio:
+  = @band.description
+
+%h3 
+  Members
+%ul
+  - @band.band_memberships.each do |member|
+    - if member.user
+      %li
+        =link_to member.user.full_name, member.user
+        - if member.user.instrument
+          (
+          = member.user.instrument
+          )
+        from 
+        =member.start_date || 'ever'
+        to 
+        =member.end_date || 'now'
+
+%h3 Albums
+%ul
+  - @band.albums.each do |album|
+    %li
+      =link_to album.name, album
+
+<!--= link_to 'New Album', new_album_path("?id=#{@band.id}")-->
+<a href="/albums/new/?id=#{@band.id}">New Album</a>
 
 = link_to 'Edit', edit_band_path(@band)
 \|
