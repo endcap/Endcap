@@ -8,3 +8,4 @@ db/test.sqlite3
 tmp/*
 Gemfile.lock
 public/mp3/*
+.DS_Store
