@@ -1,31 +1,34 @@
-- if @user
+-if @user
+
   #profile
     .wrapper
       %div{:id => "profile1"}
-        - if @user.image
+        - if @user && @user.image
           %img{ :src => @user.image, :align => "right" }
         %p
+        - if @user
           =@user.description
   
       %div{:id => "profile2"}
-        - if @user
-          %h3= @user.full_name
-          %p#subtitle= @user.instrument
+        #top
+          - if @user
+            %h3= @user.full_name
+            %p#subtitle= @user.instrument
       
-          - if @user.band_memberships
-            %ul
-              - @user.band_memberships.find(:all, :conditions => ["band_id is not null"]).each do |member|
-                - if member and member.band_id
-                  %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
-                    =link_to member.band.name, member.band
-                    (
-                    = member.start_date ? member.start_date.year : "ever"
-                    to
-                    = member.end_date ? member.end_date.year : "now"
-                    )
-          - if @user.events
-            %h3 
-              Events
+            - if @user && @user.band_memberships
+              %ul
+                - @user.band_memberships.find(:all, :conditions => ["band_id is not null"]).each do |member|
+                  - if member and member.band_id
+                    %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
+                      =link_to member.band.name, member.band
+                      (
+                      = member.start_date ? member.start_date.year : "ever"
+                      to
+                      = member.end_date ? member.end_date.year : "now"
+                      )
+          #bottom
+            - if @user && @user.events
+              %h3 Events
               %ul
                 - @user.events.each do |event|
                   %li
@@ -34,56 +37,31 @@
                     - if event.venue
                       at
                       =link_to event.venue.name, event.venue
-            
+          
 
       %div{:id => "profile3"}
         %h3 Discography
       
-        %p
-          %div#first
-            %img{:src => "/images/album-cover.png", :height => "115", :width => "115"}
-            %br
-            callupsie (2008)
-          %div#second
-            %img{:src => "/images/album-cover.png", :height => "115", :width => "115"}
-            %br
-            callupsie (2008)
-        
+        - @user.albums.each do |album|
+          %div#album
+            %a{ :href => "/albums/#{album.id}" }
+              %img{ :src => album.image }
+              %p
+                =album.name
+                    
         %ul
-          %li
-            %h4 Song Title 
-            %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-          %li
-            %h4 Song Title 
-            %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-          %li
-            %h4 Song Title 
-            %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-          %li
-            %h4 Song Title 
-            %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-
-    - if @user.band_memberships
+          - if @user.albums
+            - @user.albums.each do |album|
+              - if album.songs and album.songs.count > 0
+                - album.songs.first(1).each do |song|
+                  %li
+                    %h4
+                      =song.name
+                    - if song.mp3
+                      %audio{:src => "/mp3/#{song.mp3}", :controls => "controls"}
           
-    - if @user.albums
-      %h3 Albums
-      %ul
-      - @user.albums.each do |album|
-        %li
-          =link_to album.name, album
-          - if album.band_id
-            with
-            =link_to album.band.name, album.band
-          - if album.year
-            (
-            = album.year
-            )
-          - if album.songs and album.songs.count > 0
-            %ol
-              - album.songs.first(4).each do |song|
-                %li
-                  =link_to song.name, song
 - else
+
   #featuredcontent
     .wrapper
       %div{:id => "featuredartist"}
