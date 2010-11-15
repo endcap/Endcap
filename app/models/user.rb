@@ -4,6 +4,24 @@ class User < ActiveRecord::Base
   has_many :bands, :through => :band_memberships
   has_many :venues
   
+  def self.save(upload)
+    logger.info "**** upload['image'] = #{upload['image']}"
+    name =  upload['image'].original_filename
+    logger.info "**** name = #{name}"
+    directory = "public/images/uploads"
+    # create the file path
+    path = File.join(directory, name)
+    logger.info "**** path = #{path}"
+    # write the file
+    File.open(path, "wb") { |f| f.write(upload['image'].read) }
+    
+    path[6..path.length]
+  end
+  
+  def full_name_backwards
+    [self.last_name, self.first_name].join(", ")
+  end
+  
   def full_name
     [self.first_name, self.last_name].join(" ")
   end
@@ -21,7 +39,6 @@ class User < ActiveRecord::Base
           eventArray << event
         end
         logger.info "added event named #{event.name}"
-      end
     end
     
     eventArray
