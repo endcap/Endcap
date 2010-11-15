@@ -1,4 +1,4 @@
-= form_for(@user) do |f|
+= form_for @user, :html => { :multipart => true} do |f|
   = errors(@user)
   
   %p
@@ -39,7 +39,7 @@
   %p
     = f.label :image
     %br
-    = f.text_field :image, :id => "image"
+    = f.file_field :image
 
   %p
     = f.label :instrument

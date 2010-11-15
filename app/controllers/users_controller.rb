@@ -23,7 +23,11 @@ class UsersController < ApplicationController
   end
   
   
-  def create    
+  def create
+    if (params[:user][:image])
+      params[:user][:image] = User.save(params[:user])
+      logger.info "set params[:user][:image] to #{params[:user][:image]}"
+    end
     @user = User.new(params[:user])
     if @user.save
       flash[:notice] = 'Welcome!'
@@ -36,6 +40,10 @@ class UsersController < ApplicationController
   
   def update
     @user = current_user
+    if (params[:user][:image])
+      params[:user][:image] = User.save(params[:user])
+      logger.info "set params[:user][:image] to #{params[:user][:image]}"
+    end
     if @user.update_attributes(params[:user])
       flash[:notice] = 'Profile updated!'
       redirect_to root_url

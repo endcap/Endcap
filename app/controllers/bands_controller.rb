@@ -57,8 +57,6 @@ class BandsController < ApplicationController
       membership.user = User.find_by_id(new_member)
       if params[:from_date]
         membership.start_date = Date.civil(params[:from_date].to_i, 1, 1);
-      else
-        logger.info "Could not find from date. What about this? #{params['from_date']}"
       end
       if params[:to_date]
         membership.end_date = Date.civil(params[:to_date].to_i, 1, 1);
@@ -67,10 +65,25 @@ class BandsController < ApplicationController
 #      params[:band].delete(params[:band][:band_memberships])
       these_band_memberships << membership
       params[:band][:band_memberships] = these_band_memberships
+    else
+      logger.info "removing band_memberships from the band"
+      params[:band].delete(params[:band][:band_memberships])
     end
     
+    if (params[:band][:image])
+      params[:band][:image] = User.save(params[:band])
+      logger.info "set params[:band][:image] to #{params[:band][:image]}"
+    else
+      logger.info "removing image from parameters"
+      params[:band].delete(params[:band][:image])
+    end
+    
+    logger.info "creating band"
     @band = Band.new(params[:band])
+    logger.info "created band"
     @band.users << current_user
+    logger.info "added user"
+    
     respond_to do |format|
       
       if @band.save
@@ -108,6 +121,11 @@ class BandsController < ApplicationController
         @band.band_memberships << membership
       end
       params[:band][:band_memberships] = @band.band_memberships
+      
+      if (params[:band][:image])
+        params[:band][:image] = User.save(params[:band])
+        logger.info "set params[:band][:image] to #{params[:band][:image]}"
+      end
       
       if @band.update_attributes(params[:band])
         format.html { redirect_to(@band, :notice => 'Band was successfully updated.') }

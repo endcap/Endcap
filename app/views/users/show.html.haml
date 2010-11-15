@@ -1,83 +1,142 @@
-#profile
-  .wrapper
-    %div{:id => "profile1"}
-      - if @user.image
-        %img{ :src => @user.image, :align => "right" }
-      %p
-        =@user.description
+- if @user
+  #profile
+    .wrapper
+      %div{:id => "profile1"}
+        - if @user.image
+          %img{ :src => @user.image, :align => "right" }
+        %p
+          =@user.description
   
-    %div{:id => "profile2"}
-      - if @user
-        %h3= @user.full_name
-        %p#subtitle= @user.instrument
+      %div{:id => "profile2"}
+        - if @user
+          %h3= @user.full_name
+          %p#subtitle= @user.instrument
       
-        - if @user.band_memberships
-          %ul
-            - @user.band_memberships.find(:all, :conditions => ["band_id is not null"]).each do |member|
-              - if member and member.band_id
-                %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
-                  =link_to member.band.name, member.band
-                  (
-                  = member.start_date ? member.start_date.year : "ever"
-                  to
-                  = member.end_date ? member.end_date.year : "now"
-                  )
-        - if @user.events
-          %h3 Events
+          - if @user.band_memberships
             %ul
-              - @user.events.each do |event|
-                %li
-                  =link_to event.name, event
-                  =event.time
-                  - if event.venue
-                    at
-                    =link_to event.venue.name, event.venue
+              - @user.band_memberships.find(:all, :conditions => ["band_id is not null"]).each do |member|
+                - if member and member.band_id
+                  %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
+                    =link_to member.band.name, member.band
+                    (
+                    = member.start_date ? member.start_date.year : "ever"
+                    to
+                    = member.end_date ? member.end_date.year : "now"
+                    )
+          - if @user.events
+            %h3 
+              Events
+              %ul
+                - @user.events.each do |event|
+                  %li
+                    =link_to event.name, event
+                    =event.time
+                    - if event.venue
+                      at
+                      =link_to event.venue.name, event.venue
             
 
-    %div{:id => "profile3"}
-      %h3 Discography
+      %div{:id => "profile3"}
+        %h3 Discography
       
-      %p
-        %div#first
-          %img{:src => "/images/album-cover.png", :height => "115", :width => "115"}
-          %br
-          callupsie (2008)
-        %div#second
-          %img{:src => "/images/album-cover.png", :height => "115", :width => "115"}
-          %br
-          callupsie (2008)
+        %p
+          %div#first
+            %img{:src => "/images/album-cover.png", :height => "115", :width => "115"}
+            %br
+            callupsie (2008)
+          %div#second
+            %img{:src => "/images/album-cover.png", :height => "115", :width => "115"}
+            %br
+            callupsie (2008)
         
-      %ul
-        %li
-          %h4 Song Title 
-          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-        %li
-          %h4 Song Title 
-          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-        %li
-          %h4 Song Title 
-          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-        %li
-          %h4 Song Title 
-          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
+        %ul
+          %li
+            %h4 Song Title 
+            %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
+          %li
+            %h4 Song Title 
+            %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
+          %li
+            %h4 Song Title 
+            %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
+          %li
+            %h4 Song Title 
+            %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
 
-  - if @user.band_memberships
+    - if @user.band_memberships
           
-  - if @user.albums
-    %h3 Albums
-    %ul
-    - @user.albums.each do |album|
-      %li
-        =link_to album.name, album
-        - if album.band_id
-          with
-          =link_to album.band.name, album.band
-        - if album.year
-          (
-          = album.year
-          )
-        - if album.songs and album.songs.count > 0
-          %ol
-            - album.songs.first(4).each do |song|
-              %li
-                =link_to song.name, song
+    - if @user.albums
+      %h3 Albums
+      %ul
+      - @user.albums.each do |album|
+        %li
+          =link_to album.name, album
+          - if album.band_id
+            with
+            =link_to album.band.name, album.band
+          - if album.year
+            (
+            = album.year
+            )
+          - if album.songs and album.songs.count > 0
+            %ol
+              - album.songs.first(4).each do |song|
+                %li
+                  =link_to song.name, song
+- else
+  #featuredcontent
+    .wrapper
+      %div{:id => "featuredartist"}
+        %img{:src => "/images/featured-pic.png", :id => "featuredpic"}
+        %div{:id => "artist"} Jacob Fred Jazz Oddessy
+      %div{:id => "discover"}
+        %h2 Discover Local Music
+        %p What artists and bands are in your local area?  What band is that one musician in, now? Endcap can let you know. Explore local events, venues, bands, and music, and check out what’s going on in your local music scene.  Sounds cool?  Awesome!
+        %p{:class => "calltoaction"} Check it out >>          
+
+  #maincontent
+    .wrapper
+      #bandlist
+        %h2 Bands
+        %ul
+          %li{:id => "broncho"} BRONCHO
+          %li{:id => "nativelights"} Native Lights
+          %li{:id => "deadseachoir"} Dead Sea Choir
+          %li{:id => "andtherestandempires"} And There Stand Empires
+          %li{:id => "daniels"} Daniels
+      #eventlist
+        %h2 Events
+        %ul
+          %li{:class => "event"}
+            %p{:class => "artist"} Pat Cook
+            %p{:class => "show"} Nov. 17 @ Mercury Lounge
+          %li{:class => "event"}
+            %p{:class => "artist"} Pat Cook
+            %p{:class => "show"} Nov. 17 @ Mercury Lounge
+          %li{:class => "event"}
+            %p{:class => "artist"} Pat Cook
+            %p{:class => "show"} Nov. 17 @ Mercury Lounge
+          %li{:class => "event"}
+            %p{:class => "artist"} Pat Cook
+            %p{:class => "show"} Nov. 17 @ Mercury Lounge
+          %li{:class => "event"}
+            %p{:class => "artist"} Pat Cook
+            %p{:class => "show"} Nov. 17 @ Mercury Lounge
+      #songlist
+        %h2 Songs
+        %ul
+          %li{:class => "song"}
+            %p{:class => "title"} "Try Me Out Sometime"
+            %p{:class => "artist"} BRONCHO
+          %li{:class => "song"}
+            %p{:class => "title"} "Try Me Out Sometime"
+            %p{:class => "artist"} BRONCHO
+          %li{:class => "song"}
+            %p{:class => "title"} "Try Me Out Sometime"
+            %p{:class => "artist"} BRONCHO
+          %li{:class => "song"}
+            %p{:class => "title"} "Try Me Out Sometime"
+            %p{:class => "artist"} BRONCHO
+          %li{:class => "song"}
+            %p{:class => "title"} "Try Me Out Sometime"
+            %p{:class => "artist"} BRONCHO
