@@ -18,10 +18,6 @@ class User < ActiveRecord::Base
     path[6..path.length]
   end
   
-  def full_name_backwards
-    [self.last_name, self.first_name].join(", ")
-  end
-  
   def full_name
     [self.first_name, self.last_name].join(" ")
   end
@@ -39,6 +35,7 @@ class User < ActiveRecord::Base
           eventArray << event
         end
         logger.info "added event named #{event.name}"
+      end
     end
     
     eventArray
