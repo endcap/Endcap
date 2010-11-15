@@ -4,73 +4,9 @@
       - if @band.image
         %img{ :src => @band.image, :align => "right" }
       %p
-<<<<<<< HEAD
         =@band.description
-  
-    %div{:id => "profile2"}
-      %h3= @band.name
 
-      
-      %ul
-        - @band.band_memberships.each do |member|
-          - if member.user
-            %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
-              =link_to member.user.full_name, member.user
-              - if member.user.instrument
-                (
-                = member.user.instrument
-                )
-    
-    - if @band.events
-      %h3 Events
-      %ul
-        - @band.events.each do |event|
-          %li
-            =link_to event.name, event
-            =event.time
-            - if event.venue
-              at
-              =link_to event.venue.name, event.venue
-        
-
-    %div{:id => "profile3"}
-      %h3 Discography
-      
-      %p
-        %div#first
-          %img{:src => "/images/album-cover.png", :height => "115", :width => "115"}
-          %br
-          callupsie (2008)
-        %div#second
-          %img{:src => "/images/album-cover.png", :height => "115", :width => "115"}
-          %br
-          callupsie (2008)
-        
-      %ul
-        %li
-          %h4 Song Title 
-          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-        %li
-          %h4 Song Title 
-          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-        %li
-          %h4 Song Title 
-          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-        %li
-          %h4 Song Title 
-          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-
-          
-
-
-
-%h3
-  = @band.name
-=======
-      - if @band
-        =@band.description
->>>>>>> a3f4f68aad08b51712bebe61e3fcf5c91aeacf45
-  
+            
     %div{:id => "profile2"}
       #top
         - if @band
@@ -111,7 +47,7 @@
       - @band.albums.each do |album|
         %div#album
           %a{ :href => "/albums/#{album.id}" }
-            %img{ :src => album.image }
+            %img{ :src => album.image, :height => "115px", :width => "115px" }
             %p
               =album.name
                     
