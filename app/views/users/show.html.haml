@@ -1,35 +1,6 @@
 #profile
   .wrapper
     %div{:id => "profile1"}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 059711fed68ac4e617491e6303ec4449d52a5c24
-      - if @user.image
-        %img{ :src => @user.image, :align => "right" }
-      %p
-        =@user.description
-  
-    %div{:id => "profile2"}
-      - if @user
-        %h3= @user.full_name
-        %p#subtitle= @user.instrument
-      
-        - if @user.band_memberships
-          %ul
-            - @user.band_memberships.find(:all, :conditions => ["band_id is not null"]).each do |member|
-              - if member and member.band_id
-                %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
-                  =link_to member.band.name, member.band
-                  (
-                  = member.start_date ? member.start_date.year : "ever"
-                  to
-                  = member.end_date ? member.end_date.year : "now"
-                  )
-        - if @user.events
-          %h3 Events
-<<<<<<< HEAD
-=======
       - if @user && @user.image
         %img{ :src => @user.image, :align => "right" }
       %p
@@ -54,11 +25,8 @@
                     = member.end_date ? member.end_date.year : "now"
                     )
         #bottom
-          - if @user.events
+          - if @user && @user.events
             %h3 Events
->>>>>>> 203d9fd632a9661c7841e0a1db68f43bd8a4b0ce
-=======
->>>>>>> 059711fed68ac4e617491e6303ec4449d52a5c24
             %ul
               - @user.events.each do |event|
                 %li
@@ -67,61 +35,6 @@
                   - if event.venue
                     at
                     =link_to event.venue.name, event.venue
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 059711fed68ac4e617491e6303ec4449d52a5c24
-            
-
-    %div{:id => "profile3"}
-      %h3 Discography
-      
-      %p
-        %div#first
-          %img{:src => "/images/album-cover.png", :height => "115", :width => "115"}
-          %br
-          callupsie (2008)
-        %div#second
-          %img{:src => "/images/album-cover.png", :height => "115", :width => "115"}
-          %br
-          callupsie (2008)
-        
-      %ul
-        %li
-          %h4 Song Title 
-          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-        %li
-          %h4 Song Title 
-          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-        %li
-          %h4 Song Title 
-          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-        %li
-          %h4 Song Title 
-          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-
-  - if @user.band_memberships
-          
-  - if @user.albums
-    %h3 Albums
-    %ul
-    - @user.albums.each do |album|
-      %li
-        =link_to album.name, album
-        - if album.band_id
-          with
-          =link_to album.band.name, album.band
-        - if album.year
-          (
-          = album.year
-          )
-        - if album.songs and album.songs.count > 0
-          %ol
-            - album.songs.first(4).each do |song|
-              %li
-                =link_to song.name, song
-<<<<<<< HEAD
-=======
           
 
     %div{:id => "profile3"}
@@ -145,6 +58,3 @@
                   - if song.mp3
                     %audio{:src => "/mp3/#{song.mp3}", :controls => "controls"}
           
->>>>>>> 203d9fd632a9661c7841e0a1db68f43bd8a4b0ce
-=======
->>>>>>> 059711fed68ac4e617491e6303ec4449d52a5c24
