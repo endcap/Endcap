@@ -1,30 +1,49 @@
-%p#notice= notice
 
-- if @venue.image
-  %img{ :src => @venue.image, :align => "right" }
+#profile
+  .wrapper
+    %div{:id => "profile1"}
+      - if @venue.image
+        %img{ :src => @venue.image, :align => "right" }
+      %p
+      - if @venue
+        =@venue.description
+  
+    %div{:id => "profile2"}
+      #top
+        - if @venue
+          %h3= @venue.name
+      
+          - if @venue.events
+            %h4 Events
+            %ul
+              - @venue.events.each do |event|
+                %li
+                  =event.time
+                  
+                  =link_to event.name, event
+          
 
-%p
-  %b Name:
-  = @venue.name
-%p
-  %b Address:
-  = @venue.location
-%p
-  %b Hours:
-  = @venue.hours
-%p
-  %b City:
-  = @venue.city
-%p
-  %b State:
-  = @venue.state
-%p
-  %b Description:
-  = @venue.description
-%p
-  %b Homepage:
-  = @venue.homepage
+    %div{:id => "profile3"}
+      %h3 Location & Other Info
+      %p
+        %b Name:
+        = @venue.name
+      %p
+        %b Address:
+        = @venue.location
+      %p
+        %b Hours:
+        = @venue.hours
+      %p
+        %b City:
+        = @venue.city
+      %p
+        %b State:
+        = @venue.state
+      %p
+        %b Homepage:
+        = @venue.homepage
+      
+      
+          
 
-= link_to 'Edit', edit_venue_path(@venue)
-\|
-= link_to 'Back', venues_path
