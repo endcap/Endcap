@@ -4,123 +4,61 @@
       - if @band.image
         %img{ :src => @band.image, :align => "right" }
       %p
+      - if @band
         =@band.description
   
     %div{:id => "profile2"}
-      %h3= @band.name
-
+      #top
+        - if @band
+          %h3= @band.name
       
-      %ul
-        - @band.band_memberships.each do |member|
-          - if member.user
-            %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
-              =link_to member.user.full_name, member.user
-              - if member.user.instrument
-                (
-                = member.user.instrument
-                )
-    
-    - if @band.events
-      %h3 Events
-      %ul
-        - @band.events.each do |event|
-          %li
-            =link_to event.name, event
-            =event.time
-            - if event.venue
-              at
-              =link_to event.venue.name, event.venue
-        
+          - if @band && @band.band_memberships
+            %ul
+              - @band.band_memberships.each do |member|
+                - if member.user
+                  %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
+                    =link_to member.user.full_name, member.user
+                    - if member.user.instrument
+                      (
+                      = member.user.instrument
+                      )
+                    from 
+                    =member.start_date && member.start_date.year || 'ever'
+                    to 
+                    =member.end_date && member.end_date.year || 'now'
+
+
+          - if @band.events
+            #bottom
+              %h3 Events
+              %ul
+                - @band.events.each do |event|
+                  %li
+                    =link_to event.name, event
+                    =event.time
+                    - if event.venue
+                      at
+                      =link_to event.venue.name, event.venue
+          
 
     %div{:id => "profile3"}
       %h3 Discography
       
-      %p
-        %div#first
-          %img{:src => "/images/album-cover.png", :height => "115", :width => "115"}
-          %br
-          callupsie (2008)
-        %div#second
-          %img{:src => "/images/album-cover.png", :height => "115", :width => "115"}
-          %br
-          callupsie (2008)
-        
+      - @band.albums.each do |album|
+        %div#album
+          %a{ :href => "/albums/#{album.id}" }
+            %img{ :src => album.image }
+            %p
+              =album.name
+                    
       %ul
-        %li
-          %h4 Song Title 
-          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-        %li
-          %h4 Song Title 
-          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-        %li
-          %h4 Song Title 
-          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-        %li
-          %h4 Song Title 
-          %audio{:src => "/mp3/01Yes.m4a", :controls => "controls"}
-
+        - if @band.albums
+          - @band.albums.each do |album|
+            - if album.songs and album.songs.count > 0
+              - album.songs.first(1).each do |song|
+                %li
+                  %h4
+                    =song.name
+                  - if song.mp3
+                    %audio{:src => "/mp3/#{song.mp3}", :controls => "controls"}
           
-
-
-
-%h3
-  = @band.name
-  
-%p
-  <a href="/bands?city=#{@band.city}&amp;state=#{@band.state}">#{@band.location}</a>
-  
-%p
-  %b Start year:
-  = @band.start_year
-%p
-  %b End year:
-  = @band.end_year
-%p
-  %b City:
-  = @band.city
-%p
-  %b State:
-  = @band.state
-%p
-  %b Genre:
-  <a href="/bands?genre=#{@band.genre}">#{@band.genre}</a>
-%p
-  %b Homepage:
-  <a href="#{@band.homepage}">#{@band.homepage}</a>
-%p
-  %b Store url:
-  <a href="#{@band.store_url}">#{@band.store_url}</a>
-
-%p
-  %b Band Bio:
-  = @band.description
-
-%h3 
-  Members
-%ul
-  - @band.band_memberships.each do |member|
-    - if member.user
-      %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
-        =link_to member.user.full_name, member.user
-        - if member.user.instrument
-          (
-          = member.user.instrument
-          )
-        from 
-        =member.start_date && member.start_date.year || 'ever'
-        to 
-        =member.end_date && member.end_date.year || 'now'
-
-%h3 Albums
-%ul
-  - @band.albums.sort_by(&:year).each do |album|
-    %li
-      =album.year
-      =link_to album.name, album
-
-<!--= link_to 'New Album', new_album_path("?id=#{@band.id}")-->
-<a href="/albums/new/?id=#{@band.id}">New Album</a>
-
-= link_to 'Edit', edit_band_path(@band)
-\|
-= link_to 'Back', bands_path

@@ -25,7 +25,7 @@
                     = member.end_date ? member.end_date.year : "now"
                     )
         #bottom
-          - if @user.events
+          - if @user && @user.events
             %h3 Events
             %ul
               - @user.events.each do |event|
