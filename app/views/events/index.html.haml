@@ -1,29 +1,29 @@
-%h1 Listing events
 
-%table
-  %tr
-    %th Name
-    %th Venue
-    %th Time
-    %th Cost
-    %th Description
-    %th Image
-    %th
-    %th
-    %th
+#listing
+  %h1 Events
 
-  - @events.each do |event|
+  %table
     %tr
-      %td= event.name
-      %td= event.venue.name
-      %td= event.time
-      %td= event.cost
-      %td= event.description
-      %td= event.image
-      %td= link_to 'Show', event
-      %td= link_to 'Edit', edit_event_path(event)
-      %td= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete
+      %th Name
+      %th Venue
+      %th Time
+      %th Cost
+      %th
+      %th
 
-%br
-  - if current_user
-    = link_to 'New Event', new_event_path
+    - @events.each do |event|
+      %tr
+        %td= event.name
+        %td= event.venue.name
+        %td= event.time
+        %td= event.cost
+        %td
+          %img{ :src => event.image, :align => "right", :height => "45px", :width => "45px" }
+        %td
+          = link_to 'Show', event
+          = link_to 'Edit', edit_event_path(event)
+          = link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete
+
+  %br
+    - if current_user
+      = link_to 'New Event', new_event_path

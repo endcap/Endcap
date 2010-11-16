@@ -1,27 +1,28 @@
-%h1 Listing songs
 
-%table
-  %tr
-    %th Album
-    %th Name
-    %th Number
-    %th
-    %th
-    %th
+#listing
+  %h1 Songs
 
-  - @songs.each do |song|
+  %table
     %tr
-      -if song.album
-        %td= link_to song.album.name, song.album
-      -else
-        %td
+      %th Album
+      %th Name
+      %th Number
+      %th
+
+    - @songs.each do |song|
+      %tr
+        -if song.album
+          %td= link_to song.album.name, song.album
+        -else
+          %td
            
-      %td= song.name
-      %td= song.number
-      %td= link_to 'Show', song
-      %td= link_to 'Edit', edit_song_path(song)
-      %td= link_to 'Destroy', song, :confirm => 'Are you sure?', :method => :delete
+        %td= song.name
+        %td= song.number
+        %td
+          = link_to 'Show', song
+          = link_to 'Edit', edit_song_path(song)
+          = link_to 'Destroy', song, :confirm => 'Are you sure?', :method => :delete
 
-%br
+  %br
 
-= link_to 'New Song', new_song_path
+  = link_to 'New Song', new_song_path
