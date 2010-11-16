@@ -406,6 +406,31 @@ p, dl, pre, table, address, fieldset, ul, ol, h1, h2, h3, h4, h5, h6, hr {
 }
 
 
+#listing {
+  background: white;
+  margin-top: 45px;
+  h1{
+    margin-left: 25px;
+  }
+  table {
+    width: 95%;
+    margin: 0 auto;
+    th {
+      text-align: left;
+      font-weight: normal;
+      font-size: 16px;
+    }
+    td {
+      vertical-align: top;
+      padding-top: 10px;
+      padding-bottom: 5px;
+      img {
+        float: left;
+      }
+    }
+  }
+}
+
 #footer {
   background: #c77d08;
   color: #fbf3bc;

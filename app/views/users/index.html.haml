@@ -1,0 +1,31 @@
+
+#listing
+  %h1 Artists
+  
+  %table
+    %tr
+      %th Name
+      %th Instruments
+      %th Location
+      %th 
+      %th
+
+    - @users.each do |user|
+      %tr
+        %td= user.full_name
+        %td= user.instrument
+        %td
+          =user.city
+          , 
+          =user.state
+        %td
+          %img{ :src => user.image, :align => "right", :height => "45px", :width => "45px" }
+        %td
+          = link_to 'Show', venue
+          = link_to 'Edit', edit_venue_path(venue)
+          = link_to 'Destroy', venue, :confirm => 'Are you sure?', :method => :delete
+
+  %br
+    - if current_user
+      = link_to 'New Venue', new_venue_path
+  

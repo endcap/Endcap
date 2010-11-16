@@ -1,29 +1,29 @@
-%h1 Listing albums
 
-%table
-  %tr
-    %th Name
-    %th Band
-    %th Year
-    %th Description
-    %th Image
-    %th
-    %th
-    %th
+#listing
+  %h1 Albums
 
-  - @albums.each do |album|
+  %table
     %tr
-      %td= album.name
-      -if album.band
-        %td= album.band.name
-      -else
+      %th Name
+      %th Band
+      %th Year
+      %th
+      %th
+
+    - @albums.each do |album|
+      %tr
+        %td= album.name
+        -if album.band
+          %td= album.band.name
+        -else
+          %td
+        %td= album.year
         %td
-      %td= album.year
-      %td= album.description
-      %td= album.image
-      %td= link_to 'Show', album
-      %td= link_to 'Edit', edit_album_path(album)
-      %td= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete
+          %img{ :src => album.image, :align => "right", :height => "45px", :width => "45px"}
+        %td.links
+          =link_to 'Show', album
+          =link_to 'Edit', edit_album_path(album)
+          =link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
