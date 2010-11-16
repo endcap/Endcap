@@ -57,6 +57,11 @@ class AlbumsController < ApplicationController
       params[:album][:band] = this_band
     end
     
+    if (params[:album][:image])
+      params[:album][:image] = Album.save(params[:album])
+      logger.info "set params[:album][:image] to #{params[:album][:image]}"
+    end
+    
     @album = Album.new(params[:album])
 
     respond_to do |format|
@@ -87,6 +92,11 @@ class AlbumsController < ApplicationController
         
       end
       params[:album][:band] = @album.band
+      
+      if (params[:album][:image])
+        params[:album][:image] = Album.save(params[:album])
+        logger.info "set params[:album][:image] to #{params[:album][:image]}"
+      end
       
       if @album.update_attributes(params[:album])
         format.html { redirect_to(@album, :notice => 'Album was successfully updated.') }
