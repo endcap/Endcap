@@ -41,6 +41,11 @@ class VenuesController < ApplicationController
   # POST /venues
   # POST /venues.xml
   def create
+    if (params[:venue][:image])
+      params[:venue][:image] = Venue.save(params[:venue])
+      logger.info "set params[:venue][:image] to #{params[:venue][:image]}"
+    end
+    
     @venue = Venue.new(params[:venue])
     respond_to do |format|
       if @venue.save
@@ -57,6 +62,11 @@ class VenuesController < ApplicationController
   # PUT /venues/1.xml
   def update
     @venue = Venue.find(params[:id])
+
+    if (params[:venue][:image])
+      params[:venue][:image] = Venue.save(params[:venue])
+      logger.info "set params[:venue][:image] to #{params[:venue][:image]}"
+    end
 
     respond_to do |format|
       if @venue.update_attributes(params[:venue])

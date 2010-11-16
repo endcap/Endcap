@@ -1,4 +1,4 @@
-= form_for @album do |f|
+= form_for @album, :html => { :multipart => true} do |f|
   -if @album.errors.any?
     #error_explanation
       %h2= "#{pluralize(@album.errors.count, "error")} prohibited this album from being saved:"
@@ -23,6 +23,6 @@
     = f.text_area :description
   .field
     = f.label :image
-    = f.text_field :image
+    = f.file_field :image
   .actions
     = f.submit 'Save'
