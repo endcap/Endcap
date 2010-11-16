@@ -45,7 +45,7 @@
         - @user.albums.each do |album|
           %div#album
             %a{ :href => "/albums/#{album.id}" }
-              %img{ :src => album.image }
+              %img{ :src => album.image, :height => "115px", :width => "115px" }
               %p
                 =album.name
                     
