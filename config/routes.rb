@@ -7,7 +7,7 @@ Endcap::Application.routes.draw do
   resources :venues
   resources :events
    
-  root :to => "users#show"
+  root :to => "index#index"
   
   resources :user_sessions
   resources :users
