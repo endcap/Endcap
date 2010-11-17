@@ -13,44 +13,33 @@
     #bandlist
       %h2 Bands
       %ul
-        %li{:id => "broncho"} BRONCHO
-        %li{:id => "nativelights"} Native Lights
-        %li{:id => "deadseachoir"} Dead Sea Choir
-        %li{:id => "andtherestandempires"} And There Stand Empires
-        %li{:id => "daniels"} Daniels
+        - @bands.each do |band|
+          %li{:style => "height: 45px"}
+            =link_to band.name, band
+            -if band.image and band.image.length > 0
+              %img{:src => band.image, :style => "width: 50px; height:50px; float: right" }
+            
     #eventlist
       %h2 Events
       %ul
-        %li{:class => "event"}
-          %p{:class => "artist"} Pat Cook
-          %p{:class => "show"} Nov. 17 @ Mercury Lounge
-        %li{:class => "event"}
-          %p{:class => "artist"} Pat Cook
-          %p{:class => "show"} Nov. 17 @ Mercury Lounge
-        %li{:class => "event"}
-          %p{:class => "artist"} Pat Cook
-          %p{:class => "show"} Nov. 17 @ Mercury Lounge
-        %li{:class => "event"}
-          %p{:class => "artist"} Pat Cook
-          %p{:class => "show"} Nov. 17 @ Mercury Lounge
-        %li{:class => "event"}
-          %p{:class => "artist"} Pat Cook
-          %p{:class => "show"} Nov. 17 @ Mercury Lounge
+        - @events.each do |event|
+          %li{:class => "event", :style => "height: 45px"}
+            %span{:style => "float: left"}
+              %p{:class => "artist"}
+                =link_to event.name, event
+              %p{:class => "show"}
+                = event.time
+                @
+                =link_to event.venue.name, event.venue
+            -if event.venue.image and event.venue.image.length > 0
+              %img{:src => event.venue.image, :style => "width: 50px; height:50px; float: right" }
     #songlist
       %h2 Songs
       %ul
-        %li{:class => "song"}
-          %p{:class => "title"} "Try Me Out Sometime"
-          %p{:class => "artist"} BRONCHO
-        %li{:class => "song"}
-          %p{:class => "title"} "Try Me Out Sometime"
-          %p{:class => "artist"} BRONCHO
-        %li{:class => "song"}
-          %p{:class => "title"} "Try Me Out Sometime"
-          %p{:class => "artist"} BRONCHO
-        %li{:class => "song"}
-          %p{:class => "title"} "Try Me Out Sometime"
-          %p{:class => "artist"} BRONCHO
-        %li{:class => "song"}
-          %p{:class => "title"} "Try Me Out Sometime"
-          %p{:class => "artist"} BRONCHO
+        - @songs.each do |song|
+          %li{:class => "song"}
+            %p{:class => "title"}
+              =link_to "\"#{song.name}\"", song
+            %p{:class => "artist"}
+              - if song.album and song.album.band
+                = link_to song.album.band.name, song.album.band
