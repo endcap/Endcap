@@ -27,7 +27,7 @@
         %h4 Bands
         %ul
           - @event.band_events.each do |performer|
-            - if performer.band.name
+            - if performer and performer.band and performer.band.name
               %li
                 =link_to performer.band.name, performer.band
           
