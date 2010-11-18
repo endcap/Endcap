@@ -134,13 +134,13 @@ p, dl, pre, table, address, fieldset, ul, ol, h1, h2, h3, h4, h5, h6, hr {
 
 #featuredcontent {
   background: white;
-  height: 315px;
+  height: 425px;
   margin-top: 45px;
   .wrapper{
     margin: 0px auto;
     width: 960px;
     #featuredartist {
-      background: #624312 url('/images/featured-bar.png');
+      background: white;
       background-position: left bottom;
       color: white;
       width: 620px;
@@ -148,6 +148,13 @@ p, dl, pre, table, address, fieldset, ul, ol, h1, h2, h3, h4, h5, h6, hr {
       margin-top: 15px;
       height: 265px;
       float: left;
+      #video {
+        margin: 0 auto;
+        width: 500px;
+        iframe {
+          margin: 0 auto;
+        }
+      }
       #artist{
           float: right;
           font-size: 27px;
