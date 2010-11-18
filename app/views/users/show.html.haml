@@ -18,7 +18,7 @@
             - if @user && @user.band_memberships
               %ul
                 - @user.band_memberships.find(:all, :conditions => ["band_id is not null"]).each do |member|
-                  - if member and member.band_id
+                  - if member and member.band
                     %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
                       =link_to member.band.name, member.band
                       (
