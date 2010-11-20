@@ -3,13 +3,12 @@ class BandsController < ApplicationController
   # GET /bands
   # GET /bands.xml
   def index
-    if params[:city] and params[:state]
-      @bands = Band.find_all_by_city_and_state(params[:city], params[:state])
-    elsif params[:genre]
-      @bands = Band.find_all_by_genre(params[:genre])
-    else
-      @bands = Band.all
-    end
+    where_hash = {}
+    where_hash[:state] = params[:state] if params[:state]
+    where_hash[:city] = params[:city] if params[:city]
+    where_hash[:genre] = params[:genre] if params[:genre]
+    
+    @bands = Band.where(where_hash)
 
     respond_to do |format|
       format.html # index.html.erb

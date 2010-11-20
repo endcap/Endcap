@@ -3,7 +3,14 @@ Endcap::Application.routes.draw do
 
   resources :albums
 
-  resources :bands
+  match "local_bands/:state/:city" => "bands#index", :as => "bands_by_state_and_city"
+  match "local_bands/:state" => "bands#index", :as => "bands_by_state"
+  match "local_bands" => "bands#index"
+  match "bands/genre/:genre" => "bands#index", :as => "bands_by_genre"
+  
+  resources :bands do
+    resources :albums
+  end
   resources :venues
   resources :events
    

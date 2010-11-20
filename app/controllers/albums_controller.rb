@@ -2,11 +2,11 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.xml
   def index
-    if params[:label]
-      @albums = Album.find_all_by_label(params[:label])
-    else
-      @albums = Album.all
-    end
+    where_hash = {}
+    where_hash[:label] = params[:label] if params[:label]
+    where_hash[:band_id] = params[:band_id] if params[:band_id]
+    
+    @albums = Album.where(where_hash)
 
     respond_to do |format|
       format.html # index.html.erb
