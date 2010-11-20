@@ -10,23 +10,25 @@
         %th
         %th
 
-    - @albums.each do |album|
-      %tr
-        %td= album.name
-        -if album.band
-          %td= album.band.name
-        -else
+      - @albums.each do |album|
+        %tr
+          %td= link_to album.name, album
+          -if album.band
+            %td=link_to album.band.name, album.band
+          -else
+            %td
+          %td= album.year
           %td
-        %td= album.year
-        %td
-          %img{ :src => album.image, :align => "right", :height => "45px", :width => "45px"}
-        %td.links
-          =link_to 'Show', album
-          =link_to 'Edit', edit_album_path(album)
-          =link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete
+            %img{ :src => album.image, :align => "right", :height => "45px", :width => "45px"}
+          %td.links
+            =link_to 'Edit', edit_album_path(album)
+            =link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete
   - if @albums.empty?
     %p
-      There were no albums found. This probably indicates a problem.
+      - if params[:band_id]
+        This band doesn't seem to have any albums.
+      - else
+        There were no albums found. This probably indicates a problem.
 %br
 
 = link_to 'New Album', new_album_path

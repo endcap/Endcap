@@ -42,7 +42,8 @@
           
 
     %div{:id => "profile3"}
-      %h3 Discography
+      %h3 
+        =link_to 'Discography', band_albums_path(@band)
       
       - @band.albums.each do |album|
         %div#album

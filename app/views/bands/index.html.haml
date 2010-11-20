@@ -19,10 +19,12 @@
           %td= band.start_year
           %td= band.end_year
           %td
-            =band.city
+            =link_to band.city, bands_by_state_and_city_path(band.state, band.city)
             , 
-            =band.state
-          %td= band.genre
+            =link_to band.state, bands_by_state_path(band.state)
+          %td
+            -if !band.genre.empty?
+              =link_to band.genre, bands_by_genre_path(band.genre)
           %td= band.homepage
           %td.links
             =link_to 'Show', band
@@ -30,7 +32,7 @@
             =link_to 'Destroy', band, :confirm => 'Are you sure?', :method => :delete
   - if @bands.empty?
     %p
-      There are no bands found. This is a bad thing.
+      No bands found.
   %br
     - if current_user
       = link_to 'New Band', new_band_path
