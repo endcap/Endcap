@@ -2,33 +2,35 @@
 
 #listing
   %h1 Bands
-
-  %table
-    %tr
-      %th Name
-      %th Start year
-      %th End year
-      %th Location
-      %th Genre
-      %th Homepage
-      %th
-
-    - @bands.each do |band|
+  - if !@bands.empty?
+    %table
       %tr
-        %td= band.name
-        %td= band.start_year
-        %td= band.end_year
-        %td
-          =band.city
-          , 
-          =band.state
-        %td= band.genre
-        %td= band.homepage
-        %td.links
-          =link_to 'Show', band
-          =link_to 'Edit', edit_band_path(band)
-          =link_to 'Destroy', band, :confirm => 'Are you sure?', :method => :delete
+        %th Name
+        %th Start year
+        %th End year
+        %th Location
+        %th Genre
+        %th Homepage
+        %th
 
+      - @bands.each do |band|
+        %tr
+          %td= band.name
+          %td= band.start_year
+          %td= band.end_year
+          %td
+            =band.city
+            , 
+            =band.state
+          %td= band.genre
+          %td= band.homepage
+          %td.links
+            =link_to 'Show', band
+            =link_to 'Edit', edit_band_path(band)
+            =link_to 'Destroy', band, :confirm => 'Are you sure?', :method => :delete
+  - if @bands.empty?
+    %p
+      There are no bands found. This is a bad thing.
   %br
     - if current_user
       = link_to 'New Band', new_band_path

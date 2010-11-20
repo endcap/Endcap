@@ -2,27 +2,31 @@
 #listing
   %h1 Songs
 
-  %table
-    %tr
-      %th Album
-      %th Name
-      %th Number
-      %th
-
-    - @songs.each do |song|
+  - if !@songs.empty?
+    %table
       %tr
-        -if song.album
-          %td= link_to song.album.name, song.album
-        -else
-          %td
-           
-        %td= song.name
-        %td= song.number
-        %td
-          = link_to 'Show', song
-          = link_to 'Edit', edit_song_path(song)
-          = link_to 'Destroy', song, :confirm => 'Are you sure?', :method => :delete
+        %th Album
+        %th Name
+        %th Number
+        %th
 
+      - @songs.each do |song|
+        %tr
+          -if song.album
+            %td= link_to song.album.name, song.album
+          -else
+            %td
+           
+          %td= song.name
+          %td= song.number
+          %td
+            = link_to 'Show', song
+            = link_to 'Edit', edit_song_path(song)
+            = link_to 'Destroy', song, :confirm => 'Are you sure?', :method => :delete
+
+  - if @songs.empty?
+    %p
+      No songs found.
   %br
 
   = link_to 'New Song', new_song_path

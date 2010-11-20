@@ -2,26 +2,29 @@
 #listing
   %h1 Artists
   
-  %table
-    %tr
-      %th Name
-      %th Instruments
-      %th Location
-      %th 
-      %th
-
-    - @users.each do |user|
+  - if !@users.empty?
+    %table
       %tr
-        %td= user.full_name
-        %td= user.instrument
-        %td
-          =user.city
-          , 
-          =user.state
-        %td
-          %img{ :src => user.image, :align => "right", :height => "45px", :width => "45px" }
-        %td
-          = link_to 'Show', user
-          = link_to 'Edit', edit_user_path(user)
-          = link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete
-  
+        %th Name
+        %th Instruments
+        %th Location
+        %th 
+        %th
+
+      - @users.each do |user|
+        %tr
+          %td= user.full_name
+          %td= user.instrument
+          %td
+            =user.city
+            , 
+            =user.state
+          %td
+            %img{ :src => user.image, :align => "right", :height => "45px", :width => "45px" }
+          %td
+            = link_to 'Show', user
+            = link_to 'Edit', edit_user_path(user)
+            = link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete
+  - if @users.empty?
+    %p
+      No musicians found.

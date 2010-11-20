@@ -1,29 +1,31 @@
 
 #listing
   %h1 Events
-
-  %table
-    %tr
-      %th Name
-      %th Venue
-      %th Time
-      %th Cost
-      %th
-      %th
-
-    - @events.each do |event|
+  - if !@events.empty?
+    %table
       %tr
-        %td= event.name
-        %td= event.venue.name
-        %td= event.time
-        %td= event.cost
-        %td
-          %img{ :src => event.image, :align => "right", :height => "45px", :width => "45px" }
-        %td
-          = link_to 'Show', event
-          = link_to 'Edit', edit_event_path(event)
-          = link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete
+        %th Name
+        %th Venue
+        %th Time
+        %th Cost
+        %th
+        %th
 
+      - @events.each do |event|
+        %tr
+          %td= event.name
+          %td= event.venue.name
+          %td= event.time
+          %td= event.cost
+          %td
+            %img{ :src => event.image, :align => "right", :height => "45px", :width => "45px" }
+          %td
+            = link_to 'Show', event
+            = link_to 'Edit', edit_event_path(event)
+            = link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete
+  - if @events.empty?
+    %p
+      No upcoming events found.
   %br
     - if current_user
       = link_to 'New Event', new_event_path
