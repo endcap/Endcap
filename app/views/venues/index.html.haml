@@ -2,33 +2,37 @@
 #listing
   %h1 Venues
 
-  %table
-    %tr
-      %th Name
-      %th Address
-      %th 
-      %th Hours
-      %th Homepage
-      %th Image
-      %th 
-
-    - @venues.each do |venue|
+  - if !@venues.empty?
+    %table
       %tr
-        %td= venue.name
-        %td= venue.location
-        %td
-          =venue.city
-          , 
-          =venue.state
-        %td= venue.hours
-        %td= venue.homepage
-        %td
-          %img{ :src => venue.image, :align => "right", :width => "45px", :height => "45px" }
-        %td
-          = link_to 'Show', venue
-          = link_to 'Edit', edit_venue_path(venue)
-          = link_to 'Destroy', venue, :confirm => 'Are you sure?', :method => :delete
+        %th Name
+        %th Address
+        %th 
+        %th Hours
+        %th Homepage
+        %th Image
+        %th 
 
+      - @venues.each do |venue|
+        %tr
+          %td= venue.name
+          %td= venue.location
+          %td
+            =venue.city
+            , 
+            =venue.state
+          %td= venue.hours
+          %td= venue.homepage
+          %td
+            %img{ :src => venue.image, :align => "right", :width => "45px", :height => "45px" }
+          %td
+            = link_to 'Show', venue
+            = link_to 'Edit', edit_venue_path(venue)
+            = link_to 'Destroy', venue, :confirm => 'Are you sure?', :method => :delete
+
+  - if @venues.empty?
+    %p
+      No venues found.
   %br
     - if current_user
       = link_to 'New Venue', new_venue_path

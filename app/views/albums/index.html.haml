@@ -1,14 +1,14 @@
 
 #listing
   %h1 Albums
-
-  %table
-    %tr
-      %th Name
-      %th Band
-      %th Year
-      %th
-      %th
+  - if !@albums.empty?
+    %table
+      %tr
+        %th Name
+        %th Band
+        %th Year
+        %th
+        %th
 
     - @albums.each do |album|
       %tr
@@ -24,7 +24,9 @@
           =link_to 'Show', album
           =link_to 'Edit', edit_album_path(album)
           =link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete
-
+  - if @albums.empty?
+    %p
+      There were no albums found. This probably indicates a problem.
 %br
 
 = link_to 'New Album', new_album_path
