@@ -40,7 +40,9 @@
                       at
                       =link_to event.venue.name, event.venue
           
-
+              -if @band.twitter
+                %h3 Tweets
+                %div{:id => "tweets"}
     %div{:id => "profile3"}
       %h3 
         =link_to 'Discography', band_albums_path(@band)
@@ -63,3 +65,12 @@
                   - if song.mp3
                     %audio{:src => "/mp3/#{song.mp3}", :controls => "controls"}
           
+%script{:type => "text/javascript"}
+  getTwitters('tweets', { 
+  id: '#{@band.twitter}', 
+  count: 5, 
+  enableLinks: true, 
+  ignoreReplies: true, 
+  clearContents: true,
+  template: '"%text%" <a href="http://twitter.com/%user_screen_name%/statuses/%id%/">%time%</a>'
+  });
