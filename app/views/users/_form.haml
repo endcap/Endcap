@@ -101,6 +101,18 @@
     = f.label :description
     %br
     = f.text_area :description, :id => "description"
-
+  %p
+    .field
+      = f.label :twitter
+      @
+      = f.text_field :twitter
+  %p
+    .field
+      = f.label :facebook
+      = f.text_field :facebook
+  %p
+    .field
+      = f.label :myspace
+      = f.text_field :myspace
   %p
     = f.submit 'Submit'
