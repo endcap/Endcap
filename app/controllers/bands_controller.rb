@@ -66,7 +66,7 @@ class BandsController < ApplicationController
       params[:band][:band_memberships] = these_band_memberships
     else
       logger.info "removing band_memberships from the band"
-      params[:band].delete(params[:band][:band_memberships])
+      params[:band].delete(:band_memberships)
     end
     
     if (params[:band][:image])
