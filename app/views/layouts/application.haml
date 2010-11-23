@@ -12,85 +12,94 @@
       %script{:type => "text/javascript", :src => "http://stan-js.googlecode.com/hg/version/0.1/stan.min.js"}
         == IE7_PNG_SUFFIX = '.png';
 
-%body
-  #header
-    .wrapper
-      #logo
-        =link_to CONFIG['name'], root_url
-        #info
-          - if current_user
-            %span.welcome
-              = link_to "Hello there, #{current_user.first_name}!", current_user, :style => "height: 25px; display: block"
-              %br
-
-            == #{link_to "Logout", logout_path} #{ link_to "Edit Profile", edit_user_path(:current) }
-          - else
-            == #{ link_to "Signup", signup_path } #{ link_to "Login", login_path }
-          == #{link_to "Artists", users_path}
-          == #{link_to "Bands", bands_path}
-          == #{link_to "Albums", albums_path}
-          == #{link_to "Venues", venues_path}
-          == #{link_to "Events", events_path}
-    #nav
+  %body
+    #header
       .wrapper
-        .menu
-          %a{:href => "#"}
-            %img#navitem{:src => "/images/nav-story.png", :alt => "story"}
-          %a{:href => "#"}
-            %img#navitem{:src => "/images/nav-what.png", :alt => "what's endcap"}
-          %a{:href => "#"}
-            %img#navitem{:src => "/images/nav-bands.png", :alt => "bands&artists"}
-          %a{:href => "#"}
-            %img#navitem{:src => "/images/nav-story.png", :alt => "story"}
-          %a{:href => "#"}
-            %img#navitem{:src => "/images/nav-sponsor.png", :alt => "sponsor"}
-          %a{:href => "#"}
-            %img#navitem{:src => "/images/nav-talk.png", :alt => "talk to us"}
+        #logo
+          =link_to CONFIG['name'], root_url
+          #info
+            - if current_user
+              %span.welcome
+                = link_to "Hello there, #{current_user.first_name}!", current_user, :style => "height: 25px; display: block"
+                %br
 
-  #content
-    - if yield
-      ~ yield
-
-      #actioncontent
+              == #{link_to "Logout", logout_path} #{ link_to "Edit Profile", edit_user_path(:current) }
+            - else
+              == #{ link_to "Signup", signup_path } #{ link_to "Login", login_path }
+            == #{link_to "Artists", users_path}
+            == #{link_to "Bands", bands_path}
+            == #{link_to "Albums", albums_path}
+            == #{link_to "Venues", venues_path}
+            == #{link_to "Events", events_path}
+      #nav
         .wrapper
-          %img{:src => "/images/idared-ad.png", :id => "mainsponsor"}
-          %img{:src => "/images/bands-callout.png", :id => "bandscallout"}
+          .menu
+            %a{:href => "#"}
+              %img#navitem{:src => "/images/nav-story.png", :alt => "story"}
+            %a{:href => "#"}
+              %img#navitem{:src => "/images/nav-what.png", :alt => "what's endcap"}
+            %a{:href => "#"}
+              %img#navitem{:src => "/images/nav-bands.png", :alt => "bands&artists"}
+            %a{:href => "#"}
+              %img#navitem{:src => "/images/nav-story.png", :alt => "story"}
+            %a{:href => "#"}
+              %img#navitem{:src => "/images/nav-sponsor.png", :alt => "sponsor"}
+            %a{:href => "#"}
+              %img#navitem{:src => "/images/nav-talk.png", :alt => "talk to us"}
+
+    #content
+      - if yield
+        ~ yield
+
+        #actioncontent
+          .wrapper
+            %img{:src => "/images/idared-ad.png", :id => "mainsponsor"}
+            %img{:src => "/images/bands-callout.png", :id => "bandscallout"}
 
               
-  #footer
-    .wrapper
-      %div{:id => "followbox"}
-        %img{:src => "/images/endcap-follow.png"}
-        %p
-          Twitter:
-          %a{:href => "http://twitter.com/swendcap", :target => "_blank"}@swendcap
-        %p
-          Facebook:
-          %a{:href => "http://www.facebook.com/pages/Tulsa-OK/EndCap/117352558328843", :target => "_blank"}facebook.com/endcap
+    #footer
+      .wrapper
+        %div{:id => "followbox"}
+          %img{:src => "/images/endcap-follow.png"}
+          %p
+            Twitter:
+            %a{:href => "http://twitter.com/swendcap", :target => "_blank"}@swendcap
+          %p
+            Facebook:
+            %a{:href => "http://www.facebook.com/pages/Tulsa-OK/EndCap/117352558328843", :target => "_blank"}facebook.com/endcap
     
-      %div{:id => "propsbox"}
-        %img{:src => "/images/endcap-madprops.png"}
-        %p
-          The Totally Badass Endcap Team is:
-          %p{:id => "teamlist"}
-            TJ Clark <br />
-            Adam Brown <br />
-            Terry Gamel <br />
-            John Jackson <br />
-            Carlos Moreno <br />
-            Jon Evans <br />
-            Daniel Hampton <br />
+        %div{:id => "propsbox"}
+          %img{:src => "/images/endcap-madprops.png"}
+          %p
+            The Totally Badass Endcap Team is:
+            %p{:id => "teamlist"}
+              TJ Clark <br />
+              Adam Brown <br />
+              Terry Gamel <br />
+              John Jackson <br />
+              Carlos Moreno <br />
+              Jon Evans <br />
+              Daniel Hampton <br />
       
               
-      %div{:id => "bigups"}
-        %img{:src => "/images/endcap-bigups.png"}
+        %div{:id => "bigups"}
+          %img{:src => "/images/endcap-bigups.png"}
       
-        %p
-          StartupWeekend Tulsa
-          Kauffman Foundation &amp; the Global Startup Battle
-        %p
-          Scott Phillips, Isocentric Networks &amp; all the local StartupWeekend Tulsa sponsors
-        %p
-          All the awesome developer teams &amp; other peeps who participated in this event with us in Tulsa, and all over the world.
+          %p
+            StartupWeekend Tulsa
+            Kauffman Foundation &amp; the Global Startup Battle
+          %p
+            Scott Phillips, Isocentric Networks &amp; all the local StartupWeekend Tulsa sponsors
+          %p
+            All the awesome developer teams &amp; other peeps who participated in this event with us in Tulsa, and all over the world.
+    <script type='text/javascript'> var mp_protocol = (('https:' == document.location.protocol) ? 'https://' : 'http://'); document.write(unescape('%3Cscript src="' + mp_protocol + 'api.mixpanel.com/site_media/js/api/mixpanel.js" type="text/javascript"%3E%3C/script%3E')); </script> <script type='text/javascript'> try {  var mpmetrics = new MixpanelLib('9dfd1580dbb139f7fbb845fddc489afd'); } catch(err) { null_fn = function () {}; var mpmetrics = {  track: null_fn,  track_funnel: null_fn,  register: null_fn,  register_once: null_fn, register_funnel: null_fn }; } </script>
+    %script{:type=>"text/javascript"}
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-19855596-1']);
+      _gaq.push(['_trackPageview']);
 
-
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
