@@ -43,3 +43,5 @@
             %p{:class => "artist"}
               - if song.album and song.album.band
                 = link_to song.album.band.name, song.album.band
+%script{:type => "text/javascript"}
+  mpq.push(["track", "Load home page"]);

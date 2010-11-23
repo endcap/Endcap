@@ -11,7 +11,14 @@
     /[if lt IE 9]
       %script{:type => "text/javascript", :src => "http://stan-js.googlecode.com/hg/version/0.1/stan.min.js"}
         == IE7_PNG_SUFFIX = '.png';
-
+    %script{:type => "text/javascript"}
+      var mpq = [];
+      mpq.push(["init", "9dfd1580dbb139f7fbb845fddc489afd"]);
+      (function() {
+      var mp = document.createElement("script"); mp.type = "text/javascript"; mp.async = true;
+      mp.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + "//api.mixpanel.com/site_media/js/api/mixpanel.js";
+      var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(mp, s);
+      })();
   %body
     #header
       .wrapper
@@ -92,7 +99,6 @@
             Scott Phillips, Isocentric Networks &amp; all the local StartupWeekend Tulsa sponsors
           %p
             All the awesome developer teams &amp; other peeps who participated in this event with us in Tulsa, and all over the world.
-    <script type='text/javascript'> var mp_protocol = (('https:' == document.location.protocol) ? 'https://' : 'http://'); document.write(unescape('%3Cscript src="' + mp_protocol + 'api.mixpanel.com/site_media/js/api/mixpanel.js" type="text/javascript"%3E%3C/script%3E')); </script> <script type='text/javascript'> try {  var mpmetrics = new MixpanelLib('9dfd1580dbb139f7fbb845fddc489afd'); } catch(err) { null_fn = function () {}; var mpmetrics = {  track: null_fn,  track_funnel: null_fn,  register: null_fn,  register_once: null_fn, register_funnel: null_fn }; } </script>
     %script{:type=>"text/javascript"}
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-19855596-1']);
