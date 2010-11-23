@@ -4,3 +4,5 @@
     %ul
     - model.errors.full_messages.each do |msg|
       %li= msg
+      %script{:type => "text/javascript"}
+        mpq.push(["track", "Show error", {"error": "#{msg}"}]);

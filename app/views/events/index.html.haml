@@ -29,3 +29,7 @@
   %br
     - if current_user
       = link_to 'New Event', new_event_path
+
+
+%script{:type => "text/javascript"}
+  mpq.push(["track", "List all events"]);
