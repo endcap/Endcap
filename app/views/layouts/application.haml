@@ -19,6 +19,7 @@
       mp.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + "//api.mixpanel.com/site_media/js/api/mixpanel.js";
       var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(mp, s);
       })();
+    <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie&subset=latin' rel='stylesheet' type='text/css'>
   %body
     #header
       .wrapper
@@ -33,26 +34,20 @@
               == #{link_to "Logout", logout_path} #{ link_to "Edit Profile", edit_user_path(:current) }
             - else
               == #{ link_to "Signup", signup_path } #{ link_to "Login", login_path }
-            == #{link_to "Artists", users_path}
-            == #{link_to "Bands", bands_path}
-            == #{link_to "Albums", albums_path}
-            == #{link_to "Venues", venues_path}
-            == #{link_to "Events", events_path}
+
       #nav
         .wrapper
           .menu
-            %a{:href => "#"}
-              %img#navitem{:src => "/images/nav-story.png", :alt => "story"}
-            %a{:href => "#"}
-              %img#navitem{:src => "/images/nav-what.png", :alt => "what's endcap"}
-            %a{:href => "#"}
-              %img#navitem{:src => "/images/nav-bands.png", :alt => "bands&artists"}
-            %a{:href => "#"}
-              %img#navitem{:src => "/images/nav-story.png", :alt => "story"}
-            %a{:href => "#"}
-              %img#navitem{:src => "/images/nav-sponsor.png", :alt => "sponsor"}
-            %a{:href => "#"}
-              %img#navitem{:src => "/images/nav-talk.png", :alt => "talk to us"}
+            %a#navitem{:href => "#"}
+              what's endcap?
+            = link_to "bands", bands_path, {:id => "navitem"}
+            = link_to "artists", users_path, {:id => "navitem"}
+            = link_to "venues", venues_path, {:id => "navitem"}
+            = link_to "albums", albums_path, {:id => "navitem"}
+            = link_to "songs", songs_path, {:id => "navitem"}
+            = link_to "events", events_path, {:id => "navitem"}
+            %a#navitem{:href => "#"}
+              talk to us
 
     #content
       - if yield
