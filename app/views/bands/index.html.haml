@@ -19,8 +19,9 @@
           %td= band.start_year
           %td= band.end_year
           %td
-            =link_to band.city, bands_by_state_and_city_path(band.state, band.city)
-            , 
+            - if !band.city.empty?
+              =link_to band.city, bands_by_state_and_city_path(band.state, band.city)
+              , 
             =link_to band.state, bands_by_state_path(band.state)
           %td
             -if !band.genre.empty?
