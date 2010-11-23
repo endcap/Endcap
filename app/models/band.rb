@@ -5,6 +5,8 @@ class Band < ActiveRecord::Base
   has_many :events, :through => :band_events
   has_many :albums
   
+  validates :name, :presence => true
+  
   def location
     [self.city, self.state].join(", ")
   end
