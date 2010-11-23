@@ -5,6 +5,14 @@
 body {
   font: 13px / 1.5 "Myriad Pro", Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;}
 
+a#navitem {
+  font: 1.6em 'Reenie Beanie', arial, serif;
+  color: #dfc280;
+  text-decoration: none;
+}
+a#navitem:hover {
+  color: #ffc289; }
+
 a:focus {
   outline: 1px dotted invert; }
 
