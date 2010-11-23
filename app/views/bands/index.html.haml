@@ -36,3 +36,6 @@
   %br
     - if current_user
       = link_to 'New Band', new_band_path
+
+%script{:type => "text/javascript"}
+  mpq.push(["track", "Load show all bands page"]);
