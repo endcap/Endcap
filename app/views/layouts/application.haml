@@ -35,19 +35,33 @@
             - else
               == #{ link_to "Signup", signup_path } #{ link_to "Login", login_path }
 
-      #nav
+      #main-nav
         .wrapper
-          .menu
-            %a#navitem{:href => "#"}
-              what's endcap?
-            = link_to "bands", bands_path, {:id => "navitem"}
-            = link_to "artists", users_path, {:id => "navitem"}
-            = link_to "venues", venues_path, {:id => "navitem"}
-            = link_to "albums", albums_path, {:id => "navitem"}
-            = link_to "songs", songs_path, {:id => "navitem"}
-            = link_to "events", events_path, {:id => "navitem"}
-            %a#navitem{:href => "#"}
-              talk to us
+          %ul#menu-main.menu
+            %li.menu-item
+              %a{:href => "#"}
+                what's endcap?
+            %li.menu-item
+              %a{:href => "#"}
+                = link_to "bands", bands_path
+            %li.menu-item
+              %a{:href => "#"}
+                = link_to "artists", users_path
+            %li.menu-item
+              %a{:href => "#"}
+                = link_to "venues", venues_path
+            %li.menu-item
+              %a{:href => "#"}
+                = link_to "albums", albums_path
+            %li.menu-item
+              %a{:href => "#"}
+                = link_to "songs", songs_path
+            %li.menu-item
+              %a{:href => "#"}
+                = link_to "events", events_path
+            %li.menu-item
+              %a{:href => "#"}
+                talk to us
 
     #content
       - if yield
