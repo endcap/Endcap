@@ -1,118 +1,138 @@
+
 = form_for @user, :html => { :multipart => true} do |f|
   = errors(@user)
   
-  %p
-    = f.label :first_name
+  #col1
+    %p
+      = f.label :first_name
+      %br
+      = f.text_field :first_name, :id => "first_name"
+
+    %p
+      = f.label :email
+      %br
+      = f.text_field :email, :id => "email"
+
+    %p
+      = f.label :password
+      %br
+      = f.password_field :password, :id => "password"
+  
+    %p
+      = f.label :city
+      %br
+      = f.text_field :city, :id => "city"
+ 
+    %p
+      = f.label :image
+      %br
+      = f.file_field :image
+
+    %p
+      = f.label :instrument
+      %br
+      = f.text_field :instrument, :id => "instrument"
     %br
-    = f.text_field :first_name, :id => "first_name"
+    %br
+    %br
+    %br
+    %br
+    %br
+    %br
+    %p
+      = f.label :description
+      %br
+      = f.text_area :description, :id => "description"
+
+    %br
+    %br
+    %p
+      = f.submit 'Submit'
+  #col2
+    %p
+      = f.label :last_name
+      %br
+      = f.text_field :last_name, :id => "last_name"
+
+    %p
+      &nbsp;
+      %br
+      &nbsp;
     
-  %p
-    = f.label :last_name
-    %br
-    = f.text_field :last_name, :id => "last_name"
-  
-  %p
-    = f.label :email
-    %br
-    = f.text_field :email, :id => "email"
-  
-  %p
-    = f.label :password
-    %br
-    = f.password_field :password, :id => "password"
-  
-  %p
-    = f.label :password_confirmation
-    %br
-    = f.password_field :password_confirmation, :id => "password_confirmation"
-  
-  %p
-    = f.label :city
-    %br
-    = f.text_field :city, :id => "city"
-	
-  %p
-    = f.label :state
-    %br
-    = f.select :state, ['AK',
-    			'AL',
-    			'AR',
-    			'AZ',
-    			'CA',
-    			'CO',
-    			'CT',
-    			'DC',
-    			'DE',
-    			'FL',
-    			'GA',
-    			'HI',
-    			'IA',
-    			'ID',
-    			'IL',
-    			'IN',
-    			'KS',
-    			'KY',
-    			'LA',
-    			'MA',
-    			'MD',
-    			'ME',
-    			'MI',
-    			'MN',
-    			'MO',
-    			'MS',
-    			'MT',
-    			'NC',
-    			'ND',
-    			'NE',
-    			'NH',
-    			'NJ',
-    			'NM',
-    			'NV',
-    			'NY',
-    			'OH',
-    			'OK',
-    			'OR',
-    			'PA',
-    			'RI',
-    			'SC',
-    			'SD',
-    			'TN',
-    			'TX',
-    			'UT',
-    			'VA',
-    			'VT',
-    			'WA',
-    			'WI',
-    			'WV',
-    			'WY'], 
-    			:include_blank => true
-		
-  %p
-    = f.label :image
-    %br
-    = f.file_field :image
+    %p
+      = f.label :password_confirmation
+      %br
+      = f.password_field :password_confirmation, :id => "password_confirmation"
 
-  %p
-    = f.label :instrument
-    %br
-    = f.text_field :instrument, :id => "instrument"
+    %p
+      = f.label :state
+      %br
+      = f.select :state, ['AK',
+      			'AL',
+      			'AR',
+      			'AZ',
+      			'CA',
+      			'CO',
+      			'CT',
+      			'DC',
+      			'DE',
+      			'FL',
+      			'GA',
+      			'HI',
+      			'IA',
+      			'ID',
+      			'IL',
+      			'IN',
+      			'KS',
+      			'KY',
+      			'LA',
+      			'MA',
+      			'MD',
+      			'ME',
+      			'MI',
+      			'MN',
+      			'MO',
+      			'MS',
+      			'MT',
+      			'NC',
+      			'ND',
+      			'NE',
+      			'NH',
+      			'NJ',
+      			'NM',
+      			'NV',
+      			'NY',
+      			'OH',
+      			'OK',
+      			'OR',
+      			'PA',
+      			'RI',
+      			'SC',
+      			'SD',
+      			'TN',
+      			'TX',
+      			'UT',
+      			'VA',
+      			'VT',
+      			'WA',
+      			'WI',
+      			'WV',
+      			'WY'], 
+      			:include_blank => true
 
-  %p
-    = f.label :description
     %br
-    = f.text_area :description, :id => "description"
-  %p
-    .field
+    %br
+    %br
+    %p
       = f.label :twitter
       @
       = f.text_field :twitter
-  %p
-    .field
+    %p
       = f.label :facebook
       = f.text_field :facebook
-  %p
-    .field
+    %p
       = f.label :myspace
       = f.text_field :myspace
-  %p
-    = f.submit 'Submit'
+
+
+ 

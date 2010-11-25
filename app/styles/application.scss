@@ -453,6 +453,24 @@ p, dl, pre, table, address, fieldset, ul, ol, h1, h2, h3, h4, h5, h6, hr {
   }
 }
 
+#signup {
+  margin-top: 45px;
+  height: 1000px;
+  .wrapper {
+    margin: 0px auto;
+    width: 960px;
+    #col1 {
+      @include columns(3);
+    }
+    #col2 {
+      @include columns(3);
+    }
+    #col3 {
+      @include columns(6);
+    }
+  }
+}
+
 #footer {
   background: #c77d08;
   color: #fbf3bc;

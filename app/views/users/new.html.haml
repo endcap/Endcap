@@ -1,7 +1,13 @@
-%h1== Signup
-- @title = "Signup"
+#signup
+  .wrapper
+  
+    %h1== Signup
+    - @title = "Signup"
 
-= render "form"
+    = render "form"
+    
+    #col3
+      Welcome to Endcap! Please fill out the form to the left to create your account.
 
-%script{:type => "text/javascript"}
-  mpq.push(["track", "Load signup page"]);
+    %script{:type => "text/javascript"}
+      mpq.push(["track", "Load signup page"]);
