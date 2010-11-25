@@ -471,6 +471,29 @@ p, dl, pre, table, address, fieldset, ul, ol, h1, h2, h3, h4, h5, h6, hr {
   }
 }
 
+#login {
+  margin-top: 45px;
+  .wrapper {
+    margin: 0px auto;
+    width: 960px;
+    #signin {
+      margin: 0px auto;
+      width: 400px;
+      background-color: #c77d08;
+      padding: 15px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      h1 {
+        text-align: center;
+      }
+      form {
+        margin: 0px auto;
+        width: 50%;
+      }
+    }
+  }
+}
+
 #footer {
   background: #c77d08;
   color: #fbf3bc;
