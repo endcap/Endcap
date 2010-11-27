@@ -5,8 +5,9 @@
     - title = "#{@title} — " if @title
     %title= "#{title}#{CONFIG['name']}"
     = csrf_meta_tag
-    = stylesheet_link_tag 'application', :cache => true
-    = javascript_include_tag "jquery-1.4.2.min", "rails", "application", :cache => true
+    = stylesheet_link_tag 'application', :cache => false
+    = javascript_include_tag "jquery-1.4.2.min", "rails", "application", "formalize", :cache => true
+
     %script{:type => "text/javascript", :src => "http://twitterjs.googlecode.com/svn/trunk/src/twitter.min.js"}
     /[if lt IE 9]
       %script{:type => "text/javascript", :src => "http://stan-js.googlecode.com/hg/version/0.1/stan.min.js"}
