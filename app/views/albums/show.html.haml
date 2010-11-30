@@ -1,7 +1,6 @@
 %p#notice= notice
 
-- if @album.image
-  %img{ :src => @album.image, :align => "right" }
+%img{ :src => @album.image ? @album.image : "/images/defaults/default_album_image.jpg", :align => "right" }
 
 %h3
   = @album.name
