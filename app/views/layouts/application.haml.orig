@@ -5,9 +5,14 @@
     - title = "#{@title} — " if @title
     %title= "#{title}#{CONFIG['name']}"
     = csrf_meta_tag
+<<<<<<< HEAD
+    = stylesheet_link_tag 'application', :cache => true
+    = javascript_include_tag "jquery-1.4.2.min", "rails", "application", :cache => true
+=======
     = stylesheet_link_tag 'application', :cache => false
     = javascript_include_tag "jquery-1.4.2.min", "rails", "application", "formalize", :cache => true
 
+>>>>>>> 6c34fb8f47036dd4f2cbd87364963f63c414e789
     %script{:type => "text/javascript", :src => "http://twitterjs.googlecode.com/svn/trunk/src/twitter.min.js"}
     /[if lt IE 9]
       %script{:type => "text/javascript", :src => "http://stan-js.googlecode.com/hg/version/0.1/stan.min.js"}
@@ -36,6 +41,21 @@
             - else
               == #{ link_to "Signup", signup_path } #{ link_to "Login", login_path }
 
+<<<<<<< HEAD
+      #nav
+        .wrapper
+          .menu
+            %a#navitem{:href => "#"}
+              what's endcap?
+            = link_to "bands", bands_path, {:id => "navitem"}
+            = link_to "artists", users_path, {:id => "navitem"}
+            = link_to "venues", venues_path, {:id => "navitem"}
+            = link_to "albums", albums_path, {:id => "navitem"}
+            = link_to "songs", songs_path, {:id => "navitem"}
+            = link_to "events", events_path, {:id => "navitem"}
+            %a#navitem{:href => "#"}
+              talk to us
+=======
       #main-nav
         .wrapper
           %ul#menu-main.menu
@@ -63,6 +83,7 @@
             %li.menu-item
               %a{:href => "#"}
                 talk to us
+>>>>>>> 6c34fb8f47036dd4f2cbd87364963f63c414e789
 
     #content
       - if yield

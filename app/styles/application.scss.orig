@@ -1,11 +1,31 @@
+<<<<<<< HEAD
+@import "reset.sass";
+@import "text.sass";
+@import "utilities.sass";
+=======
 @import "reset.scss";
 @import "text.scss";
 @import "utilities.scss";
 @import "formalize.scss";
+>>>>>>> 6c34fb8f47036dd4f2cbd87364963f63c414e789
 
 body {
   font: 13px / 1.5 "Myriad Pro", Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;}
 
+<<<<<<< HEAD
+a#navitem {
+  font: 1.6em 'Reenie Beanie', arial, serif;
+  color: #dfc280;
+  text-decoration: none;
+}
+a#navitem:hover {
+  color: #ffc289; }
+
+a:focus {
+  outline: 1px dotted invert; }
+
+=======
+>>>>>>> 6c34fb8f47036dd4f2cbd87364963f63c414e789
 hr {
   border: 0 #cccccc solid;
   border-top-width: 1px;
@@ -114,6 +134,18 @@ p, dl, pre, table, address, fieldset, ul, ol, h1, h2, h3, h4, h5, h6, hr {
       }
     }
   }
+<<<<<<< HEAD
+  #nav {
+    margin: 0;
+    height: 25px;
+    .wrapper {
+      background: #624312;
+      .menu {
+        width: 960px;
+        margin: 0 auto;
+        #navitem {
+          margin-right: 15px;
+=======
   #main-nav {
     margin: 0;
     .wrapper {
@@ -140,6 +172,7 @@ p, dl, pre, table, address, fieldset, ul, ol, h1, h2, h3, h4, h5, h6, hr {
           a:focus {
             outline: 1px dotted invert;
           }
+>>>>>>> 6c34fb8f47036dd4f2cbd87364963f63c414e789
         }
       }
     }
@@ -454,6 +487,8 @@ p, dl, pre, table, address, fieldset, ul, ol, h1, h2, h3, h4, h5, h6, hr {
   }
 }
 
+<<<<<<< HEAD
+=======
 #signup {
   margin-top: 45px;
   height: 1000px;
@@ -495,6 +530,7 @@ p, dl, pre, table, address, fieldset, ul, ol, h1, h2, h3, h4, h5, h6, hr {
   }
 }
 
+>>>>>>> 6c34fb8f47036dd4f2cbd87364963f63c414e789
 #footer {
   background: #c77d08;
   color: #fbf3bc;

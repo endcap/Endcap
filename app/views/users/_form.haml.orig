@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 
+>>>>>>> 6c34fb8f47036dd4f2cbd87364963f63c414e789
 = form_for @user, :html => { :multipart => true} do |f|
   = errors(@user)
   
@@ -38,11 +41,71 @@
     %br
     %br
     %br
+<<<<<<< HEAD
+    = f.select :state, ['AK',
+    			'AL',
+    			'AR',
+    			'AZ',
+    			'CA',
+    			'CO',
+    			'CT',
+    			'DC',
+    			'DE',
+    			'FL',
+    			'GA',
+    			'HI',
+    			'IA',
+    			'ID',
+    			'IL',
+    			'IN',
+    			'KS',
+    			'KY',
+    			'LA',
+    			'MA',
+    			'MD',
+    			'ME',
+    			'MI',
+    			'MN',
+    			'MO',
+    			'MS',
+    			'MT',
+    			'NC',
+    			'ND',
+    			'NE',
+    			'NH',
+    			'NJ',
+    			'NM',
+    			'NV',
+    			'NY',
+    			'OH',
+    			'OK',
+    			'OR',
+    			'PA',
+    			'RI',
+    			'SC',
+    			'SD',
+    			'TN',
+    			'TX',
+    			'UT',
+    			'VA',
+    			'VT',
+    			'WA',
+    			'WI',
+    			'WV',
+    			'WY'], 
+    			:include_blank => true
+		
+  %p
+    = f.label :image
+    %br
+    = f.file_field :image
+=======
     %br
     %p
       = f.label :description
       %br
       = f.text_area :description, :id => "description"
+>>>>>>> 6c34fb8f47036dd4f2cbd87364963f63c414e789
 
     %br
     %br
@@ -122,6 +185,24 @@
 
     %br
     %br
+<<<<<<< HEAD
+    = f.text_area :description, :id => "description"
+  %p
+    .field
+      = f.label :twitter
+      @
+      = f.text_field :twitter
+  %p
+    .field
+      = f.label :facebook
+      = f.text_field :facebook
+  %p
+    .field
+      = f.label :myspace
+      = f.text_field :myspace
+  %p
+    = f.submit 'Submit'
+=======
     %br
     %p
       = f.label :twitter
@@ -136,3 +217,4 @@
 
 
  
+>>>>>>> 6c34fb8f47036dd4f2cbd87364963f63c414e789

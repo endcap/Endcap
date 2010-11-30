@@ -21,8 +21,16 @@
           = f.label :remember_me, "Remember me?"
           = f.check_box :remember_me, {}, "true", "false"
   
+<<<<<<< HEAD
+  %p
+    = f.submit 'Login'
+    
+%script{:type => "text/javascript"}
+  mpq.push(["track", "Load login page"]);
+=======
         %p
           = f.submit 'Login'
     
       %script{:type => "text/javascript"}
         mpq.push(["track", "Load login page"]);
+>>>>>>> 6c34fb8f47036dd4f2cbd87364963f63c414e789

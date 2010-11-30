@@ -4,6 +4,12 @@
     %h1== Signup
     - @title = "Signup"
 
+<<<<<<< HEAD
+= render "form"
+
+%script{:type => "text/javascript"}
+  mpq.push(["track", "Load signup page"]);
+=======
     = render "form"
     
     #col3
@@ -11,3 +17,4 @@
 
     %script{:type => "text/javascript"}
       mpq.push(["track", "Load signup page"]);
+>>>>>>> 6c34fb8f47036dd4f2cbd87364963f63c414e789
