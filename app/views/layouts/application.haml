@@ -29,10 +29,13 @@
           #info
             - if current_user
               %span.welcome
-                = link_to "Hello there, #{current_user.first_name}!", show_artist_path(current_user), :style => "height: 25px; display: block"
-                %br
-
-              == #{link_to "Logout", logout_path} #{ link_to "Edit Profile", edit_artist_path(:current) }
+                %a{:href => show_artist_path(current_user), :style => "height: 90px" }
+                  %img{:src => current_user.image ? current_user.image : "/images/default_artist_profile_image.jpg", :width => 65, :height => 90}
+                = link_to "#{current_user.full_name}", show_artist_path(current_user), :style => "height: auto"
+                %br{:clear => "right"}
+                = link_to "Edit", edit_artist_path(current_user), :style => "height: auto; width: auto;"
+                %br{:clear => "right"}
+                = link_to "Logout", logout_path, :style => "height: auto; float: right"
             - else
               == #{ link_to "Signup", signup_path } #{ link_to "Login", login_path }
 
