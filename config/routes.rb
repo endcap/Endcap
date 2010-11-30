@@ -1,4 +1,6 @@
 Endcap::Application.routes.draw do
+  
+
   resources :songs
 
   resources :albums
@@ -10,6 +12,8 @@ Endcap::Application.routes.draw do
   match "artists" => "users#index"
   match "artists/:id" => "users#show", :as => "show_artist"
   match "artists/:id/edit" => "users#edit", :as => "edit_artist"
+  match "what_is_endcap" => "what_is_endcap#index", :as => "what_is_endcap"
+  match "talk_to_us" => "talk_to_us#index", :as => "talk_to_us"
   
   resources :bands do
     resources :albums

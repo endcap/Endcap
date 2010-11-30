@@ -43,8 +43,7 @@
         .wrapper
           %ul#menu-main.menu
             %li.menu-item
-              %a{:href => "#"}
-                what's endcap?
+              = link_to "what's endcap?", what_is_endcap_path
             %li.menu-item
               = link_to "bands", bands_path
             %li.menu-item
@@ -58,8 +57,7 @@
             %li.menu-item
               = link_to "events", events_path
             %li.menu-item
-              %a{:href => "#"}
-                talk to us
+              = link_to "talk to us", talk_to_us_path
 
     #content
       - if yield
