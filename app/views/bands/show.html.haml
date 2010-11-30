@@ -50,7 +50,7 @@
       - @band.albums.each do |album|
         %div#album
           %a{ :href => "/albums/#{album.id}" }
-            %img{ :src => album.image, :height => "115px", :width => "115px" }
+            %img{ :src => album.image ? album.image : "/images/defaults/default_album_image.jpg", :height => "115", :width => "115" }
             %p
               =album.name
                     

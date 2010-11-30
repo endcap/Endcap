@@ -19,7 +19,7 @@
             %td
           %td= album.year
           %td
-            %img{ :src => album.image, :align => "right", :height => "45px", :width => "45px"}
+            %img{ :src => album.image ? album.image : "/images/defaults/default_album_image.jpg", :align => "right", :height => "45", :width => "45"}
           %td.links
             =link_to 'Edit', edit_album_path(album)
             =link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete
