@@ -7,6 +7,9 @@ Endcap::Application.routes.draw do
   match "local_bands/:state" => "bands#index", :as => "bands_by_state"
   match "local_bands" => "bands#index"
   match "bands/genre/:genre" => "bands#index", :as => "bands_by_genre"
+  match "artists" => "users#index"
+  match "artists/:id" => "users#show", :as => "show_artist"
+  match "artists/:id/edit" => "users#edit", :as => "edit_artist"
   
   resources :bands do
     resources :albums
