@@ -1,0 +1,100 @@
+
+= form_for @user, :html => { :multipart => true} do |f|
+  = errors(@user)
+  
+  #col1
+    %p
+      = f.label :first_name
+      %br
+      = f.text_field :first_name, :id => "first_name", :tabindex => 1
+
+    %p
+      = f.label :email
+      %br
+      = f.text_field :email, :id => "email", :tabindex => 3
+
+    %p
+      = f.label :password
+      %br
+      = f.password_field :password, :id => "password", :tabindex => 4
+  
+    %p
+      = f.label :city
+      %br
+      = f.text_field :city, :id => "city", :tabindex => 6
+ 
+  #col2
+    %p
+      = f.label :last_name
+      %br
+      = f.text_field :last_name, :id => "last_name", :tabindex => 2
+
+    %p
+      &nbsp;
+      %br
+      &nbsp;
+    
+    %p
+      = f.label :password_confirmation
+      %br
+      = f.password_field :password_confirmation, :id => "password_confirmation", :tabindex => 5
+
+    %p
+      = f.label :state
+      %br
+      = f.select :state, ['AK',
+      			'AL',
+      			'AR',
+      			'AZ',
+      			'CA',
+      			'CO',
+      			'CT',
+      			'DC',
+      			'DE',
+      			'FL',
+      			'GA',
+      			'HI',
+      			'IA',
+      			'ID',
+      			'IL',
+      			'IN',
+      			'KS',
+      			'KY',
+      			'LA',
+      			'MA',
+      			'MD',
+      			'ME',
+      			'MI',
+      			'MN',
+      			'MO',
+      			'MS',
+      			'MT',
+      			'NC',
+      			'ND',
+      			'NE',
+      			'NH',
+      			'NJ',
+      			'NM',
+      			'NV',
+      			'NY',
+      			'OH',
+      			'OK',
+      			'OR',
+      			'PA',
+      			'RI',
+      			'SC',
+      			'SD',
+      			'TN',
+      			'TX',
+      			'UT',
+      			'VA',
+      			'VT',
+      			'WA',
+      			'WI',
+      			'WV',
+      			'WY'], 
+      			:include_blank => true, :tabindex => 7
+    %br
+    %br
+    %p
+      = f.submit 'Submit', :tabindex => 8

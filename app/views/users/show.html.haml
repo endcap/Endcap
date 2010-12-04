@@ -13,6 +13,11 @@
         - if @user
           %h3= @user.full_name
           %p#subtitle= @user.instrument
+          
+          - if @user.superuser?
+            %p Superuser
+          - elsif @user.editor?
+            %p Editor
     
           - if @user && @user.band_memberships
             %ul

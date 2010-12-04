@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101122041718) do
+ActiveRecord::Schema.define(:version => 20101204230426) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -116,6 +116,8 @@ ActiveRecord::Schema.define(:version => 20101122041718) do
     t.string   "twitter"
     t.string   "facebook"
     t.string   "myspace"
+    t.boolean  "editor",             :default => false
+    t.boolean  "superuser",          :default => false
   end
 
   create_table "venues", :force => true do |t|
