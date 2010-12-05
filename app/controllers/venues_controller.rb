@@ -1,5 +1,7 @@
 class VenuesController < ApplicationController
   
+  before_filter :ensure_current_user_editor_or_superuser, :except => [:index, :show]
+  
   # GET /venues
   # GET /venues.xml
   def index
@@ -92,13 +94,4 @@ class VenuesController < ApplicationController
   end
   
   private
-  
-  def ensure_logged_in
-    if current_user
-      return true
-    else
-      redirect_to root_url
-      return false
-    end
-  end
 end

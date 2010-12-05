@@ -5,13 +5,10 @@ class User < ActiveRecord::Base
   has_many :venues
   
   def self.save(upload)
-    logger.info "**** upload['image'] = #{upload['image']}"
     name =  upload['image'].original_filename
-    logger.info "**** name = #{name}"
     directory = "public/images/uploads"
     # create the file path
     path = File.join(directory, name)
-    logger.info "**** path = #{path}"
     # write the file
     File.open(path, "wb") { |f| f.write(upload['image'].read) }
     
@@ -57,6 +54,10 @@ class User < ActiveRecord::Base
     end
     
     albumArray[0..number]
+  end
+  
+  def staff?
+    return self.editor? || self.superuser?
   end
   
 end

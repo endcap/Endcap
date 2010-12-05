@@ -21,15 +21,16 @@
           %td= song.number
           %td
             = link_to 'Show', song
-            = link_to 'Edit', edit_song_path(song)
-            = link_to 'Destroy', song, :confirm => 'Are you sure?', :method => :delete
+            - if current_user && current_user.staff?
+              = link_to 'Edit', edit_song_path(song)
+              = link_to 'Destroy', song, :confirm => 'Are you sure?', :method => :delete
 
   - if @songs.empty?
     %p
       No songs found.
   %br
-
-  = link_to 'New Song', new_song_path
+  - if current_user && current_user.staff?
+    = link_to 'New Song', new_song_path
 
 %script{:type => "text/javascript"}
   mpq.push(["track", "Load show all songs page"]);

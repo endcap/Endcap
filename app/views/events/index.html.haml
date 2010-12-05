@@ -21,13 +21,14 @@
             %img{ :src => event.image, :align => "right", :height => "45px", :width => "45px" }
           %td
             = link_to 'Show', event
-            = link_to 'Edit', edit_event_path(event)
-            = link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete
+            - if current_user && current_user.staff?
+              = link_to 'Edit', edit_event_path(event)
+              = link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete
   - if @events.empty?
     %p
       No upcoming events found.
   %br
-    - if current_user
+    - if current_user && current_user.staff?
       = link_to 'New Event', new_event_path
 
 

@@ -1,7 +1,9 @@
 class MembershipController < ApplicationController
+  
+  before_filter :ensure_current_user_editor_or_superuser
+    
   def delete
     @band = Band.find_by_id(params[:band])
-    puts "found band @band"
     @membership = @band.band_memberships.find_by_id params[:membership]
     
     @band.band_memberships.delete(@membership)

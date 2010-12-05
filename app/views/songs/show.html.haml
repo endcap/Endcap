@@ -18,8 +18,9 @@
   %b Listen:
   <audio src="/mp3/#{@song.mp3}" controls="controls">You can play this is Safari or Chrome.</audio>
 
-= link_to 'Edit', edit_song_path(@song)
-\|
+- if current_user && current_user.staff?
+  = link_to 'Edit', edit_song_path(@song)
+  \|
 = link_to 'Back', songs_path
 
 

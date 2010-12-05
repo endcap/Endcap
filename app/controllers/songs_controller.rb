@@ -1,4 +1,7 @@
 class SongsController < ApplicationController
+
+  before_filter :ensure_current_user_editor_or_superuser, :except => [:index, :show]
+
   # GET /songs
   # GET /songs.xml
   def index

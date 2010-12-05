@@ -21,8 +21,9 @@
           %td
             %img{ :src => album.image ? album.image : "/images/defaults/default_album_image.jpg", :align => "right", :height => "45", :width => "45"}
           %td.links
-            =link_to 'Edit', edit_album_path(album)
-            =link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete
+            - if current_user && current_user.staff?
+              =link_to 'Edit', edit_album_path(album)
+              =link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete
   - if @albums.empty?
     %p
       - if params[:band_id]
@@ -31,7 +32,8 @@
         There were no albums found. This probably indicates a problem.
 %br
 
-= link_to 'New Album', new_album_path
+- if current_user && current_user.staff?
+  = link_to 'New Album', new_album_path
 
 %script{:type => "text/javascript"}
   mpq.push(["track", "Load show all albums page"]);

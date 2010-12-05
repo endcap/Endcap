@@ -15,7 +15,7 @@
 
       - @venues.each do |venue|
         %tr
-          %td= venue.name
+          %td= link_to venue.name, venue
           %td= venue.location
           %td
             =venue.city
@@ -26,15 +26,16 @@
           %td
             %img{ :src => venue.image, :align => "right", :width => "45px", :height => "45px" }
           %td
-            = link_to 'Show', venue
-            = link_to 'Edit', edit_venue_path(venue)
-            = link_to 'Destroy', venue, :confirm => 'Are you sure?', :method => :delete
+            - if current_user && current_user.staff?
+              = link_to 'Show', venue
+              = link_to 'Edit', edit_venue_path(venue)
+              = link_to 'Destroy', venue, :confirm => 'Are you sure?', :method => :delete
 
   - if @venues.empty?
     %p
       No venues found.
   %br
-    - if current_user
+    - if current_user && current_user.staff?
       = link_to 'New Venue', new_venue_path
 
 %script{:type => "text/javascript"}

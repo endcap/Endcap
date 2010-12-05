@@ -1,5 +1,7 @@
 class BandsController < ApplicationController
   
+  before_filter :ensure_current_user_editor_or_superuser, :except => [:index, :show]
+
   # GET /bands
   # GET /bands.xml
   def index
@@ -149,13 +151,5 @@ class BandsController < ApplicationController
   end
   
   private
-  
-  def ensure_logged_in
-    if current_user
-      return true
-    else
-      redirect_to root_url
-      return false
-    end
-  end
+
 end

@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   
+  before_filter :ensure_current_user_editor_or_superuser, :except => [:index, :show]
+  
   # GET /events
   # GET /events.xml
   def index
