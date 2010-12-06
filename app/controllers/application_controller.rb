@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :ensure_logged_in
   helper_method :ensure_current_user_editor_or_superuser
+  helper_method :ensure_current_user_superuser
   
   private
 
@@ -36,4 +37,13 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def ensure_current_user_superuser
+    if current_user && current_user.superuser?
+      return true
+    else
+      flash[:notice] = "You do not have access to do that."
+      redirect_to root_url
+      return false
+    end
+  end
 end

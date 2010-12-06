@@ -12,8 +12,16 @@ Endcap::Application.routes.draw do
   match "artists" => "users#index"
   match "artists/:id" => "users#show", :as => "show_artist"
   match "artists/:id/edit" => "users#edit", :as => "edit_artist"
+
   match "what_is_endcap" => "what_is_endcap#index", :as => "what_is_endcap"
   match "talk_to_us" => "talk_to_us#index", :as => "talk_to_us"
+  
+  # Admin stuff
+  match "admin" => "admin#index"
+  match "admin_demote_superuser/:id" => "admin#demote_superuser", :as => "admin_demote_superuser"
+  match "admin_demote_editor/:id" => "admin#demote_editor", :as => "admin_demote_editor"
+  match "admin_promote_superuser/:id" => "admin#promote_superuser", :as => "admin_promote_superuser"
+  match "admin_promote_editor/:id" => "admin#promote_editor", :as => "admin_promote_editor"
   
   resources :bands do
     resources :albums

@@ -34,6 +34,9 @@
                 = link_to "#{current_user.full_name}", show_artist_path(current_user), :style => "height: auto"
                 %br{:clear => "right"}
                 = link_to "Edit", edit_artist_path(current_user), :style => "height: auto; width: auto;"
+                - if current_user.superuser?
+                  %br{:clear => "right"}
+                  = link_to "Admin", admin_path, :style => "height: auto; float: right"
                 %br{:clear => "right"}
                 = link_to "Logout", logout_path, :style => "height: auto; float: right"
             - else

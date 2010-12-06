@@ -1,0 +1,23 @@
+%br
+%br
+- if flash[:notice]
+  %p= flash[:notice]
+%h1 Editors
+%ul
+  - @editors.each do |editor|
+    %li
+      = link_to "#{editor.full_name} (#{editor.email})", editor
+      [
+      = link_to "demote", admin_demote_editor_path(editor)
+      ]
+      [
+      = link_to "promote", admin_promote_superuser_path(editor)
+      ]
+%h1 Superusers
+%ul
+  - @superusers.each do |superuser|
+    %li
+      =link_to "#{superuser.full_name} (#{superuser.email})", show_artist_path(superuser)
+      [
+      = link_to "demote", admin_demote_superuser_path(superuser.id)
+      ]

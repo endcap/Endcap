@@ -9,11 +9,10 @@
         %th Instruments
         %th Location
         %th 
-        %th
 
       - @users.each do |user|
         %tr
-          %td= user.full_name
+          %td= link_to user.full_name, show_artist_path(user)
           %td= user.instrument
           %td
             =user.city
@@ -21,10 +20,7 @@
             =user.state
           %td
             %img{ :src => user.image, :align => "right", :height => "45px", :width => "45px" }
-          %td
-            = link_to 'Show', show_artist_path(user)
-            - if user == current_user
-              = link_to 'Edit', edit_artist_path(user)
+
   - if @users.empty?
     %p
       No musicians found.

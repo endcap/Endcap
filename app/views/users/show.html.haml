@@ -17,7 +17,25 @@
           - if @user.superuser?
             %p Superuser
           - elsif @user.editor?
-            %p Editor
+            %p
+              Editor
+              - if current_user.superuser?
+            %p
+              Admin: [
+              = link_to "demote", admin_demote_editor_path(@user)
+              ]
+              [
+              = link_to "promote", admin_promote_superuser_path(@user)
+              ]
+          - elsif current_user.superuser?
+            %p 
+              Admin: promote to [
+              = link_to "editor", admin_promote_editor_path(@user)
+              ]
+              [
+              = link_to "superuser", admin_promote_superuser_path(@user)
+              ]
+            
     
           - if @user && @user.band_memberships
             %ul
