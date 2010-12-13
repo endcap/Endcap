@@ -109,10 +109,11 @@
            
 
             (<a href="/deletemembership?band=#{@band.id}&amp;membership=#{member.id}">delete</a>)
-    .field
-      = f.select("band_memberships", User.all.collect { |u| [ u.full_name, u.id ] }, {:include_blank => 'Add New Member'} )
-      <span id="dates" style="display: none">From <input type="text" name="from_date" size="4" /> to <input type="text" name="to_date" size="4" /></span>
-    
+    .field{:id => 0}
+      %input{:type => "text", :id => "band_band_memberships_0", :name => "band[band_memberships[]]"}
+      From <input type="text" name="from_date" size="4" /> to <input type="text" name="to_date" size="4" />
+      -# When user just enters a name without selecting one, this will be blank.
+      %input{:type => "hidden", :id => "band_band_memberships_value_0", :name => "band[band_memberships_value[]]", :value => ""}
   .actions
     = f.submit 'Save'
 

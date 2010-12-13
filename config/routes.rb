@@ -5,17 +5,29 @@ Endcap::Application.routes.draw do
 
   resources :albums
 
+  # Bands
   match "local_bands/:state/:city" => "bands#index", :as => "bands_by_state_and_city"
   match "local_bands/:state" => "bands#index", :as => "bands_by_state"
   match "local_bands" => "bands#index"
   match "bands/genre/:genre" => "bands#index", :as => "bands_by_genre"
+  resources :bands do
+    resources :albums
+  end
+  
+  # Artists/users
+  
   match "artists" => "users#index"
   match "artists/:id" => "users#show", :as => "show_artist"
   match "artists/:id/edit" => "users#edit", :as => "edit_artist"
 
-  match "what_is_endcap" => "what_is_endcap#index", :as => "what_is_endcap"
-  match "talk_to_us" => "talk_to_us#index", :as => "talk_to_us"
-  
+  resources :user_sessions
+  resources :users
+
+  match "login" => "user_sessions#new", :as => "login"
+  match "logout" => "user_sessions#destroy", :as => "logout"
+  match "signup" => "users#new", :as => "signup"
+  match "artist_by_name/:name" => "users#search_by_name", :as => "artist_by_name"
+
   # Admin stuff
   match "admin" => "admin#index"
   match "admin_demote_superuser/:id" => "admin#demote_superuser", :as => "admin_demote_superuser"
@@ -23,21 +35,19 @@ Endcap::Application.routes.draw do
   match "admin_promote_superuser/:id" => "admin#promote_superuser", :as => "admin_promote_superuser"
   match "admin_promote_editor/:id" => "admin#promote_editor", :as => "admin_promote_editor"
   
-  resources :bands do
-    resources :albums
-  end
+
   resources :venues
   resources :events
    
   root :to => "index#index"
   
-  resources :user_sessions
-  resources :users
+
   match "deletemembership" => "membership#delete", :as => "deletemembership"
   match "deletebandevent" => "band_event#delete", :as => "deletebandevent"
-  match "login" => "user_sessions#new", :as => "login"
-  match "logout" => "user_sessions#destroy", :as => "logout"
-  match "signup" => "users#new", :as => "signup"
+
+  # Misc
+  match "what_is_endcap" => "what_is_endcap#index", :as => "what_is_endcap"
+  match "talk_to_us" => "talk_to_us#index", :as => "talk_to_us"
   
 
   # The priority is based upon order of creation:

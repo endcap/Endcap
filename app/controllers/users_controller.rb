@@ -28,6 +28,19 @@ class UsersController < ApplicationController
   def edit
   end
   
+  def search_by_name
+    names = params[:name].split(' ')
+    names << '' if names.length == 1
+    @users = User.find(:all, :conditions => ["first_name like ? and last_name like ?", "%"+names[0]+"%", "%"+names[1]+"%"], :limit => 5)
+    @users.each do |user|
+      user.crypted_password = ''
+      user.password_salt = ''
+      user.persistence_token = ''
+    end
+    respond_to do |format|
+      format.json { render :json => @users }
+    end
+  end
   
   def create
     if (params[:user][:image])
