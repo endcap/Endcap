@@ -114,20 +114,7 @@
       From <input type="text" name="from_date" size="4" /> to <input type="text" name="to_date" size="4" />
       -# When user just enters a name without selecting one, this will be blank.
       %input{:type => "hidden", :id => "band_band_memberships_value_0", :name => "band[band_memberships_value[]]", :value => ""}
+      %div{:id => "search_results"}
+        - render :partial => "search"
   .actions
     = f.submit 'Save'
-
-
-<script type="text/javascript">
-var dropdown = document.getElementById('band_band_memberships');
-var dates = document.getElementById('dates');
-  
-dropdown.onchange=showDates;
-
-function showDates() {
-if (dropdown.selectedIndex == 0)
-dates.style.display='none';
-else
-dates.style.display='inline';
-}
-</script>

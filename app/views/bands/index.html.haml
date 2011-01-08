@@ -15,7 +15,7 @@
 
       - @bands.each do |band|
         %tr
-          %td= band.name
+          %td= link_to band.name, band
           %td= band.start_year
           %td= band.end_year
           %td
@@ -28,14 +28,14 @@
               =link_to band.genre, bands_by_genre_path(band.genre)
           %td= band.homepage
           %td.links
-            =link_to 'Show', band
-            =link_to 'Edit', edit_band_path(band)
-            =link_to 'Destroy', band, :confirm => 'Are you sure?', :method => :delete
+            - if current_user && current_user.staff?
+              =link_to 'Edit', edit_band_path(band)
+              =link_to 'Destroy', band, :confirm => 'Are you sure?', :method => :delete
   - if @bands.empty?
     %p
       No bands found.
   %br
-    - if current_user
+    - if current_user && current_user.staff?
       = link_to 'New Band', new_band_path
 
 %script{:type => "text/javascript"}

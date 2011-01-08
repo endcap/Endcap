@@ -29,17 +29,19 @@ class UsersController < ApplicationController
   end
   
   def search_by_name
-    names = params[:name].split(' ')
-    names << '' if names.length == 1
-    @users = User.find(:all, :conditions => ["first_name like ? and last_name like ?", "%"+names[0]+"%", "%"+names[1]+"%"], :limit => 5)
-    @users.each do |user|
-      user.crypted_password = ''
-      user.password_salt = ''
-      user.persistence_token = ''
+    unless params[:name].blank?
+      names = params[:name].split(' ')
+      names << '' if names.length == 1
+      @users = User.find(:all, :conditions => ["first_name like ? and last_name like ?", "%"+names[0]+"%", "%"+names[1]+"%"], :limit => 5)
+      @users.each do |user|
+        user.crypted_password = ''
+        user.password_salt = ''
+        user.persistence_token = ''
+      end
+    else
+      list
     end
-    respond_to do |format|
-      format.json { render :json => @users }
-    end
+    render :partial => 'search', :layout => false
   end
   
   def create

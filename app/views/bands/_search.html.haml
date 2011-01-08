@@ -1,0 +1,9 @@
+- if @users
+  - for user in @users
+    %div{:style => "border: 2px solid red"}
+      - if user.image
+        %img{:src => user.image, :width => 50, :height => 50, :align => left}
+        %br
+      = user.full_name
+      %br
+      = user.location
