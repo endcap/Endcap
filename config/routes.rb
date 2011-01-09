@@ -26,7 +26,7 @@ Endcap::Application.routes.draw do
   match "login" => "user_sessions#new", :as => "login"
   match "logout" => "user_sessions#destroy", :as => "logout"
   match "signup" => "users#new", :as => "signup"
-  match "artist_by_name/:name" => "users#search_by_name", :as => "artist_by_name"
+  match "artist_by_name/(:name)" => "users#search_by_name", :as => "artist_by_name"
 
   # Admin stuff
   match "admin" => "admin#index"

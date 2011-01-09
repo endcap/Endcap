@@ -20,7 +20,13 @@ class User < ActiveRecord::Base
   end
   
   def location
-    [self.city, self.state].join(", ")
+    if !self.city.blank? && !self.state.blank?
+      # If we have city and state, combine with a comma
+      [self.city, self.state].join(", ")
+    else
+      # Otherwise, if we have one or none just return them both concatenated (if none, this is an empty string)
+      self.city+self.state
+    end
   end
   
   def events

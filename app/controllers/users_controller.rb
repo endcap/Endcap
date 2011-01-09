@@ -39,9 +39,14 @@ class UsersController < ApplicationController
         user.persistence_token = ''
       end
     else
-      list
+      
     end
-    render :partial => 'search', :layout => false
+=begin
+    respond_to do |format|
+      format.js, :layout => false # search_by_name.js.erb
+    end
+=end
+    render :layout => false
   end
   
   def create
