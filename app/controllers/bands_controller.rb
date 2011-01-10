@@ -50,8 +50,10 @@ class BandsController < ApplicationController
   def create
     
     new_member = params[:band][:band_memberships]
-    these_band_memberships = Array.new
+    new_member = Array.new if new_member.nil?
     
+    these_band_memberships = Array.new
+  
     if new_member.length > 0
       logger.info 'Adding new member'
       membership = BandMembership.new
@@ -104,7 +106,8 @@ class BandsController < ApplicationController
 
     respond_to do |format|
       new_member = params[:band][:band_memberships]
-
+      new_member = Array.new if new_member.nil?
+      
       if new_member.length > 0
         membership = BandMembership.new
         membership.user = User.find_by_id(new_member)
