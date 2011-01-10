@@ -28,7 +28,7 @@
                     =member.end_date && member.end_date.year || 'now'
 
 
-          - if @band.events
+          - if @band.events && @band.events.count > 0
             #bottom
               %h3 Events
               %ul
@@ -40,7 +40,7 @@
                       at
                       =link_to event.venue.name, event.venue
           
-              -if @band.twitter
+              -if !@band.twitter.blank?
                 %h3 Tweets
                 %div{:id => "tweets"}
     %div{:id => "profile3"}
