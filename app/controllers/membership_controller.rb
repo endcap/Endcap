@@ -10,4 +10,17 @@ class MembershipController < ApplicationController
     
     redirect_to(@band, :notice => 'Band member was removed.')
   end
+  
+  def create
+    band = Band.find(params[:band])
+    user = User.find(params[:user])
+    membership = BandMembership.new
+    membership.band = band
+    membership.user = user
+    if membership.save
+      flash[:notice] = "Member added."
+    end
+    
+    redirect_to root_url
+  end
 end

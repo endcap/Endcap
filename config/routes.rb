@@ -43,6 +43,8 @@ Endcap::Application.routes.draw do
   
 
   match "deletemembership" => "membership#delete", :as => "deletemembership"
+  match "add_member/:user/to_band/:band" => "membership#create"
+    
   match "deletebandevent" => "band_event#delete", :as => "deletebandevent"
 
   # Misc
