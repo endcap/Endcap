@@ -7,3 +7,6 @@
       = user.full_name
       %br
       = user.location
+      %div{:float => 'right'}
+        %a{:href => "/add_member/#{user.id}/to_band/#{params[:band]}"}
+          Add

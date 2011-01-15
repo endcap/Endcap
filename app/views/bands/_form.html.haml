@@ -113,5 +113,6 @@
 = form_tag('/artist_by_name/', :method => :get, :remote => true) do
   .field
     %input{:type => "text", :id => "name", :name => "name"}
+    %input{:type => "hidden", :name => "band", :value => @band.id}
     = submit_tag 'Search'
     %div{:id => 'search_results'}
