@@ -102,16 +102,17 @@
 
 %h3 Members
 .field
-  - @band.band_memberships.each do |member|
-    - if member.user
-      %li{:class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
-        = member.user.full_name
-        = member.start_year
-        to 
-        =member.end_year
-        (
-        =link_to 'delete', "/deletemembership?band=#{@band.id}&amp;membership=#{member.id}", :remote => true
-        )
+  %ul{:id => "members"}
+    - @band.band_memberships.each do |member|
+      - if member.user
+        %li{:id => "member#{member.id}", :class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
+          = member.user.full_name
+          = member.start_year
+          to 
+          =member.end_year
+          (
+          =link_to 'delete', "/deletemembership?band=#{@band.id}&membership=#{member.id}", :remote => true
+          )
 = form_tag('/artist_by_name/', :method => :get, :remote => true) do
   .field
     %input{:type => "text", :id => "name", :name => "name"}

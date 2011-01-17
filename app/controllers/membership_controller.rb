@@ -8,7 +8,7 @@ class MembershipController < ApplicationController
     
     @band.band_memberships.delete(@membership)
     
-    redirect_to(@band, :notice => 'Band member was removed.')
+    render 'delete', :layout => false
   end
   
   def create
@@ -21,6 +21,6 @@ class MembershipController < ApplicationController
       flash[:notice] = "Member added."
     end
     
-    redirect_to root_url
+    render 'create', :layout => false
   end
 end
