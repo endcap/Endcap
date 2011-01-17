@@ -14,10 +14,10 @@ class MembershipController < ApplicationController
   def create
     band = Band.find(params[:band])
     user = User.find(params[:user])
-    membership = BandMembership.new
-    membership.band = band
-    membership.user = user
-    if membership.save
+    @membership = BandMembership.new
+    @membership.band = band
+    @membership.user = user
+    if @membership.save
       flash[:notice] = "Member added."
     end
     
