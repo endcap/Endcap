@@ -109,7 +109,9 @@
         = member.start_year
         to 
         =member.end_year
-        (<a href="/deletemembership?band=#{@band.id}&amp;membership=#{member.id}">delete</a>)
+        (
+        =link_to 'delete', "/deletemembership?band=#{@band.id}&amp;membership=#{member.id}", :remote => true
+        )
 = form_tag('/artist_by_name/', :method => :get, :remote => true) do
   .field
     %input{:type => "text", :id => "name", :name => "name"}
