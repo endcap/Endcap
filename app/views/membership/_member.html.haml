@@ -1,0 +1,8 @@
+%li{:id => "member#{@membership.id}", :class => @membership.end_date && @membership.end_date.year < Time.new.year ? "old_member" : "current_member"}
+  = @membership.user.full_name
+  = @membership.start_year
+  to 
+  = @membership.end_year
+  (
+  = link_to 'delete', "/deletemembership?band=#{@membership.band.id}&membership=#{@membership.id}", :remote => true
+  )
