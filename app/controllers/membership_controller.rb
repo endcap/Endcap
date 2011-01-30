@@ -13,7 +13,22 @@ class MembershipController < ApplicationController
   
   def create
     band = Band.find(params[:band])
-    user = User.find(params[:user])
+    if params[:user].to_i == -1 and !params[:name].blank?
+      names = params[:name].split(' ')
+      first_name = names[0]
+      last_name = names[names.length-1] || ""
+      user = User.new
+      id = User.maximum('id')+1
+      user.first_name = first_name
+      user.last_name = last_name
+      user.email = "user#{id}@endcap.info"
+      user.password = "user#{id}isnotarealperson"
+      user.password_confirmation = "user#{id}isnotarealperson"
+      user.can_login = false
+      user.save
+    else
+      user = User.find(params[:user])
+    end
     @membership = BandMembership.new
     @membership.band = band
     @membership.user = user

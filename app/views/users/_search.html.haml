@@ -1,3 +1,5 @@
+%div{:style => "border: 2px solid red"}
+  =link_to "Create #{params[:name]}", "/add_member/-1/to_band/#{params[:band]}?name=#{params[:name]}", :remote => true
 - if @users
   - for user in @users
     %div{:style => "border: 2px solid red"}
