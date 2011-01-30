@@ -1,9 +1,11 @@
-%h1 New song
+#maincontent
+  .wrapper
+    %h1 New song
 
-= render 'form'
+    = render 'form'
 
-= link_to 'Back', songs_path
+    = link_to 'Back', songs_path
 
 
-%script{:type => "text/javascript"}
-  mpq.push(["track", "Load new song page"]);
+    %script{:type => "text/javascript"}
+      mpq.push(["track", "Load new song page"]);

@@ -30,10 +30,10 @@
         This band doesn't seem to have any albums.
       - else
         There were no albums found. This probably indicates a problem.
-%br
+  %br
 
-- if current_user && current_user.staff?
-  = link_to 'New Album', new_album_path
+  - if current_user && current_user.staff?
+    = link_to 'New Album', new_album_path
 
 %script{:type => "text/javascript"}
   mpq.push(["track", "Load show all albums page"]);

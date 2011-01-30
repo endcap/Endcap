@@ -1,10 +1,12 @@
-%h1 Editing event
+#maincontent
+  .wrapper
+    %h1 Editing event
 
-= render 'form'
+    = render 'form'
 
-= link_to 'Show', @event
-\|
-= link_to 'Back', events_path
+    = link_to 'Show', @event
+    \|
+    = link_to 'Back', events_path
 
-%script{:type => "text/javascript"}
-  mpq.push(["track", "Load edit event page"]);
+    %script{:type => "text/javascript"}
+      mpq.push(["track", "Load edit event page"]);

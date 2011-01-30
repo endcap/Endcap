@@ -1,10 +1,12 @@
-%h1 Editing song
+#maincontent
+  .wrapper
+    %h1 Editing song
 
-= render 'form'
+    = render 'form'
 
-= link_to 'Show', @song
-\|
-= link_to 'Back', songs_path
+    = link_to 'Show', @song
+    \|
+    = link_to 'Back', songs_path
 
-%script{:type => "text/javascript"}
-  mpq.push(["track", "Load edit song page"]);
+    %script{:type => "text/javascript"}
+      mpq.push(["track", "Load edit song page"]);
