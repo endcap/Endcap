@@ -7,7 +7,10 @@ class UserSessionsController < ApplicationController
   
   def create
     @user_session = UserSession.new(params[:user_session])
-    if @user_session.save
+    if !User.find_by_email(params[:user_session][:email]).can_login
+      flash[:notice] = "That user cannot login!"
+      redirect_to root_url
+    elsif @user_session.save
       flash[:notice] = "Hello!"
       redirect_to root_url
     else

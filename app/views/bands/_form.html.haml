@@ -106,7 +106,7 @@
     - @band.band_memberships.each do |member|
       - if member.user
         %li{:id => "member#{member.id}", :class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
-          = member.user.full_name
+          = link_to member.user.full_name, member.user
           = member.start_year
           to 
           =member.end_year
