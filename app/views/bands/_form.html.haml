@@ -113,9 +113,8 @@
           (
           =link_to 'delete', "/deletemembership?band=#{@band.id}&membership=#{member.id}", :remote => true
           )
-= form_tag('/artist_by_name/', :method => :get, :remote => true) do
+= form_tag('/artist_by_name/', :method => :get, :remote => true, :name => 'add_artist_form') do
   .field
-    %input{:type => "text", :id => "name", :name => "name"}
-    %input{:type => "hidden", :name => "band", :value => @band.id}
-    = submit_tag 'Search'
+    %input{:type => "text", :id => "name", :name => "name", :onkeyup => 'document.getElementById("add_artist_search_form_submit").click()'}
+    = submit_tag 'Search', :id => "add_artist_search_form_submit"
     %div{:id => 'search_results'}
