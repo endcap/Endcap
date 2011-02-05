@@ -6,6 +6,7 @@ class IndexController < ApplicationController
     @events = Event.last(5)
     @venues = Venue.last(5)
     @songs = Song.last(5)
+    @albums = Album.last(5)
 
     respond_to do |format|
       format.html # index.html.erb
