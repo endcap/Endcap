@@ -1,0 +1,804 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  background: transparent;
+  border: 0;
+  font-size: 100%;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+:focus {
+  outline: 0; }
+
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  font: 13px/1.5 "Helvetica Neue", Arial, "Liberation Sans", FreeSans, sans-serif; }
+
+a:focus {
+  outline: 1px dotted; }
+
+hr {
+  border: 0 #cccccc solid;
+  border-top-width: 1px;
+  clear: both;
+  height: 0; }
+
+h1 {
+  font-size: 25px; }
+
+h2 {
+  font-size: 23px; }
+
+h3 {
+  font-size: 21px; }
+
+h4 {
+  font-size: 19px; }
+
+h5 {
+  font-size: 17px; }
+
+h6 {
+  font-size: 15px; }
+
+ol {
+  list-style: decimal; }
+
+ul {
+  list-style: disc; }
+
+li {
+  margin-left: 30px; }
+
+p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
+  margin-bottom: 20px; }
+
+/* `Widths
+----------------------------------------------------------------------------------------------------*/
+.input_tiny {
+  width: 50px; }
+
+.input_small {
+  width: 100px; }
+
+.input_medium {
+  width: 150px; }
+
+.input_large {
+  width: 200px; }
+
+.input_xlarge {
+  width: 250px; }
+
+.input_xxlarge {
+  width: 300px; }
+
+.input_full {
+  width: 100%; }
+
+/*
+	Added via JS to <textarea> and class="input_full".
+	Applies to IE6, IE7. Other browsers don't need it.
+*/
+.input_full_wrap {
+  display: block;
+  padding-right: 8px; }
+
+/* `UI Consistency
+----------------------------------------------------------------------------------------------------*/
+::-moz-focus-inner {
+  border: 0; }
+
+input[type="search"]::-webkit-search-decoration {
+  display: none; }
+
+input,
+button,
+select,
+textarea {
+  margin: 0;
+  vertical-align: middle; }
+
+button,
+input[type="reset"],
+input[type="submit"],
+input[type="button"] {
+  -webkit-appearance: none;
+  -moz-border-radius: 11px;
+  -webkit-border-radius: 11px;
+  border-radius: 11px;
+  background: #dddddd url(/images/formalize/button.png) repeat-x;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, #dddddd));
+  background: -moz-linear-gradient(top center, white 0%, #dddddd 100%);
+  border: 1px solid;
+  border-color: #ddd #bbb #999;
+  cursor: pointer;
+  color: #333;
+  font: bold 12px/1.2 Arial, sans-serif;
+  outline: 0;
+  overflow: visible;
+  padding: 3px 10px 4px;
+  text-shadow: #fff 0 1px 1px;
+  width: auto;
+  /* IE7 */
+  *padding-top: 2px;
+  *padding-bottom: 0px; }
+
+button {
+  /* IE7 */
+  *padding-top: 1px;
+  *padding-bottom: 1px; }
+
+button[disabled],
+input[type="reset"][disabled],
+input[type="submit"][disabled],
+input[type="button"][disabled] {
+  color: #888; }
+
+textarea,
+select,
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"] {
+  -webkit-appearance: none;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid;
+  border-color: #848484 #c1c1c1 #e1e1e1;
+  color: #000;
+  outline: 0;
+  padding: 2px 3px;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  height: 1.8em;
+  /* IE7 */
+  *padding-top: 2px;
+  *padding-bottom: 1px;
+  *height: auto; }
+
+/*
+	Separate rule for Firefox.
+	Cannot stack with WebKit's.
+*/
+input.placeholder_text,
+textarea.placeholder_text {
+  color: #888; }
+
+::-webkit-input-placeholder {
+  color: #888; }
+
+textarea[disabled],
+select[disabled],
+input[type="date"][disabled],
+input[type="datetime"][disabled],
+input[type="datetime-local"][disabled],
+input[type="email"][disabled],
+input[type="month"][disabled],
+input[type="number"][disabled],
+input[type="password"][disabled],
+input[type="search"][disabled],
+input[type="tel"][disabled],
+input[type="text"][disabled],
+input[type="time"][disabled],
+input[type="url"][disabled],
+input[type="week"][disabled] {
+  background-color: #eee;
+  color: #888; }
+
+button:focus,
+button:active,
+input:focus,
+input:active,
+select:focus,
+select:active,
+textarea:focus,
+textarea:active {
+  -moz-box-shadow: #06f 0 0 7px;
+  -webkit-box-shadow: #06f 0 0 7px;
+  box-shadow: #06f 0 0 7px;
+  /* for Opera */
+  z-index: 1; }
+
+.is_webkit select {
+  /* Tweaks for Safari + Chrome. */
+  background-image: url(/images/formalize/select_arrow.gif);
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 20px; }
+
+textarea,
+select[multiple] {
+  height: auto; }
+
+select[multiple],
+.is_webkit select[multiple] {
+  background-image: none;
+  padding: 0; }
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+  width: 100%; }
+
+optgroup {
+  color: #000;
+  font-style: normal;
+  font-weight: normal; }
+
+/* `IE6
+----------------------------------------------------------------------------------------------------*/
+/*
+	Everything below this line is for IE6.
+	Delete it if you don't support it! :)
+
+	Classes are added dynamically via JS,
+	because IE6 doesn't support attribute
+	selectors: .ie6_button, .ie6_input, etc.
+
+	Note: These style rules are somewhat
+	duplicated because IE6 bombs out when
+	it sees attribute selectors. Example:
+
+	.ie6_button {
+		This works in IE6.
+	}
+
+	.ie6_button,
+	input[type=submit] {
+		This doesn't work.
+	}
+*/
+.ie6_button,
+* html button {
+  background: #dddddd url(/images/formalize/button.png) repeat-x;
+  border: 1px solid;
+  border-color: #ddd #bbb #999;
+  cursor: pointer;
+  color: #333;
+  font: bold 12px/1.2 Arial, sans-serif;
+  padding: 2px 10px 0px;
+  overflow: visible;
+  width: auto; }
+
+* html button {
+  padding-top: 1px;
+  padding-bottom: 1px; }
+
+.ie6_input,
+* html textarea,
+* html select {
+  background: #fff;
+  border: 1px solid;
+  border-color: #848484 #c1c1c1 #e1e1e1;
+  color: #000;
+  padding: 2px 3px 1px;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  vertical-align: top; }
+
+* html select {
+  margin-top: 1px; }
+
+.placeholder_text,
+.ie6_input_disabled,
+.ie6_button_disabled {
+  color: #888; }
+
+.ie6_input_disabled {
+  background: #eee; }
+
+body {
+  font: 13px/1.5 "Myriad Pro", Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif; }
+
+hr {
+  border: 0 #cccccc solid;
+  border-top-width: 1px;
+  clear: both;
+  height: 0; }
+
+h1 {
+  font-size: 25px; }
+
+h2 {
+  font-size: 23px; }
+
+h3 {
+  font-size: 21px; }
+
+h4 {
+  font-size: 19px; }
+
+h5 {
+  font-size: 17px; }
+
+h6 {
+  font-size: 15px; }
+
+ol {
+  list-style: decimal; }
+
+ul {
+  list-style: disc; }
+
+li {
+  margin-left: 30px; }
+
+p, dl, pre, table, address, fieldset, ul, ol, h1, h2, h3, h4, h5, h6, hr {
+  margin-bottom: 20px; }
+
+.fieldWithErrors {
+  display: inline-block;
+  color: #a01c1d;
+  font-weight: bold; }
+  .fieldWithErrors input {
+    border: 5px solid #f26667; }
+
+#errorExplanation {
+  width: 500px;
+  border: 1px solid red;
+  padding: 7px;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  background-color: #f26667;
+  font-weight: bold; }
+  #errorExplanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 10px 5px 10px 15px;
+    font-size: 1.2em;
+    margin: -7px -7px 7px -7px;
+    background-color: #cc0000;
+    color: white; }
+  #errorExplanation p {
+    color: #a01c1d;
+    margin-bottom: 0;
+    padding: 5px;
+    font-size: 1.1em; }
+  #errorExplanation ul li {
+    font-size: 12px;
+    list-style: square;
+    color: #111111; }
+
+#header {
+  background: #fbf3bc;
+  border-bottom: 1px solid #cfcfcf;
+  height: 125px; }
+  #header .wrapper {
+    position: relative; }
+    #header .wrapper #logo {
+      color: #c9c9c9;
+      margin: 0 auto;
+      width: 960px;
+      padding: 0px;
+      height: 125px; }
+      #header .wrapper #logo a {
+        display: block;
+        float: left;
+        width: 460px;
+        height: 125px;
+        background: #fbf3bc url("/images/endcap-logo.png") no-repeat;
+        overflow: hidden;
+        text-indent: -50em; }
+      #header .wrapper #logo #info {
+        float: right; }
+        #header .wrapper #logo #info a {
+          color: black;
+          display: inline;
+          text-decoration: none;
+          background: transparent;
+          text-indent: 0;
+          overflow: visible;
+          background: none;
+          width: 65px; }
+        #header .wrapper #logo #info .welcome {
+          font-size: 1.2em; }
+  #header #main-nav {
+    margin: 0; }
+    #header #main-nav .wrapper {
+      background: #624312; }
+      #header #main-nav .wrapper #menu-main {
+        width: 960px;
+        margin: 0 auto;
+        list-style: none; }
+        #header #main-nav .wrapper #menu-main .menu-item {
+          margin: 0;
+          margin-right: 35px;
+          display: inline;
+          height: 40px; }
+          #header #main-nav .wrapper #menu-main .menu-item a {
+            font: 2.2em 'Reenie Beanie', 'Myriad Pro', Helvetica, Arial, sans-serif;
+            color: #dfc280;
+            text-decoration: none;
+            height: 40px; }
+          #header #main-nav .wrapper #menu-main .menu-item a:hover {
+            color: #ffc289;
+            background-color: rgba(255, 255, 255, 0.2); }
+          #header #main-nav .wrapper #menu-main .menu-item a:focus {
+            outline: 1px dotted invert; }
+
+#featuredcontent {
+  background: white;
+  height: 425px;
+  margin-top: 45px; }
+  #featuredcontent .wrapper {
+    margin: 0px auto;
+    width: 960px; }
+    #featuredcontent .wrapper #featuredartist {
+      background: white;
+      background-position: left bottom;
+      color: white;
+      width: 620px;
+      margin: 0px;
+      margin-top: 15px;
+      height: 265px;
+      float: left; }
+      #featuredcontent .wrapper #featuredartist #video {
+        margin: 0 auto;
+        width: 500px; }
+        #featuredcontent .wrapper #featuredartist #video iframe {
+          margin: 0 auto; }
+      #featuredcontent .wrapper #featuredartist #artist {
+        float: right;
+        font-size: 27px;
+        margin-top: 5px;
+        margin-right: 10px; }
+    #featuredcontent .wrapper #discover {
+      margin: 0px;
+      margin-top: 15px;
+      height: 265px;
+      width: 315px;
+      float: right; }
+      #featuredcontent .wrapper #discover h2 {
+        color: #624312;
+        font-size: 34px;
+        margin: 0px;
+        font-weight: normal; }
+      #featuredcontent .wrapper #discover .calltoaction {
+        font-size: 34px;
+        color: #ff9c00;
+        text-align: right; }
+
+#maincontent {
+  background: #fbf3bc;
+  height: 400px; }
+  #maincontent .wrapper {
+    margin: 0px auto;
+    width: 960px; }
+    #maincontent .wrapper #bandlist {
+      width: 300px;
+      display: inline;
+      float: left;
+      margin: 0 10px; }
+      #maincontent .wrapper #bandlist h2 {
+        font-size: 60px;
+        font-weight: normal;
+        color: #ff9c00; }
+      #maincontent .wrapper #bandlist ul {
+        list-style-type: none;
+        margin-right: 20px; }
+        #maincontent .wrapper #bandlist ul li {
+          margin: 0;
+          margin-left: 5px;
+          font-size: 16px;
+          margin-top: 15px;
+          margin-bottom: 15px; }
+        #maincontent .wrapper #bandlist ul #broncho {
+          background: url("/images/endcap-thumb.png") no-repeat;
+          background-position: right center;
+          height: 40px; }
+        #maincontent .wrapper #bandlist ul #nativelights {
+          background: url("/images/endcap-thumb.png") no-repeat;
+          background-position: right center;
+          height: 40px; }
+        #maincontent .wrapper #bandlist ul #deadseachoir {
+          background: url("/images/endcap-thumb.png") no-repeat;
+          background-position: right center;
+          height: 40px; }
+        #maincontent .wrapper #bandlist ul #andtherestandempires {
+          background: url("/images/endcap-thumb.png") no-repeat;
+          background-position: right center;
+          height: 40px; }
+        #maincontent .wrapper #bandlist ul #daniels {
+          background: url("/images/endcap-thumb.png") no-repeat;
+          background-position: right center;
+          height: 40px; }
+    #maincontent .wrapper #eventlist {
+      width: 300px;
+      display: inline;
+      float: left;
+      margin: 0 10px; }
+      #maincontent .wrapper #eventlist h2 {
+        font-size: 60px;
+        font-weight: normal;
+        color: #ff9c00; }
+      #maincontent .wrapper #eventlist ul {
+        list-style: none;
+        margin-right: 20px; }
+        #maincontent .wrapper #eventlist ul li {
+          margin: 0;
+          margin-left: 5px;
+          font-size: 16px;
+          margin-top: 15px;
+          margin-bottom: 20px; }
+          #maincontent .wrapper #eventlist ul li .artist {
+            color: black;
+            margin: 0;
+            line-height: 15px;
+            font-size: 15px; }
+          #maincontent .wrapper #eventlist ul li .show {
+            color: #666666;
+            margin: 0;
+            line-height: 15px;
+            font-size: 15px;
+            margin-top: 5px; }
+    #maincontent .wrapper #songlist {
+      width: 300px;
+      display: inline;
+      float: left;
+      margin: 0 10px; }
+      #maincontent .wrapper #songlist h2 {
+        font-size: 60px;
+        font-weight: normal;
+        color: #ff9c00; }
+      #maincontent .wrapper #songlist ul {
+        list-style: none;
+        margin-right: 20px; }
+        #maincontent .wrapper #songlist ul li {
+          margin: 0;
+          margin-left: 5px;
+          font-size: 16px;
+          margin-top: 15px;
+          margin-bottom: 20px; }
+          #maincontent .wrapper #songlist ul li .title {
+            color: #6c4f1d;
+            margin: 0;
+            line-height: 15px;
+            font-size: 15px; }
+          #maincontent .wrapper #songlist ul li .artist {
+            color: black;
+            margin: 0;
+            line-height: 15px;
+            font-size: 15px;
+            margin-top: 5px; }
+
+#actioncontent {
+  background: white;
+  height: 345px; }
+  #actioncontent .wrapper {
+    margin: 0px auto;
+    width: 960px; }
+    #actioncontent .wrapper #mainsponsor {
+      margin: 20px 0px 20px 0px; }
+    #actioncontent .wrapper #bandscallout {
+      float: right;
+      margin: 20px 0px 20px 0px; }
+
+#profile {
+  background: white;
+  height: 600px;
+  margin-top: 45px; }
+  #profile .wrapper {
+    margin: 0px auto;
+    width: 960px; }
+    #profile .wrapper #profile1 {
+      width: 300px;
+      display: inline;
+      float: left;
+      margin: 0 10px; }
+      #profile .wrapper #profile1 img {
+        border: 5px solid #efefef;
+        margin-bottom: 10px; }
+      #profile .wrapper #profile1 p {
+        font-size: 12px; }
+    #profile .wrapper #profile2 {
+      width: 300px;
+      display: inline;
+      float: left;
+      margin: 0 10px; }
+      #profile .wrapper #profile2 h3 {
+        color: #ff9c00;
+        font-size: 34px;
+        font-weight: normal;
+        margin: 0px; }
+      #profile .wrapper #profile2 #subtitle {
+        margin-top: -15px;
+        margin-left: 5px;
+        font-size: 10px; }
+      #profile .wrapper #profile2 #top {
+        height: 225px; }
+        #profile .wrapper #profile2 #top h4 {
+          color: #89724d;
+          font-weight: normal;
+          margin-top: 20px;
+          margin-bottom: 0px; }
+      #profile .wrapper #profile2 #bottom {
+        margin-top: 200px; }
+      #profile .wrapper #profile2 ul {
+        list-style: none;
+        margin-left: -22px; }
+        #profile .wrapper #profile2 ul li {
+          margin-top: 10px;
+          margin-bottom: 5px; }
+        #profile .wrapper #profile2 ul a {
+          text-decoration: none;
+          color: black;
+          font-weight: bold; }
+        #profile .wrapper #profile2 ul :hover {
+          color: #ccc; }
+    #profile .wrapper #profile3 {
+      width: 300px;
+      display: inline;
+      float: left;
+      margin: 0 10px;
+      background-color: #efefef; }
+      #profile .wrapper #profile3 h3 {
+        color: #7d633c;
+        font-weight: normal;
+        margin-left: 15px;
+        margin-top: 5px; }
+      #profile .wrapper #profile3 div {
+        float: left;
+        margin-top: -10px;
+        margin-left: 15px; }
+        #profile .wrapper #profile3 div a {
+          color: black;
+          text-decoration: none;
+          text-align: center; }
+      #profile .wrapper #profile3 img {
+        border: 5px solid white; }
+      #profile .wrapper #profile3 ul {
+        display: block;
+        list-style: none;
+        margin-top: 200px;
+        margin-left: -30px; }
+      #profile .wrapper #profile3 h4 {
+        margin-top: 15px;
+        margin-bottom: 0px; }
+
+#listing {
+  background: white;
+  width: 960px;
+  margin: 0 auto;
+  margin-top: 45px; }
+  #listing h1 {
+    margin-left: 25px; }
+  #listing table {
+    width: 95%;
+    margin: 0 auto; }
+    #listing table th {
+      text-align: left;
+      font-weight: normal;
+      font-size: 16px; }
+    #listing table td {
+      vertical-align: top;
+      padding-top: 10px;
+      padding-bottom: 5px; }
+      #listing table td img {
+        float: left; }
+
+#signup {
+  margin-top: 45px;
+  height: 1000px; }
+  #signup .wrapper {
+    margin: 0px auto;
+    width: 960px; }
+    #signup .wrapper #col1 {
+      width: 220px;
+      display: inline;
+      float: left;
+      margin: 0 10px; }
+    #signup .wrapper #col2 {
+      width: 220px;
+      display: inline;
+      float: left;
+      margin: 0 10px; }
+    #signup .wrapper #col3 {
+      width: 460px;
+      display: inline;
+      float: left;
+      margin: 0 10px; }
+
+#login {
+  margin-top: 45px; }
+  #login .wrapper {
+    margin: 0px auto;
+    width: 960px; }
+    #login .wrapper #signin {
+      margin: 0px auto;
+      width: 400px;
+      background-color: #c77d08;
+      padding: 15px;
+      -moz-border-radius: 12px;
+      border-radius: 12px; }
+      #login .wrapper #signin h1 {
+        text-align: center; }
+      #login .wrapper #signin form {
+        margin: 0px auto;
+        width: 50%; }
+
+#footer {
+  background: #c77d08;
+  color: #fbf3bc;
+  height: 300px;
+  padding-bottom: 40px; }
+  #footer .wrapper {
+    width: 960px;
+    margin: 0px auto; }
+    #footer .wrapper #followbox {
+      width: 300px;
+      display: inline;
+      float: left;
+      margin: 0 10px; }
+      #footer .wrapper #followbox a {
+        color: #fbf3bc;
+        font-weight: bold;
+        text-decoration: none; }
+    #footer .wrapper #propsbox {
+      width: 300px;
+      display: inline;
+      float: left;
+      margin: 0 10px; }
+      #footer .wrapper #propsbox #teamlist {
+        margin-top: -15px; }
+    #footer .wrapper #bigups {
+      width: 300px;
+      display: inline;
+      float: left;
+      margin: 0 10px; }
+
+#notice, #error {
+  display: inline-block;
+  padding: 4px 12px 2px 10px;
+  margin: 0 0 20px;
+  margin: 0 0 20px;
+  font-size: 1.5em;
+  font-weight: bold; }
+
+#notice {
+  background: #3de25c;
+  color: #166a26; }
+
+#error {
+  background: #f26667;
+  color: #a01c1d; }
