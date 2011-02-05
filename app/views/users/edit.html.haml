@@ -1,8 +1,8 @@
-%h1== Edit profile
-- @title = "Edit profile"
+#signup
+  .wrapper
+    %h1== Edit profile
+    - @title = "Edit profile"
+    = render "form"
 
-= render "form"
-
-
-%script{:type => "text/javascript"}
-  mpq.push(["track", "Load edit user page"]);
+    %script{:type => "text/javascript"}
+      mpq.push(["track", "Load edit user page"]);

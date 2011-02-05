@@ -106,16 +106,16 @@
     - @band.band_memberships.each do |member|
       - if member.user
         %li{:id => "member#{member.id}", :class => member.end_date && member.end_date.year < Time.new.year ? "old_member" : "current_member"}
-          = member.user.full_name
+          = link_to member.user.full_name, member.user
           = member.start_year
           to 
           =member.end_year
           (
           =link_to 'delete', "/deletemembership?band=#{@band.id}&membership=#{member.id}", :remote => true
           )
-= form_tag('/artist_by_name/', :method => :get, :remote => true) do
+= form_tag('/artist_by_name/', :method => :get, :remote => true, :name => 'add_artist_form') do
   .field
-    %input{:type => "text", :id => "name", :name => "name"}
+    %input{:type => "text", :id => "name", :name => "name", :onkeyup => 'document.getElementById("add_artist_search_form_submit").click()'}
     %input{:type => "hidden", :name => "band", :value => @band.id}
-    = submit_tag 'Search'
+    = submit_tag 'Search', :id => "add_artist_search_form_submit"
     %div{:id => 'search_results'}

@@ -1,10 +1,11 @@
-%h1 Editing band
+#maincontent
+  .wrapper
+    %h1 Editing band 
+    = render 'form'
 
-= render 'form'
+    = link_to 'Show', @band
+    \|
+    = link_to 'Back', bands_path
 
-= link_to 'Show', @band
-\|
-= link_to 'Back', bands_path
-
-%script{:type => "text/javascript"}
-  mpq.push(["track", "Load edit band page"]);
+    %script{:type => "text/javascript"}
+      mpq.push(["track", "Load edit band page"]);

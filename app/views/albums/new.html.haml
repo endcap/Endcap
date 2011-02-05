@@ -1,8 +1,10 @@
-%h1 New album
+#maincontent
+  .wrapper
+    %h1 New album
 
-= render 'form'
+    = render 'form'
 
-= link_to 'Back', albums_path
+    = link_to 'Back', albums_path
 
-%script{:type => "text/javascript"}
-  mpq.push(["track", "Load new album page"]);
+    %script{:type => "text/javascript"}
+      mpq.push(["track", "Load new album page"]);

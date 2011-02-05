@@ -1,39 +1,41 @@
-%p#notice= notice
+#maincontent
+  .wrapper
+    %p#notice= notice
 
-%img{ :src => @album.image ? @album.image : "/images/defaults/default_album_image.jpg", :align => "right" }
+    %img{ :src => @album.image ? @album.image : "/images/defaults/default_album_image.jpg", :align => "right" }
 
-%h3
-  = @album.name
+    %h3
+      = @album.name
 
-%p
-  %b Band:
-  = link_to @album.band.name, @album.band
-%p
-  %b Year:
-  = @album.year
+    %p
+      %b Band:
+      = link_to @album.band.name, @album.band
+    %p
+      %b Year:
+      = @album.year
 
-%p
-  %b Label:
-  <a href="/albums/?label=#{@album.label}">#{@album.label}</a>
+    %p
+      %b Label:
+      <a href="/albums/?label=#{@album.label}">#{@album.label}</a>
 
-%p
-  %b Description:
-  = @album.description
+    %p
+      %b Description:
+      = @album.description
 
-%h3 Songs
-%ol
-  - @album.songs.each do |song|
-    %li
-      = link_to song.name, song
-    
+    %h3 Songs
+    %ol
+      - @album.songs.each do |song|
+        %li
+          = link_to song.name, song
+        
 
-%br
+    %br
 
-- if current_user && current_user.staff?
-  <a href="/songs/new/?id=#{@album.id}">Edit Songs</a>
-  = link_to 'Edit Album', edit_album_path(@album)
-  \|
-= link_to 'Back', albums_path
+    - if current_user && current_user.staff?
+      <a href="/songs/new/?id=#{@album.id}">Edit Songs</a>
+      = link_to 'Edit Album', edit_album_path(@album)
+      \|
+    = link_to 'Back', albums_path
 
-%script{:type => "text/javascript"}
-  mpq.push(["track", "Load show album page"]);
+    %script{:type => "text/javascript"}
+      mpq.push(["track", "Load show album page"]);

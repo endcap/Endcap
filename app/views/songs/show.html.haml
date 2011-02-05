@@ -1,28 +1,30 @@
-%p#notice= notice
+#maincontent
+  .wrapper
+    %p#notice= notice
 
-- if @song.album
-  %p
-    %b Album:
-    = link_to @song.album.name, @song.album
-- else
-  %p
-    This song is not associated with an album.
-    
-%p
-  %b Name:
-  = @song.name
-%p
-  %b Number:
-  = @song.number
-- if @song.mp3 and @song.mp3.length > 0
-  %b Listen:
-  <audio src="/mp3/#{@song.mp3}" controls="controls">You can play this is Safari or Chrome.</audio>
+    - if @song.album
+      %p
+        %b Album:
+        = link_to @song.album.name, @song.album
+    - else
+      %p
+        This song is not associated with an album.
+        
+    %p
+      %b Name:
+      = @song.name
+    %p
+      %b Number:
+      = @song.number
+    - if @song.mp3 and @song.mp3.length > 0
+      %b Listen:
+      <audio src="/mp3/#{@song.mp3}" controls="controls">You can play this is Safari or Chrome.</audio>
 
-- if current_user && current_user.staff?
-  = link_to 'Edit', edit_song_path(@song)
-  \|
-= link_to 'Back', songs_path
+    - if current_user && current_user.staff?
+      = link_to 'Edit', edit_song_path(@song)
+      \|
+    = link_to 'Back', songs_path
 
 
-%script{:type => "text/javascript"}
-  mpq.push(["track", "Load show song page"]);
+    %script{:type => "text/javascript"}
+      mpq.push(["track", "Load show song page"]);
