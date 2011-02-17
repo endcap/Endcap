@@ -25,12 +25,11 @@
     %header{:id => "#{params[:controller]}-header"}
       - if params[:controller] == 'index'
         .banner
-          .line#navbox
+          #navbox
             .content
               %div{:class => "unit size1of4"}
-                %hgroup
-                  %h1#logo
-                    = link_to "Endcap Discover Music Local Bands Online, Endcap.info", root_url, :title => "Discover Music Local Bands Online, Endcap.info"
+                %h1#logo
+                  = link_to "Endcap Discover Music Local Bands Online, Endcap.info", root_url, :title => "Discover Music Local Bands Online, Endcap.info"
               %div{:class => "unit size3of4"}
                 = link_to "Sign Up", signup_path, :id => "signupbutton", :class => "btn unit dark", :rel => "prefetch"
                 %nav.mainnav
@@ -59,94 +58,77 @@
                 What artists and bands are in your local area? What band is that one musician in, now? Endcap can let you know. Explore local events, venues, bands, and music, and check out what’s going on in your local music scene. Sounds cool? Awesome!
               = link_to "Sign Up", signup_path, :class => "btn orange"
       - else
-        .banner
-          .line#navbox
-            .content
-              %div{:class => "unit size1of4"}
-                %hgroup
-                  %h1#logo
-                    = link_to "Endcap Discover Music Local Bands Online, Endcap.info", root_url, :title => "Discover Music Local Bands Online, Endcap.info"
-              %div{:class => "unit size3of4"}
-                = link_to "Sign Up", signup_path, :id => "signupbutton", :class => "btn unit dark", :rel => "prefetch"
-                %nav.mainnav
-                  %ul
-                    %li.about
-                      = link_to "What's Endcap?", what_is_endcap_path
-                    %li.browse
-                      = link_to "Browse", artists_path
-                    %li.support
-                      = link_to "Talk to Us", talk_to_us_path
-                    %li.blog
-                      %a{:href => "http://endcap.tumblr.com", :title => "Endcap Blog"}
-                    %li.search
-                      %form{:id => "headersearch", :action => "/search"}
-                        %input{:name => "q", :type => "text", :size => "40", :id => "keywords", :placeholder => "Search"}
-                        %input{:type => "submit", :name => "submit", :value => "Search", :id => "submitquery"}
-                  = link_to "Log In", login_path, :id => "login", :rel => "prefetch"
-          %div{:class => "bannerbg", :id => "discover-local-music"}
-            .bannercontent
-              %div{:id => "featuredartist"}
-                #video
-                  <iframe src="http://player.vimeo.com/video/16874071" width="500" height="375" frameborder="0"></iframe>
-              %h1.banner-text
-                Discover Local Music
-              %h2
-                What artists and bands are in your local area? What band is that one musician in, now? Endcap can let you know. Explore local events, venues, bands, and music, and check out what’s going on in your local music scene. Sounds cool? Awesome!
-              = link_to "Sign Up", signup_path, :class => "btn orange"              
+        #navbox
+          .content
+            %div{:class => "unit size1of4"}
+              %hgroup
+                %h1#logo
+                  = link_to "Endcap Discover Music Local Bands Online, Endcap.info", root_url, :title => "Discover Music Local Bands Online, Endcap.info"
+            %div{:class => "unit size3of4"}
+              = link_to "Sign Up", signup_path, :id => "signupbutton", :class => "btn unit dark", :rel => "prefetch"
+              %nav.mainnav
+                %ul
+                  %li.about
+                    = link_to "What's Endcap?", what_is_endcap_path
+                  %li.browse
+                    = link_to "Browse", artists_path
+                  %li.support
+                    = link_to "Talk to Us", talk_to_us_path
+                  %li.blog
+                    %a{:href => "http://endcap.tumblr.com", :title => "Endcap Blog"}
+                  %li.search
+                    %form{:id => "headersearch", :action => "/search"}
+                      %input{:name => "q", :type => "text", :size => "40", :id => "keywords", :placeholder => "Search"}
+                      %input{:type => "submit", :name => "submit", :value => "Search", :id => "submitquery"}
+                = link_to "Log In", login_path, :id => "login", :rel => "prefetch"
     - if yield
       ~ yield
     %footer
-      .content
-        .line
-          %div{:class => "unit size2of3"}
-            #mainsponsor
-          %div{:class => "unit size1of3"}
-            #bandscallout
-        .line
-          %div{:class => "unit size1of3"}
-            #followbox
-              %img{:src => "/images/endcap-follow.png"}
-              %ul
-                %li
-                  Twitter:
-                  %a{:href => "http://twitter.com/swendcap", :target => "_blank"}@swendcap
-                %li
-                  Facebook:
-                  %a{:href => "http://www.facebook.com/pages/Tulsa-OK/EndCap/117352558328843", :target => "_blank"}facebook.com/endcap
-          %div{:class => "unit size1of3"}
-            #propsbox
-              %img{:src => "/images/endcap-madprops.png"}
-              %p
-                The Totally Badass Endcap Team is:
-              %ul{:id => "teamlist"}
-                %li
-                  TJ Clark
-                %li
-                  Adam Brown
-                %li
-                  Terry Gamel
-                %li
-                  John Jackson
-                %li
-                  Carlos Moreno
-                %li
-                  Jon Evans
-                %li
-                  Daniel Hampton
-          %div{:class => "unit size1of3"}
-            #bigups
-              %img{:src => "/images/endcap-bigups.png"}
-              %ul
-                %li
-                  StartupWeekend Tulsa
-                %li
-                  Kauffman Foundation
-                %li
-                  Global Startup Battle
-                %li
-                  Scott Phillips, Isocentric Networks &amp; all the local StartupWeekend Tulsa sponsors
-                %li
-                  All the awesome developer teams &amp; other peeps who participated in this event with us in Tulsa, and all over the world.
+      %section.content
+        %article{:class => "unit size2of3", :id => "mainsponsor"}
+        %article{:class => "unit size1of3", :id => "bandcallout"}
+      %section
+        %article{:class => "unit size1of3", :id => "followbox"}
+          %img{:src => "/images/endcap-follow.png"}
+          %ul
+            %li
+              Twitter:
+              %a{:href => "http://twitter.com/swendcap", :target => "_blank"}@swendcap
+            %li
+              Facebook:
+              %a{:href => "http://www.facebook.com/pages/Tulsa-OK/EndCap/117352558328843", :target => "_blank"}facebook.com/endcap
+        %article{:class => "unit size1of3", :id => "propsbox"}
+          %img{:src => "/images/endcap-madprops.png"}
+          %p
+            The Totally Badass Endcap Team is:
+          %ul{:id => "teamlist"}
+            %li
+              TJ Clark
+            %li
+              Adam Brown
+            %li
+              Terry Gamel
+            %li
+              John Jackson
+            %li
+              Carlos Moreno
+            %li
+              Jon Evans
+            %li
+              Daniel Hampton
+        %article{:class => "unit size1of3", :id => "bigups"}
+          %img{:src => "/images/endcap-bigups.png"}
+          %ul
+            %li
+              StartupWeekend Tulsa
+            %li
+              Kauffman Foundation
+            %li
+              Global Startup Battle
+            %li
+              Scott Phillips, Isocentric Networks &amp; all the local StartupWeekend Tulsa sponsors
+            %li
+              All the awesome developer teams &amp; other peeps who participated in this event with us in Tulsa, and all over the world.
 %script{:type=>"text/javascript"}
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-19855596-1']);
