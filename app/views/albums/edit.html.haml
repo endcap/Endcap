@@ -1,6 +1,7 @@
-#maincontent
-  .wrapper
-    %h1 Editing album
+%section
+  %div{:class => "content main"}
+    %header
+      %h1 Editing album
 
     = render 'form'
 
@@ -10,3 +11,4 @@
 
     %script{:type => "text/javascript"}
       mpq.push(["track", "Load edit album page"]);
+      
