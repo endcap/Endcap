@@ -1,6 +1,7 @@
 class Song < ActiveRecord::Base
   belongs_to :album
-  
+  belongs_to :band
+
   def self.save(upload)
     name =  upload['mp3'].original_filename
     directory = "public/mp3"

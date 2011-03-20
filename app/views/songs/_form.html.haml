@@ -7,8 +7,11 @@
           %li= msg
 
   .field
+    = f.label :band_id
+    = f.select("band_id", Band.all.collect { |u| [ u.name, u.id ] }, {:include_blank => 'Select a Band'})
+  .field
     = f.label :album_id
-    = f.text_field :album_id
+    = f.select("album_id", {'No Album' => ''}, { :disabled => ''} )
   .field
     = f.label :name
     = f.text_field :name
