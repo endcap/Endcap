@@ -1,17 +1,6 @@
-%section
+%section#maincontent
   %div{:class => "content main"}
-    %header
-      %h1
-        Explore Endcap
-    %div
-      %article.subherounit
-        %h2 Bands
-        %ul
-          - @bands.each do |band|
-            %li{:class => "band", :style => "height: 45px"}
-              =link_to band.name, band
-              -if band.image and band.image.length > 0
-                %img{:src => band.image, :style => "width: 50px; height:50px; float: right;" }
+    %section
       %article.subherounit
         %h2 Events
         %ul
@@ -27,21 +16,37 @@
               -if event.venue.image and event.venue.image.length > 0
                 %img{:src => event.venue.image, :style => "width: 50px; height:50px; float: right;" }
       %article.subherounit
+        %h2 Bands
+        %ul
+          - @bands.each do |band|
+            %li{:class => "artist", :style => "height: 45px"}
+              =link_to band.name, band
+              -if band.image and band.image.length > 0
+                %img{:src => band.image, :style => "width: 50px; height:50px; float: right;" }
+      %article.subherounit
         %h2 Songs
         %ul
           - @songs.each do |song|
-            %li{:class => "song"}
-              %p{:class => "title"}
-                =link_to "\"#{song.name}\"", song
-              %p{:class => "artist"}
-                - if song.album and song.album.band
-                  = link_to song.album.band.name, song.album.band
+            %li{:class => "song", :style => "height: 45px"}
+              %span{:style => "float: left"}
+                %p{:class => "title"}
+                  =link_to song.name, song
+                %p{:class => "artist"}
+                  - if song.album and song.album.band
+                    = link_to song.album.band.name, song.album.band
+              - if song.album.image and song.album.image.length > 0
+                %img{:src => song.album.image, :style => "width: 50px; height: 50px; float: right;"}
       %article.subherounit
         %h2 Albums
         %ul
           - @albums.each do |album|
             %li{:class => "album", :style => "height: 45px"}
-              =link_to album.name, album
+              %span{:style => "float: left"}
+                %p{:class => "title"}
+                  =link_to album.name, album
+                %p{:class => "artist"}
+                  -if album.band.name
+                    = link_to album.band.name
               - if album.image and album.image.length > 0
                 %img{:src => album.image, :style => "width: 50px; height: 50px; float: right;"}
 
