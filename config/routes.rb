@@ -1,6 +1,8 @@
 Endcap::Application.routes.draw do
   
 
+  resources :festivals
+
   resources :songs
 
   resources :albums

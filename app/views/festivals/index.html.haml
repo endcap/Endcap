@@ -1,0 +1,29 @@
+%h1 Listing festivals
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Image
+    %th Start date
+    %th End date
+    %th Url
+    %th
+    %th
+    %th
+
+  - @festivals.each do |festival|
+    %tr
+      %td= festival.name
+      %td= festival.description
+      %td= festival.image
+      %td= festival.start_date
+      %td= festival.end_date
+      %td= festival.url
+      %td= link_to 'Show', festival
+      %td= link_to 'Edit', edit_festival_path(festival)
+      %td= link_to 'Destroy', festival, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Festival', new_festival_path

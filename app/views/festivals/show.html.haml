@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @festival.name
+%p
+  %b Description:
+  = @festival.description
+%p
+  %b Image:
+  = @festival.image
+%p
+  %b Start date:
+  = @festival.start_date
+%p
+  %b End date:
+  = @festival.end_date
+%p
+  %b Url:
+  = @festival.url
+
+= link_to 'Edit', edit_festival_path(@festival)
+\|
+= link_to 'Back', festivals_path
