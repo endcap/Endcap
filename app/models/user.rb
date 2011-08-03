@@ -20,12 +20,10 @@ class User < ActiveRecord::Base
   end
   
   def location
-    if !self.city.blank? && !self.state.blank?
-      # If we have city and state, combine with a comma
-      [self.city, self.state].join(", ")
+    if city.blank? || state.blank?
+      city + state
     else
-      # Otherwise, if we have one or none just return them both concatenated (if none, this is an empty string)
-      self.city+self.state
+      [city, state].join(", ")
     end
   end
   
@@ -34,7 +32,7 @@ class User < ActiveRecord::Base
     
     self.bands.each do |band|
       band.events.each do |event|
-        if !eventArray.include? event
+        unless eventArray.include? event
           eventArray << event
         end
         logger.info "added event named #{event.name}"
@@ -53,7 +51,7 @@ class User < ActiveRecord::Base
     
     self.bands.each do |band|
       band.albums.each do |album|
-        if !albumArray.include? album
+        unless albumArray.include? album
           albumArray << album
         end
       end
