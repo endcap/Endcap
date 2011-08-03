@@ -5,8 +5,8 @@
       - if @user && @user.image
         %img{ :src => @user.image, :align => "right" }
       %p
-      - if @user
-        =@user.description
+        - if @user
+          =@user.description
 
     %div{:id => "profile2"}
       #top
@@ -19,15 +19,7 @@
           - elsif @user.editor?
             %p
               Editor
-              - if current_user.superuser?
-            %p
-              Admin: [
-              = link_to "demote", admin_demote_editor_path(@user)
-              ]
-              [
-              = link_to "promote", admin_promote_superuser_path(@user)
-              ]
-          - elsif current_user.superuser?
+          - if !@user.superuser? && current_user.superuser?
             %p 
               Admin: promote to [
               = link_to "editor", admin_promote_editor_path(@user)
@@ -36,7 +28,7 @@
               = link_to "superuser", admin_promote_superuser_path(@user)
               ]
             
-    
+          %p= @user.location
           - if @user && @user.band_memberships
             %ul
               - @user.band_memberships.find(:all, :conditions => ["band_id is not null"]).each do |member|
@@ -81,6 +73,5 @@
                     =song.name
                   - if song.mp3
                     %audio{:src => "/mp3/#{song.mp3}", :controls => "controls"}
-        
 %script{:type => "text/javascript"}
   mpq.push(["track", "Load show user page"]);
