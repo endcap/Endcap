@@ -18,9 +18,10 @@
           %td= link_to venue.name, venue
           %td= venue.location
           %td
-            =venue.city
+            - unless venue.city.blank?
+              =link_to venue.city, venues_by_state_and_city_path(venue.state, venue.city)
             , 
-            =venue.state
+            =link_to venue.state, venues_by_state_path(venue.state)
           %td= venue.hours
           %td= venue.homepage
           %td

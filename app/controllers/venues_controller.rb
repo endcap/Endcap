@@ -5,7 +5,11 @@ class VenuesController < ApplicationController
   # GET /venues
   # GET /venues.xml
   def index
-    @venues = Venue.all
+    where_hash = {}
+    where_hash[:state] = params[:state] if params[:state]
+    where_hash[:city] = params[:city] if params[:city]
+    
+    @venues = Venue.where(where_hash)
 
     respond_to do |format|
       format.html # index.html.erb

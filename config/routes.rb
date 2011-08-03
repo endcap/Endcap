@@ -37,8 +37,10 @@ Endcap::Application.routes.draw do
   match "admin_promote_superuser/:id" => "admin#promote_superuser", :as => "admin_promote_superuser"
   match "admin_promote_editor/:id" => "admin#promote_editor", :as => "admin_promote_editor"
   
-
+  match "local_venues/:state/:city" => "venues#index", :as => "venues_by_state_and_city"
+  match "local_venues/:state" => "venues#index", :as => "venues_by_state"
   resources :venues
+  
   resources :events
    
   root :to => "index#index"
