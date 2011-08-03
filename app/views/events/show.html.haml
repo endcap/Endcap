@@ -1,16 +1,14 @@
-
 #profile
   .wrapper
     %div{:id => "profile1"}
       - if @event.image
         %img{ :src => @event.image, :align => "right", :width => "290" }
       %p
-      - if @event
-        =@event.description
-  
+        - if @event
+          =@event.description
+
     %div{:id => "profile2"}
       #top
-        - if @event
         %h3= @event.name
         - if @event.venue
           %p
@@ -23,20 +21,17 @@
           %b Cost:
           = @event.cost
 
-      
         %h4 Bands
         %ul
           - @event.band_events.each do |performer|
             - if performer and performer.band and performer.band.name
               %li
                 =link_to performer.band.name, performer.band
-          
 
     %div{:id => "profile3"}
-      %h3 Location & Other Info
+      %h3 Location &amp; Other Info
       %p Venue Details
       %p Band Details / Website / Etc.
-      
-          
+
 %script{:type => "text/javascript"}
   mpq.push(["track", "Load show event page"]);
