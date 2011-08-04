@@ -16,4 +16,12 @@ class Album < ActiveRecord::Base
     
     path[6..path.length]
   end
+
+  def image
+    self.read_attribute(:image) || default_image_location
+  end
+
+  def default_image_location
+    "/images/defaults/default_album_image.jpg"
+  end
 end
