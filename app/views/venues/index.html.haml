@@ -2,7 +2,7 @@
 #listing
   %h1 Venues
 
-  - if !@venues.empty?
+  - unless @venues.empty?
     %table
       %tr
         %th Name
@@ -32,7 +32,7 @@
               = link_to 'Edit', edit_venue_path(venue)
               = link_to 'Destroy', venue, :confirm => 'Are you sure?', :method => :delete
 
-  - if @venues.empty?
+  - else @venues.empty?
     %p
       No venues found.
   %br
